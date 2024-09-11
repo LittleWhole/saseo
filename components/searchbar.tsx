@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useRouter } from "next/navigation";
+import { Ruby } from "./ui/ruby";
 
 export function SearchBar() {
   const router = useRouter();
@@ -52,7 +53,7 @@ export function SearchBar() {
           type="submit"
           className="flex-shrink bg-gray-500 hover:bg-gray-600"
         >
-          Search
+          Search&nbsp;<Ruby text="檢" ruby="검"/><Ruby text="索" ruby="색"/>
         </Button>
         </div>
       </form>
