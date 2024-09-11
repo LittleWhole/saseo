@@ -1,5 +1,5 @@
 import { Ruby } from "./ruby";
-import { POS } from "../types";
+import { POS } from "../../app/types";
 
 export function Entry({ hanja, hangul, definitions }: Readonly<{ hanja: string; hangul: string; definitions: [{ pos: POS[], text: string, examples: string[] }] }>) {
     return (
@@ -11,7 +11,7 @@ export function Entry({ hanja, hangul, definitions }: Readonly<{ hanja: string; 
                 <ol className="list-decimal list-inside">
                     {definitions.map((definition, index) => ( <div key={index}>
                         <p className="text-sm font-bold text-slate-400">{definition.pos.join(", ")}</p>
-                        <li>{definitions[index].text}</li>
+                        <li className="text-lg">{definitions[index].text}</li>
                         </div>
                     ))}
                 </ol>
