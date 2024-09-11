@@ -1,10 +1,28 @@
+"use client";
 import { SearchBar } from "@/components/searchbar";
 import { Entry } from "@/components/ui/entry";
 import { Ruby } from "@/components/ui/ruby";
 
-import { POS } from "../types"; 
+import { POS } from "../types";
+import { useSearchParams } from "next/navigation";
+import { searchHanja, SearchResult } from "./helpers";
+import { useState } from "react";
 
 export default function Page() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q");
+  const prelimEntries: SearchResult[] = [];
+  const [entries, setEntries]: [SearchResult[], any] = useState([]);
+
+  if (query) {
+    searchHanja(query).then((results) => {
+      results.forEach((result) => {
+        prelimEntries.push(result)
+        setEntries(prelimEntries);
+      });
+    });
+  }
+
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
       <div className="items-center pt-10 pb-6 px-40 bg-black text-white font-[family-name:var(--font-geist-sans)]">
@@ -20,11 +38,19 @@ export default function Page() {
         </div>
       </div>
       <div className="flex item-center px-40 pb-2">
-      <h2><b>Words</b> - 1 found</h2>
+        <h2>
+          <b>Words</b> - 1 found
+        </h2>
       </div>
       <div className="flex-col items-center w-full px-40 pb-5 space-y-3">
-        <Entry hanja="辭書" hangul="사서" definitions={[{pos: [POS.NOUN], text: "dictionary", examples: [""]}]} />
-        <Entry hanja="辭書" hangul="사서" definitions={[{pos: [POS.NOUN], text: "dictionary", examples: [""]}]} />
+        {entries.map((entry) => (
+          <Entry
+            key={entry.hanja}
+            hanja={entry.hanja}
+            hangul={entry.hangul}
+            definitions={entry.definitions}
+          />
+        ))}
       </div>
     </div>
   );

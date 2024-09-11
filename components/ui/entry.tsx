@@ -1,7 +1,7 @@
 import { Ruby } from "./ruby";
 import { POS } from "../../app/types";
 
-export function Entry({ hanja, hangul, definitions }: Readonly<{ hanja: string; hangul: string; definitions: [{ pos: POS[], text: string, examples: string[] }] }>) {
+export function Entry({ hanja, hangul, definitions }: Readonly<{ hanja: string; hangul: string; definitions: Definition[] }>) {
     return (
         <div className="flex flex-row p-8 gap-x-20 bg-gray-800 rounded-lg w-full">
             <div className="flex items-center space-x-2">
