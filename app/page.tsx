@@ -10,12 +10,12 @@ export default function Home() {
           <div className="relative flex-grow">
             <Input 
               type="text" 
-              placeholder="Type here..." 
-              className="w-full pr-20 py-6 text-lg focus-visible:ring-offset-0 bg-transparent border-white text-white" 
+              placeholder="Type terms here..." 
+              className="w-full pr-20 text-lg text-white" 
             />
             <Button 
               type="submit" 
-              className="absolute right-0 py-6 text-lg top-0 bottom-0 rounded-l-none bg-white text-black hover:bg-gray-200"
+              className="absolute right-0 text-lg top-0 bottom-0 rounded-l-none bg-white text-black hover:bg-gray-200"
             >
               Search
             </Button>
