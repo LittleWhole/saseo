@@ -39,7 +39,7 @@ export default function Page() {
       </div>
       <div className="flex item-center px-40 pb-2">
         <h2>
-          <b>Words</b> - 1 found
+          <b>Words</b> - {entries.length} found
         </h2>
       </div>
       <div className="flex-col items-center w-full px-40 pb-5 space-y-3">
