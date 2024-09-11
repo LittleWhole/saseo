@@ -22,7 +22,8 @@ export default function Page() {
       <div className="flex item-center px-40 pb-2">
       <h2><b>Words</b> - 1 found</h2>
       </div>
-      <div className="flex items-center w-full px-40 pb-5">
+      <div className="flex-col items-center w-full px-40 pb-5 space-y-3">
+        <Entry hanja="辭書" hangul="사서" definitions={[{pos: [POS.NOUN], text: "dictionary", examples: [""]}]} />
         <Entry hanja="辭書" hangul="사서" definitions={[{pos: [POS.NOUN], text: "dictionary", examples: [""]}]} />
       </div>
     </div>
