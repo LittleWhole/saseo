@@ -1,0 +1,18 @@
+export enum POS {
+  NOUN = "Noun",
+  TRANSITIVE_VERB = "Transitive verb",
+  INTRANSITIVE_VERB = "Intransitive verb",
+  HADA_VERB = "Hada verb",
+  ADJECTIVE = "Adjective",
+  HADA_ADJECTIVE = "Hada adjective",
+  ADVERB = "Adverb",
+  PARTICLE = "Particle",
+  CONJUNCTION = "Conjunction",
+  COUNTER = "Counter",
+  INTERJECTION = "Interjection",
+  PRONOUN = "Pronoun",
+  PREFIX = "Prefix",
+  SUFFIX = "Suffix",
+  COPULA = "Copula",
+  PROPER_NOUN = "Proper noun",
+}
