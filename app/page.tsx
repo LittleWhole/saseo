@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white font-[family-name:var(--font-geist-sans)]">
-      <h1 className="text-6xl font-bold mb-8">辞書 Saseo</h1>
+      <h1 className="text-6xl font-bold mb-8">辭書 Saseo</h1>
       <div className="w-full max-w-2xl px-4">
         <div className="flex items-stretch">
           <div className="relative flex-grow">
