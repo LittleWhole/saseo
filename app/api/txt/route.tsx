@@ -5,7 +5,8 @@ import { promises as fs } from "node:fs";
 
 
 export async function GET(req: NextRequest) {
-  const path = __dirname.replace("/.next/server", "") + "/../../data/hanja.txt"; //.next/server is the path to the build folder that is created when you run next command
+  //const path = __dirname.replace("/.next/server", "") + "/../../data/hanja.txt";
+  const path = __dirname.replace("\\.next\\server", "") + "/../../data/hanja.txt";
   const fileBuffer = await fs.readFile(path);
   const dict: HanjaEntry[] = [];
   fileBuffer.toString().split("\n").forEach((line: string) => {

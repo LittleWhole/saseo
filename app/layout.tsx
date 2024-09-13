@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Saseo",
-  description: "Saseo, a Korean-English dictio",
+  description: "Saseo, a Korean-English dictionary",
 };
 
 export default function RootLayout({

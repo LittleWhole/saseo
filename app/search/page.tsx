@@ -6,22 +6,27 @@ import { Ruby } from "@/components/ui/ruby";
 import { POS } from "../types";
 import { useSearchParams } from "next/navigation";
 import { searchHanja, SearchResult } from "./helpers";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Page() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q");
   const prelimEntries: SearchResult[] = [];
   const [entries, setEntries]: [SearchResult[], any] = useState([]);
+  const [maxTermLength, setMaxTermLength] = useState(0);
 
-  if (query) {
-    searchHanja(query).then((results) => {
-      results.forEach((result) => {
-        prelimEntries.push(result)
-        setEntries(prelimEntries);
+  useEffect(() => {
+    if (query) {
+      searchHanja(query).then((results) => {
+        results.forEach((result) => {
+          prelimEntries.push(result)
+          setEntries(prelimEntries);
+        });
       });
-    });
-  }
+    }
+    const longestTerm = Math.max(...entries.map(entry => entry.hanja.length));
+    setMaxTermLength(longestTerm);
+  });
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
