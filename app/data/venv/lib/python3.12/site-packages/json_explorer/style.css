@@ -1,0 +1,160 @@
+/* https://iamkate.com/code/tree-views/ */
+html {
+    --root-font-size : 18px;
+    --spacing        : 1.4rem;
+    --radius         : 8px;
+    --on-color       : #8da0cb;
+    --required-color : #bbb;
+    --off-color      : #eee;
+    --other-color    : #fc8d62;    
+}
+html {
+    font-size   : var(--root-font-size);
+    font-family : -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height : 1.4rem;
+}
+.tree {
+    padding-left: 8px;
+}
+.type {
+    font-variant : small-caps;
+    color        : #66c2a5;
+    font-weight  : 400;
+    padding-left : 0.25em;
+}
+.jmespath {
+    color        : #fc8d62;
+    font-weight  : 400;
+    padding-left : 0.25em;
+}
+.stats {
+    font-weight : 400;
+}
+.required {
+    color       : rgb(20, 20, 10);
+    font-weight : 600;
+}
+.optional {
+    color       : rgb(138, 138, 133);
+    font-weight : 400;
+}
+
+.tree li {
+    display      : block;
+    position     : relative;
+    padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.tree ul {
+    margin-left  : calc(var(--radius) - var(--spacing));
+    padding-left : 0;
+}
+
+.tree ul li {
+    border-left : 2px solid var(--off-color);
+}
+
+.tree ul li:last-child {
+    border-color : transparent;
+}
+
+.tree ul li::before {
+    content      : '';
+    display      : block;
+    position     : absolute;
+    top          : calc(var(--spacing) / -2);
+    left         : -2px;
+    width        : calc(var(--spacing) + 2px);
+    height       : calc(var(--spacing) + 1px);
+    border       : solid var(--off-color);
+    border-width : 0 0 2px 2px;
+}
+
+.tree summary {
+    display : block;
+    cursor  : pointer;
+}
+
+.tree summary::marker,
+.tree summary::-webkit-details-marker {
+    display : none;
+}
+
+.tree summary:focus {
+    outline : none;
+}
+
+.tree summary:focus-visible {
+    outline : 1px dotted #000;
+}
+
+.tree li::after,
+.tree summary::before {
+    content       : '';
+    display       : block;
+    position      : absolute;
+    top           : calc(var(--spacing) / 2 - var(--radius) + 2px);
+    left          : calc(var(--spacing) - var(--radius) - 1px);
+    width         : calc(2 * var(--radius));
+    height        : calc(2 * var(--radius));
+    border-radius : 50%;
+    background    : var(--off-color);
+}
+.tree li.required::after, .tree li.optional::after {
+    top    : calc(var(--spacing) / 2 - var(--radius) / (2/1.5) + 2px);
+    left   : calc(var(--spacing) - var(--radius) / (2/1.5) - 1px);
+    width  : calc(1.5 * var(--radius));
+    height : calc(1.5 * var(--radius));
+}
+.tree li.required::after {
+    background : var(--required-color);
+}
+.tree li.optional::after {
+    background : var(--off-color);
+}
+.tree summary::before {
+    content     : '+';
+    z-index     : 1;
+    background  : var(--on-color);
+    color       : #fff;
+    line-height : calc(2 * var(--radius) - 2px);
+    text-align  : center;
+}
+
+.tree details[open] > summary::before {
+    content : '-';
+}
+button {
+    font-size      : small;
+    border         : 1px solid rgb(138, 138, 133);
+    color          : #555;
+    margin-left    : 0.25em;
+    border-radius  : 0.25em;
+    padding-left   : 0.25em;
+    padding-right  : 0.25em;
+    padding-top    : 0;
+    padding-bottom : 0;
+}
+.truncated {
+    color : var(--on-color);
+}
+.truncated::before {
+    content: ' ...' attr(data-length);
+}
+.truncated::after {
+    content: " characters truncated... ";
+}
+dialog {
+    max-width: min(calc(var(--root-font-size) * 40), 85vw);
+    max-height: 90vh;
+}
+.count {
+    font-weight: 400;
+    color: var(--required-color);
+}
+.count::before {
+    content: "[";
+}
+.count::after {
+    content: "]";
+}

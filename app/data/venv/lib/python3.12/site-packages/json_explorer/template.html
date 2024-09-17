@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <title>JSON and the Argonauts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:;base64,=">
+    <style>
+      {{style}}
+    </style>
+  </head>
+  <body>
+    <script>
+      const expandElements = shouldExpand => {
+          if (shouldExpand) {
+              [...document.querySelectorAll("details")].map(
+		  item => item.setAttribute("open", shouldExpand)
+	      );
+          } else {
+              [...document.querySelectorAll("details:not(.depth-0)")].map(
+		  item => item.removeAttribute("open")
+	      );
+          }
+      };
+    </script>
+    <button onClick="expandElements(true)">Expand All</button>
+    <button onClick="expandElements(false)">Collapse All</button>
+    <ul class="tree">
+      {{tree}}
+    </ul>
+    <div class="deets">
+      {{details}}
+    </div>
+    <script>
+      const dialog = document.querySelectorAll("dialog").forEach(
+	  d => d.addEventListener('click', ({target:dialog}) => {
+	      if (dialog.nodeName === 'DIALOG') {
+		  dialog.close('dismiss')
+	      }
+	  })
+      );
+    </script>
+  </body>
+</html>

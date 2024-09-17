@@ -11,7 +11,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { Ruby } from "./ui/ruby";
 
-export function SearchBar() {
+interface SearchBarProps {
+  searchPage?: boolean;
+  customFunction?: () => Promise<void>;
+}
+
+export function SearchBar({ searchPage, customFunction }: SearchBarProps) {
   const router = useRouter();
 
   const formSchema = z.object({
@@ -26,7 +31,9 @@ export function SearchBar() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    router.push(`/search?q=${values.query}`);
+    if (searchPage) {
+      customFunction();
+    } else router.push(`/search?q=${values.query}`);
   }
 
   return (

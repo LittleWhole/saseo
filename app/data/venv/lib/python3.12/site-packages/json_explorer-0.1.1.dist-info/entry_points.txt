@@ -1,0 +1,3 @@
+[console_scripts]
+json-explorer=json_explorer.cli:main
+

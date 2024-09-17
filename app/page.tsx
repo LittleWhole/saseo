@@ -13,7 +13,7 @@ export default function Home() {
       <div className="w-full max-w-2xl px-4">
         <div className="flex items-stretch">
           <div className="relative flex-grow">
-            <SearchBar />
+            <SearchBar searchPage={false} customFunction={() => {}}/>
           </div>
         </div>
       </div>

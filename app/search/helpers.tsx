@@ -1,4 +1,4 @@
-import { POS } from "../types";
+import { Entry, POS } from "../types";
 import { promises as fs } from "fs";
 
 type SearchResult = {
@@ -8,25 +8,21 @@ type SearchResult = {
 };
 
 type Definition = {
-  pos: string[];
+  pos: POS[];
   text: string;
   examples: string[];
+  tags: string[];
 };
 
-type HanjaEntry = {
-  hanja: string;
-  hangul: string;
-};
-
-const getData = async (): Promise<HanjaEntry[]> => {
-  const response = await fetch("http://localhost:3000/api/txt", {
+const getData = async (): Promise<Entry[]> => {
+  const response = await fetch("http://localhost:3000/api/json", {
     cache: "no-cache",
   });
   const data = await response.json();
   return data;
 };
 
-async function searchHanja(hanja: string): Promise<SearchResult[]> {
+/*async function searchHanja(hanja: string): Promise<SearchResult[]> {
   const returnedData: SearchResult[] = [];
   const data = await getData();
   data.forEach((entry: HanjaEntry) => {
@@ -45,7 +41,282 @@ async function searchHanja(hanja: string): Promise<SearchResult[]> {
     }
   });
   return returnedData;
+}*/
+
+function isHangul(text: string): boolean {
+  // Unicode range for Hangul syllables: U+AC00–U+D7AF
+  return [...text].some((char) => char >= "\uAC00" && char <= "\uD7AF");
 }
 
-export { searchHanja };
-export type { SearchResult, Definition, HanjaEntry };
+function isHanja(text: string): boolean {
+  // Unicode range for Hanja: U+4E00–U+9FFF
+  return [...text].some((char) => char >= "\u4E00" && char <= "\u9FFF");
+}
+
+function mapPOSToEnum(posString: string): POS | null {
+  if (!posString) return null;
+  switch (posString.toLowerCase()) {
+    case "noun":
+      return POS.NOUN;
+    case "verb":
+      return POS.VERB;
+    case "adjective":
+      return POS.ADJECTIVE;
+    case "adverb":
+      return POS.ADVERB;
+    case "particle":
+      return POS.PARTICLE;
+    case "conjunction":
+      return POS.CONJUNCTION;
+    case "interjection":
+      return POS.INTERJECTION;
+    case "pronoun":
+      return POS.PRONOUN;
+    case "prefix":
+      return POS.PREFIX;
+    case "suffix":
+      return POS.SUFFIX;
+    case "name":
+      return POS.PROPER_NOUN;
+    default:
+      return POS.UNKNOWN;
+  }
+}
+
+function extractHanjaFromEtymology(etymology: string): [string, string] | [null, null] {
+  const match = etymology.match(/(\S+)\(([^\)]+)\)/);
+  console.log("Extracting Hanja from etymology: " + etymology);
+  if (match && isHanja(match[2].replace('—', ''))) {
+    let hangul = match[1];
+    let hanja = match[2];
+    
+    console.log("Initial extraction - Hangul:", hangul, "Hanja:", hanja);
+    
+    // Check if there's a '—' in the Hanja part
+    const dashIndex = hanja.indexOf('—');
+    if (dashIndex !== -1) {
+      // Remove the '—' and everything after it from Hanja
+      hanja = hanja.substring(0, dashIndex);
+      // Remove the corresponding part from Hangul
+      hangul = hangul.substring(0, dashIndex);
+      console.log("After '—' processing - Hangul:", hangul, "Hanja:", hanja);
+    }
+    
+    return [hangul, hanja];
+  }
+  console.log("No match found or not Hanja");
+  return [null, null];
+}
+
+async function searchDictData(searchTerm: string): Promise<SearchResult[]> {
+  const dictData: Entry[] = await getData();
+  //console.log("Got data: " + JSON.stringify(dictData));
+
+  // Normalize the search term
+  const normalizedSearchTerm = searchTerm.normalize('NFC');
+
+  //console.log("Searching for: " + normalizedSearchTerm);
+
+  const resultsMap = new Map<string, SearchResult>();
+  const hanjaMap = new Map<string, string>();
+
+  for (const entry of dictData) {
+    if (entry.lang === "Korean" && entry.lang_code === "ko") {
+      const word = entry.word;
+
+      let isMatch = false;
+
+      // Check if the word matches the search term
+      if (word && word.includes(normalizedSearchTerm)) {
+        isMatch = true;
+      }
+
+      // Check forms
+      if (!isMatch && entry.forms) {
+        for (const form of entry.forms) {
+          if (form.form && form.form.includes(normalizedSearchTerm)) {
+            isMatch = true;
+            break;
+          }
+        }
+      }
+
+      //console.log("Found a match: " + isMatch);
+
+      // Check 'form_of' in senses
+      if (!isMatch && entry.senses) {
+        for (const sense of entry.senses) {
+          if (sense.form_of) {
+            for (const formOfEntry of sense.form_of) {
+              if (formOfEntry.word && formOfEntry.word.includes(normalizedSearchTerm)) {
+                isMatch = true;
+                break;
+              }
+            }
+          }
+          if (isMatch) break;
+        }
+      }
+
+      // If the search term matches, process the entry
+      if (isMatch) {
+        let hanja = "";
+        let hangul = "";
+
+        // Determine if the word is Hanja or Hangul
+        if (isHanja(word)) {
+          hanja = word;
+        } else if (isHangul(word)) {
+          hangul = word;
+          hanja = word;
+        }
+
+        // Extract Hangul and Hanja forms from 'forms' field
+        if (entry.forms) {
+          for (const form of entry.forms) {
+            if (form.tags && form.form) {
+              if (form.tags.includes("hangeul") && isHangul(form.form)) {
+                hangul = form.form;
+              } else if (isHanja(form.form.replace('—', ''))) {
+                const dashIndex = form.form.indexOf('—');
+                if (dashIndex !== -1) {
+                  // Remove the '—' and everything after it from Hanja
+                  hanja = form.form.replace('—', hangul.substring(dashIndex));
+                } else {
+                  hanja = form.form;
+                }
+              }
+              if (!hangul && entry.pos === "character") {
+                const eumhun = form.form.split(" ");
+                hangul = eumhun[eumhun.length - 1];
+              }
+            }
+          }
+        }
+
+        console.log(`After processing forms - Hangul: ${hangul}, Hanja: ${hanja}`);
+
+        // Check for ko-etym-sino template or Hanja in parentheses in etymology
+        if (!(isHanja(hanja)) && entry.etymology_templates) {
+          for (const template of entry.etymology_templates) {
+            if (template.name === "ko-etym-sino" && template.args && template.args["1"]) {
+              hanja = template.args["1"];
+              console.log("Found ko-etym-sino template. Hanja:", hanja);
+              break;
+            } else if (template.name === "af" && template.args && template.args["2"]) {
+              console.log("Processing 'af' template:", template.args["2"]);
+              const [extractedHangul, extractedHanja] = extractHanjaFromEtymology(template.args["2"]);
+              if (extractedHanja) {
+                hanja = extractedHanja;
+                if (extractedHangul) {
+                  hangul = extractedHangul + hangul.substring(extractedHangul.length);
+                }
+                console.log("Extracted - Hangul:", hangul, "Hanja:", hanja);
+                break;
+              }
+            }
+          }
+        }
+
+        // Extract Hangul from 'head_templates' if not already found
+        if (!hangul && entry.head_templates) {
+          for (const ht of entry.head_templates) {
+            if (ht.args && ht.args.hangeul) {
+              hangul = ht.args.hangeul;
+              break;
+            }
+          }
+        }
+
+        // Extract Hangul from 'senses' field if necessary
+        if (isHanja(word) && !hangul && entry.senses) {
+          for (const sense of entry.senses) {
+            if (sense.form_of) {
+              for (const formOfEntry of sense.form_of) {
+                if (formOfEntry.word && isHangul(formOfEntry.word)) {
+                  hangul = formOfEntry.word;
+                  break;
+                }
+              }
+            }
+            if (hangul) break;
+          }
+        }
+
+        // Check if the entry is solely a "hanja form of" definition
+        const isHanjaFormOnly = entry.senses && entry.senses.every(sense => 
+          sense.glosses && sense.glosses[0].startsWith("hanja form of")
+        );
+
+        if (isHanjaFormOnly && entry.senses && entry.senses[0].form_of) {
+          const hangul = entry.senses[0].form_of[0].word;
+          if (hangul && hanja) {
+            hanjaMap.set(hangul, hanja);
+          }
+        } else {
+          const key = `${hanja}|${hangul}`;
+          let result = resultsMap.get(key);
+
+          if (!result) {
+            result = {
+              hanja,
+              hangul,
+              definitions: []
+            };
+            resultsMap.set(key, result);
+          }
+
+          // Add definitions to the existing or new result
+          if (entry.senses) {
+            const entryPOS = entry.pos
+              ? [mapPOSToEnum(entry.pos)].filter((pos) => pos !== null)
+              : [];
+            for (const sense of entry.senses) {
+              if (sense.glosses) {
+                for (const gloss of sense.glosses) {
+                  const definition: Definition = {
+                    pos: entryPOS as POS[],
+                    text: gloss,
+                    examples: [],
+                    tags: [],
+                  };
+                  // Extract tags if available
+                  if (sense.tags) {
+                    definition.tags = sense.tags.map(tag => tag.toLowerCase());
+                  }
+                  // Extract examples if available
+                  if (sense.examples) {
+                    for (const example of sense.examples) {
+                      if (example.text) {
+                        definition.examples.push(example.text);
+                      }
+                    }
+                  }
+                  result.definitions.push(definition);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Convert the map back to an array
+  const results = Array.from(resultsMap.values()).filter(result => result.definitions.length > 0);
+
+  // Update results with correct hanja forms
+  results.forEach(result => {
+    if (!result.hanja && result.hangul) {
+      const mappedHanja = hanjaMap.get(result.hangul);
+      if (mappedHanja) {
+        result.hanja = mappedHanja;
+      }
+    }
+  });
+
+  return results;
+}
+
+export { getData, searchDictData };
+export type { SearchResult, Definition };

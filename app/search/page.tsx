@@ -3,19 +3,24 @@ import { SearchBar } from "@/components/searchbar";
 import { Entry } from "@/components/ui/entry";
 import { Ruby } from "@/components/ui/ruby";
 
-import { POS } from "../types";
 import { useSearchParams } from "next/navigation";
-import { searchHanja, SearchResult } from "./helpers";
-import { useState, useEffect } from "react";
+import { getData, SearchResult } from "./helpers";
+import { useEffect, useState } from "react";
+import { searchDictData } from "./helpers";
+import readline from "readline";
+import { createReadStream } from "fs";
+
+// Now you can use searchResults in your application
 
 export default function Page() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q");
-  const prelimEntries: SearchResult[] = [];
-  const [entries, setEntries]: [SearchResult[], any] = useState([]);
-  const [maxTermLength, setMaxTermLength] = useState(0);
+  //const prelimEntries: SearchResult[] = [];
+  const [entries, setEntries] = useState<SearchResult[]>([]);
+  let dictData = [];
+  //const [maxTermLength, setMaxTermLength] = useState(0);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (query) {
       searchHanja(query).then((results) => {
         results.forEach((result) => {
@@ -26,7 +31,26 @@ export default function Page() {
     }
     const longestTerm = Math.max(...entries.map(entry => entry.hanja.length));
     setMaxTermLength(longestTerm);
-  });
+  });*/
+
+
+  const handleSearch = async () => {
+    if (query) {
+      console.log("Attempting to search for: " + query);
+      const results = await searchDictData(query);
+      console.log("Completed search for: " + query);
+      setEntries(results);
+      //const longestTerm = Math.max(
+      //  ...entries.map((entry) => entry.hanja.length)
+      //);
+      //setMaxTermLength(longestTerm);
+    }
+  };
+
+
+    useEffect(() => {
+
+if (query) handleSearch();}, []);
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
@@ -38,7 +62,7 @@ export default function Page() {
           </h1>
           <div className="flex-grow">
             {" "}
-            <SearchBar />
+            <SearchBar searchPage={true} customFunction={handleSearch}/>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import { Ruby } from "./ruby";
-import { POS } from "../../app/types";
+import { Definition } from "@/app/search/helpers";
 
 function formatRuby(hanjaSplit: string[], hangulSplit: string[]): JSX.Element[] {
     const rubyArray = [];
-    for (var i = 0; i < hanjaSplit.length; i++) {
+    for (let i = 0; i < hanjaSplit.length; i++) {
         if (hanjaSplit[i] === hangulSplit[i]) {
             hangulSplit[i] = "";
         }
@@ -20,13 +20,21 @@ export function Entry({ hanja, hangul, definitions }: Readonly<{ hanja: string; 
             <div className="flex items-center space-x-2">
                 <div className="text-4xl">
                     {formatRuby(hanjaSplit, hangulSplit)}
-                    </div>
+                </div>
             </div>
             <div className="flex flex-col space-y-1">
                 <ol className="list-decimal list-inside">
-                    {definitions.map((definition, index) => ( <div key={index}>
-                        <p className="text-sm font-bold text-slate-400">{definition.pos.join(", ")}</p>
-                        <li className="text-lg">{definitions[index].text}</li>
+                    {definitions.map((definition, index) => (
+                        <div key={index}>
+                            <p className="text-sm font-bold text-slate-400">
+                                {definition.pos.join(", ")}
+                                {definition.tags.length > 0 && (
+                                    <span className="ml-2 text-xs font-normal text-green-400">
+                                        {definition.tags.join(", ")}
+                                    </span>
+                                )}
+                            </p>
+                            <li className="text-lg">{definition.text}</li>
                         </div>
                     ))}
                 </ol>
