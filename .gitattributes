@@ -1,3 +1,5 @@
+app/data/dict.json filter=lfs diff=lfs merge=lfs -text
+app/data/dict.jsonl filter=lfs diff=lfs merge=lfs -text
 *.json filter=lfs diff=lfs merge=lfs -text
 *.gitignore filter=lfs diff=lfs merge=lfs -text
 /LICENSE filter=lfs diff=lfs merge=lfs -text
