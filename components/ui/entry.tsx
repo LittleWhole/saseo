@@ -7,7 +7,7 @@ function formatRuby(hanjaSplit: string[], hangulSplit: string[]): JSX.Element[] 
         if (hanjaSplit[i] === hangulSplit[i]) {
             hangulSplit[i] = "";
         }
-        rubyArray.push(<Ruby text={hanjaSplit[i]} ruby={hangulSplit[i]} />);
+        rubyArray.push(<Ruby key={i} text={hanjaSplit[i]} ruby={hangulSplit[i]} />);
     }
     return rubyArray;
 }

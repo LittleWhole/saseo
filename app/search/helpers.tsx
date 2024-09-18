@@ -79,11 +79,11 @@ function mapPOSToEnum(posString: string): POS | null {
     case "name":
       return POS.PROPER_NOUN;
     default:
-      return POS.UNKNOWN;
+      return POS.UNKNOWN; 
   }
 }
 
-function extractHanjaFromEtymology(etymology: string): [string, string] | [null, null] {
+function extractHanjaFromEtymology(inputHangul: string,etymology: string): [string, string] | [null, null] {
   const match = etymology.match(/(\S+)\(([^\)]+)\)/);
   console.log("Extracting Hanja from etymology: " + etymology);
   if (match && isHanja(match[2].replace('—', ''))) {
@@ -91,19 +91,19 @@ function extractHanjaFromEtymology(etymology: string): [string, string] | [null,
     let hanja = match[2];
     
     console.log("Initial extraction - Hangul:", hangul, "Hanja:", hanja);
+
+    if (hangul !== inputHangul) { hangul = inputHangul; hanja += "—"; }
     
     // Check if there's a '—' in the Hanja part
     const dashIndex = hanja.indexOf('—');
     if (dashIndex !== -1) {
-      // Remove the '—' and everything after it from Hanja
-      hanja = hanja.substring(0, dashIndex);
-      // Remove the corresponding part from Hangul
-      hangul = hangul.substring(0, dashIndex);
+      // Replace the '—' with hangul
+      hanja = hanja.replace('—', hangul.substring(dashIndex));
       console.log("After '—' processing - Hangul:", hangul, "Hanja:", hanja);
     }
     
     return [hangul, hanja];
-  }
+  } 
   console.log("No match found or not Hanja");
   return [null, null];
 }
@@ -180,7 +180,6 @@ async function searchDictData(searchTerm: string): Promise<SearchResult[]> {
               } else if (isHanja(form.form.replace('—', ''))) {
                 const dashIndex = form.form.indexOf('—');
                 if (dashIndex !== -1) {
-                  // Remove the '—' and everything after it from Hanja
                   hanja = form.form.replace('—', hangul.substring(dashIndex));
                 } else {
                   hanja = form.form;
@@ -194,7 +193,7 @@ async function searchDictData(searchTerm: string): Promise<SearchResult[]> {
           }
         }
 
-        console.log(`After processing forms - Hangul: ${hangul}, Hanja: ${hanja}`);
+        //console.log(`After forms field - Hangul: ${hangul}, Hanja: ${hanja}`);
 
         // Check for ko-etym-sino template or Hanja in parentheses in etymology
         if (!(isHanja(hanja)) && entry.etymology_templates) {
@@ -205,9 +204,9 @@ async function searchDictData(searchTerm: string): Promise<SearchResult[]> {
               break;
             } else if (template.name === "af" && template.args && template.args["2"]) {
               console.log("Processing 'af' template:", template.args["2"]);
-              const [extractedHangul, extractedHanja] = extractHanjaFromEtymology(template.args["2"]);
+              const [extractedHangul, extractedHanja] = extractHanjaFromEtymology(hangul, template.args["2"]);
               if (extractedHanja) {
-                hanja = extractedHanja;
+                hanja = extractedHanja.replace('—', hangul.substring(hangul.indexOf('—')));
                 if (extractedHangul) {
                   hangul = extractedHangul + hangul.substring(extractedHangul.length);
                 }
@@ -218,6 +217,8 @@ async function searchDictData(searchTerm: string): Promise<SearchResult[]> {
           }
         }
 
+        //console.log(`After ko etym sino - Hangul: ${hangul}, Hanja: ${hanja}`);
+
         // Extract Hangul from 'head_templates' if not already found
         if (!hangul && entry.head_templates) {
           for (const ht of entry.head_templates) {
@@ -227,6 +228,8 @@ async function searchDictData(searchTerm: string): Promise<SearchResult[]> {
             }
           }
         }
+
+        //console.log(`After hangul head templates - Hangul: ${hangul}, Hanja: ${hanja}`);
 
         // Extract Hangul from 'senses' field if necessary
         if (isHanja(word) && !hangul && entry.senses) {
@@ -242,6 +245,8 @@ async function searchDictData(searchTerm: string): Promise<SearchResult[]> {
             if (hangul) break;
           }
         }
+
+        //console.log(`After processing forms - Hangul: ${hangul}, Hanja: ${hanja}`);
 
         // Check if the entry is solely a "hanja form of" definition
         const isHanjaFormOnly = entry.senses && entry.senses.every(sense => 
