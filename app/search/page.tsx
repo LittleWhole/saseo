@@ -4,53 +4,38 @@ import { Entry } from "@/components/ui/entry";
 import { Ruby } from "@/components/ui/ruby";
 
 import { useSearchParams } from "next/navigation";
-import { getData, SearchResult } from "./helpers";
-import { useEffect, useState } from "react";
-import { searchDictData } from "./helpers";
-import readline from "readline";
-import { createReadStream } from "fs";
-
-// Now you can use searchResults in your application
+import { SearchResult, searchDictData } from "./helpers";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Page() {
   const searchParams = useSearchParams();
-  const query = searchParams.get("q");
-  //const prelimEntries: SearchResult[] = [];
+  const [query, setQuery] = useState<string | null>(searchParams.get("q"));
   const [entries, setEntries] = useState<SearchResult[]>([]);
-  let dictData = [];
-  //const [maxTermLength, setMaxTermLength] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [searchComplete, setSearchComplete] = useState(false);
 
-  /*useEffect(() => {
-    if (query) {
-      searchHanja(query).then((results) => {
-        results.forEach((result) => {
-          prelimEntries.push(result)
-          setEntries(prelimEntries);
-        });
-      });
+  const handleSearch = useCallback(async (newQuery?: string) => {
+    const searchTerm = newQuery !== undefined ? newQuery : query;
+    if (searchTerm) {
+      setLoading(true);
+      setEntries([]); // Clear existing entries
+      setQuery(searchTerm); // Update the query state
+      setSearchComplete(false);
+      console.log("Attempting to search for: " + searchTerm);
+      
+      for await (const result of searchDictData(searchTerm)) {
+        setEntries(prevEntries => [...prevEntries, result]);
+      }
+      
+      console.log("Completed search for: " + searchTerm);
+      setLoading(false);
+      setSearchComplete(true);
     }
-    const longestTerm = Math.max(...entries.map(entry => entry.hanja.length));
-    setMaxTermLength(longestTerm);
-  });*/
+  }, [query]);
 
-
-  const handleSearch = async () => {
-    if (query) {
-      console.log("Attempting to search for: " + query);
-      const results = await searchDictData(query);
-      console.log("Completed search for: " + query);
-      setEntries(results);
-      //const longestTerm = Math.max(
-      //  ...entries.map((entry) => entry.hanja.length)
-      //);
-      //setMaxTermLength(longestTerm);
-    }
-  };
-
-
-    useEffect(() => {
-
-if (query) handleSearch();}, []);
+  useEffect(() => {
+    if (query) handleSearch();
+  }, []);
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
@@ -61,20 +46,24 @@ if (query) handleSearch();}, []);
             <Ruby text="書" ruby="서" /> Saseo
           </h1>
           <div className="flex-grow">
-            {" "}
-            <SearchBar searchPage={true} customFunction={handleSearch}/>
+            <SearchBar searchPage={true} customFunction={handleSearch} />
           </div>
         </div>
       </div>
-      <div className="flex item-center px-40 pb-2">
+      {loading && (
+        <div className="relative w-full h-2 bg-gray-200 overflow-hidden">
+          <div className="absolute top-0 left-0 h-full w-1/3 bg-blue-600 animate-loading-bar" />
+        </div>
+      )}
+      <div className="flex item-center mt-5 px-40 pb-2">
         <h2>
-          <b>Words</b> - {entries.length} found
+          <b>Words</b> - {entries.length} found {!searchComplete && "..."}
         </h2>
       </div>
       <div className="flex-col items-center w-full px-40 pb-5 space-y-3">
-        {entries.map((entry) => (
+        {entries.map((entry, index) => (
           <Entry
-            key={entry.hanja}
+            key={`${entry.hanja}-${index}`}
             hanja={entry.hanja}
             hangul={entry.hangul}
             definitions={entry.definitions}

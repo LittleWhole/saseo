@@ -30,10 +30,12 @@ export function SearchBar({ searchPage, customFunction }: SearchBarProps) {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    if (searchPage) {
-      customFunction();
-    } else router.push(`/search?q=${values.query}`);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (searchPage && customFunction) {
+      await customFunction(values.query);
+    } else {
+      router.push(`/search?q=${values.query}`);
+    }
   }
 
   return (
