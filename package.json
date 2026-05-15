@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lexicon:build": "node scripts/lexicon/build-lexicon.mjs",
+    "lexicon:build:wiktionary": "node scripts/lexicon/build-lexicon.mjs --include-wiktionary",
+    "lexicon:import:krdict": "node scripts/lexicon/import-nikl-openapi.mjs --source=krdict --terms-from-generated-hangul-only",
+    "lexicon:import:urimalsaem": "node scripts/lexicon/import-nikl-openapi.mjs --source=urimalsaem --terms-from-generated-hangul-only"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

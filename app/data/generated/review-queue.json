@@ -1,0 +1,1052 @@
+{
+  "metadata": {
+    "builtAt": "2026-05-15T06:13:04.908Z",
+    "sources": {
+      "koSenseCount": 7,
+      "englishEntryCount": 3,
+      "hanjaReadingCount": 292457,
+      "reviewedDecisionCount": 0,
+      "wiktionaryIncluded": true,
+      "wiktionaryEntryLimit": "all"
+    },
+    "derivedHanja": {
+      "hangulOnlyBefore": 13579,
+      "derivableEntries": 42,
+      "inferredDefinitions": 36,
+      "ambiguousDefinitions": 15,
+      "unresolvedDerivableEntries": 14,
+      "hangulOnlyAfter": 13551,
+      "hangulOnlyReducedBy": 28
+    }
+  },
+  "items": [
+    {
+      "id": "review:방수:waterproofing",
+      "hangul": "방수",
+      "englishGloss": "waterproofing",
+      "englishSourceId": "seed:kedict-like:bangsu",
+      "candidates": [
+        {
+          "hanja": "防水",
+          "koDefinition": "물이 스며들거나 새는 것을 막음.",
+          "enDefinitionHint": "waterproofing; prevention of water penetration or leakage",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "materials"
+          ],
+          "score": 0.567,
+          "sourceId": "seed:nikl-like:bangsu-proof"
+        },
+        {
+          "hanja": "放水",
+          "koDefinition": "물길이나 저장한 물을 터서 흘려보냄.",
+          "enDefinitionHint": "release or discharge of stored water",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "hydrology"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:bangsu-release"
+        }
+      ]
+    },
+    {
+      "id": "review:방수:water%20resistance",
+      "hangul": "방수",
+      "englishGloss": "water resistance",
+      "englishSourceId": "seed:kedict-like:bangsu",
+      "candidates": [
+        {
+          "hanja": "防水",
+          "koDefinition": "물이 스며들거나 새는 것을 막음.",
+          "enDefinitionHint": "waterproofing; prevention of water penetration or leakage",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "materials"
+          ],
+          "score": 0.544,
+          "sourceId": "seed:nikl-like:bangsu-proof"
+        },
+        {
+          "hanja": "放水",
+          "koDefinition": "물길이나 저장한 물을 터서 흘려보냄.",
+          "enDefinitionHint": "release or discharge of stored water",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "hydrology"
+          ],
+          "score": 0.426,
+          "sourceId": "seed:nikl-like:bangsu-release"
+        }
+      ]
+    },
+    {
+      "id": "review:방수:discharge%20of%20water",
+      "hangul": "방수",
+      "englishGloss": "discharge of water",
+      "englishSourceId": "seed:kedict-like:bangsu",
+      "candidates": [
+        {
+          "hanja": "放水",
+          "koDefinition": "물길이나 저장한 물을 터서 흘려보냄.",
+          "enDefinitionHint": "release or discharge of stored water",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "hydrology"
+          ],
+          "score": 0.598,
+          "sourceId": "seed:nikl-like:bangsu-release"
+        },
+        {
+          "hanja": "防水",
+          "koDefinition": "물이 스며들거나 새는 것을 막음.",
+          "enDefinitionHint": "waterproofing; prevention of water penetration or leakage",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "materials"
+          ],
+          "score": 0.445,
+          "sourceId": "seed:nikl-like:bangsu-proof"
+        }
+      ]
+    },
+    {
+      "id": "review:방수:release%20of%20water",
+      "hangul": "방수",
+      "englishGloss": "release of water",
+      "englishSourceId": "seed:kedict-like:bangsu",
+      "candidates": [
+        {
+          "hanja": "放水",
+          "koDefinition": "물길이나 저장한 물을 터서 흘려보냄.",
+          "enDefinitionHint": "release or discharge of stored water",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "hydrology"
+          ],
+          "score": 0.598,
+          "sourceId": "seed:nikl-like:bangsu-release"
+        },
+        {
+          "hanja": "防水",
+          "koDefinition": "물이 스며들거나 새는 것을 막음.",
+          "enDefinitionHint": "waterproofing; prevention of water penetration or leakage",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "materials"
+          ],
+          "score": 0.445,
+          "sourceId": "seed:nikl-like:bangsu-proof"
+        }
+      ]
+    },
+    {
+      "id": "review:수도:capital%20city",
+      "hangul": "수도",
+      "englishGloss": "capital city",
+      "englishSourceId": "seed:kedict-like:sudo",
+      "candidates": [
+        {
+          "hanja": "首都",
+          "koDefinition": "한 나라의 중앙 정부가 있는 도시.",
+          "enDefinitionHint": "capital city where a national government is located",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "geography"
+          ],
+          "score": 0.57,
+          "sourceId": "seed:nikl-like:sudo-capital"
+        },
+        {
+          "hanja": "水道",
+          "koDefinition": "물을 끌어 오거나 보내는 시설이나 길.",
+          "enDefinitionHint": "waterworks, water supply, waterway",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "infrastructure"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:sudo-waterway"
+        },
+        {
+          "hanja": "修道",
+          "koDefinition": "도나 종교적 가르침을 닦고 실천함.",
+          "enDefinitionHint": "religious or moral discipline and practice",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "religion"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:sudo-practice"
+        }
+      ]
+    },
+    {
+      "id": "review:수도:water%20supply",
+      "hangul": "수도",
+      "englishGloss": "water supply",
+      "englishSourceId": "seed:kedict-like:sudo",
+      "candidates": [
+        {
+          "hanja": "水道",
+          "koDefinition": "물을 끌어 오거나 보내는 시설이나 길.",
+          "enDefinitionHint": "waterworks, water supply, waterway",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "infrastructure"
+          ],
+          "score": 0.461,
+          "sourceId": "seed:nikl-like:sudo-waterway"
+        },
+        {
+          "hanja": "首都",
+          "koDefinition": "한 나라의 중앙 정부가 있는 도시.",
+          "enDefinitionHint": "capital city where a national government is located",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "geography"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:sudo-capital"
+        },
+        {
+          "hanja": "修道",
+          "koDefinition": "도나 종교적 가르침을 닦고 실천함.",
+          "enDefinitionHint": "religious or moral discipline and practice",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "religion"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:sudo-practice"
+        }
+      ]
+    },
+    {
+      "id": "review:수도:religious%20practice",
+      "hangul": "수도",
+      "englishGloss": "religious practice",
+      "englishSourceId": "seed:kedict-like:sudo",
+      "candidates": [
+        {
+          "hanja": "修道",
+          "koDefinition": "도나 종교적 가르침을 닦고 실천함.",
+          "enDefinitionHint": "religious or moral discipline and practice",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "religion"
+          ],
+          "score": 0.478,
+          "sourceId": "seed:nikl-like:sudo-practice"
+        },
+        {
+          "hanja": "首都",
+          "koDefinition": "한 나라의 중앙 정부가 있는 도시.",
+          "enDefinitionHint": "capital city where a national government is located",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "geography"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:sudo-capital"
+        },
+        {
+          "hanja": "水道",
+          "koDefinition": "물을 끌어 오거나 보내는 시설이나 길.",
+          "enDefinitionHint": "waterworks, water supply, waterway",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "infrastructure"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:sudo-waterway"
+        }
+      ]
+    },
+    {
+      "id": "review:기사:reporter",
+      "hangul": "기사",
+      "englishGloss": "reporter",
+      "englishSourceId": "seed:kedict-like:gisa",
+      "candidates": [
+        {
+          "hanja": "記者",
+          "koDefinition": "신문, 잡지, 방송 따위에 실을 기사를 취재하여 쓰는 사람.",
+          "enDefinitionHint": "journalist or reporter who writes news articles",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "media"
+          ],
+          "score": 0.3,
+          "sourceId": "seed:nikl-like:gisa-reporter"
+        },
+        {
+          "hanja": "技士",
+          "koDefinition": "기술 자격을 갖춘 사람이나 기술 분야에서 일하는 사람.",
+          "enDefinitionHint": "engineer, technician, certified technical specialist",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "occupation"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:gisa-engineer"
+        }
+      ]
+    },
+    {
+      "id": "review:기사:journalist",
+      "hangul": "기사",
+      "englishGloss": "journalist",
+      "englishSourceId": "seed:kedict-like:gisa",
+      "candidates": [
+        {
+          "hanja": "記者",
+          "koDefinition": "신문, 잡지, 방송 따위에 실을 기사를 취재하여 쓰는 사람.",
+          "enDefinitionHint": "journalist or reporter who writes news articles",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "media"
+          ],
+          "score": 0.3,
+          "sourceId": "seed:nikl-like:gisa-reporter"
+        },
+        {
+          "hanja": "技士",
+          "koDefinition": "기술 자격을 갖춘 사람이나 기술 분야에서 일하는 사람.",
+          "enDefinitionHint": "engineer, technician, certified technical specialist",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "occupation"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:gisa-engineer"
+        }
+      ]
+    },
+    {
+      "id": "review:기사:engineer",
+      "hangul": "기사",
+      "englishGloss": "engineer",
+      "englishSourceId": "seed:kedict-like:gisa",
+      "candidates": [
+        {
+          "hanja": "技士",
+          "koDefinition": "기술 자격을 갖춘 사람이나 기술 분야에서 일하는 사람.",
+          "enDefinitionHint": "engineer, technician, certified technical specialist",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "occupation"
+          ],
+          "score": 0.306,
+          "sourceId": "seed:nikl-like:gisa-engineer"
+        },
+        {
+          "hanja": "記者",
+          "koDefinition": "신문, 잡지, 방송 따위에 실을 기사를 취재하여 쓰는 사람.",
+          "enDefinitionHint": "journalist or reporter who writes news articles",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "media"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:gisa-reporter"
+        }
+      ]
+    },
+    {
+      "id": "review:기사:technician",
+      "hangul": "기사",
+      "englishGloss": "technician",
+      "englishSourceId": "seed:kedict-like:gisa",
+      "candidates": [
+        {
+          "hanja": "技士",
+          "koDefinition": "기술 자격을 갖춘 사람이나 기술 분야에서 일하는 사람.",
+          "enDefinitionHint": "engineer, technician, certified technical specialist",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "occupation"
+          ],
+          "score": 0.306,
+          "sourceId": "seed:nikl-like:gisa-engineer"
+        },
+        {
+          "hanja": "記者",
+          "koDefinition": "신문, 잡지, 방송 따위에 실을 기사를 취재하여 쓰는 사람.",
+          "enDefinitionHint": "journalist or reporter who writes news articles",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [
+            "media"
+          ],
+          "score": 0.282,
+          "sourceId": "seed:nikl-like:gisa-reporter"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:고소하다:to%20be%20fragrant%20or%20tasty%20as%20sesame%20oil",
+      "hangul": "고소하다",
+      "englishGloss": "to be fragrant or tasty as sesame oil",
+      "englishSourceId": "wiktionary:en-고소하다-ko-adj-IQ65qpvz",
+      "candidates": [
+        {
+          "hanja": "告訴하다",
+          "koDefinition": "accusation; complaint",
+          "enDefinitionHint": "accusation; complaint",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:고소:告訴:24314"
+        },
+        {
+          "hanja": "苦笑하다",
+          "koDefinition": "bitter smile; forced smile",
+          "enDefinitionHint": "bitter smile; forced smile",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:고소:苦笑:24315"
+        },
+        {
+          "hanja": "高所하다",
+          "koDefinition": "a high place; high ground",
+          "enDefinitionHint": "a high place; high ground",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:고소:高所:24316"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:공변되다:to%20be%20fair%2C%20to%20be%20equitable",
+      "hangul": "공변되다",
+      "englishGloss": "to be fair, to be equitable",
+      "englishSourceId": "wiktionary:en-공변되다-ko-adj-6EK6ZpyS",
+      "candidates": [
+        {
+          "hanja": "公辨되다",
+          "koDefinition": "Root of 공변되다 (gongbyeondoeda, “to be fair, to be equitable (dated or archaic)”). Rarely used alone.",
+          "enDefinitionHint": "Root of 공변되다 (gongbyeondoeda, “to be fair, to be equitable (dated or archaic)”). Rarely used alone.",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.214,
+          "sourceId": "wiktionary:공변:公辨:18562"
+        },
+        {
+          "hanja": "共變되다",
+          "koDefinition": "covariant",
+          "enDefinitionHint": "covariant",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:공변:共變:18563"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:구경하다:to%20sightsee",
+      "hangul": "구경하다",
+      "englishGloss": "to sightsee",
+      "englishSourceId": "wiktionary:en-구경하다-ko-verb-y1QpSFB5",
+      "candidates": [
+        {
+          "hanja": "口徑하다",
+          "koDefinition": "firearm caliber",
+          "enDefinitionHint": "firearm caliber",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:구경:口徑:3840"
+        },
+        {
+          "hanja": "球莖하다",
+          "koDefinition": "corm",
+          "enDefinitionHint": "corm",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:구경:球莖:3842"
+        },
+        {
+          "hanja": "究竟하다",
+          "koDefinition": "culmination, conclusion",
+          "enDefinitionHint": "culmination, conclusion",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:구경:究竟:3841"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:구하다:Seoul%20form%20of%20%EA%B7%80%ED%95%98%EB%8B%A4%20(gwihada%2C%20%E2%80%9Cto%20be%20precious%2C%20valuable%E2%80%9D)",
+      "hangul": "구하다",
+      "englishGloss": "Seoul form of 귀하다 (gwihada, “to be precious, valuable”)",
+      "englishSourceId": "wiktionary:en-구하다-ko-adj-3aDR6-v5",
+      "candidates": [
+        {
+          "hanja": "具하다",
+          "koDefinition": "Used to count corpses.; a surname",
+          "enDefinitionHint": "Used to count corpses.",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.182,
+          "sourceId": "wiktionary:구:具:1051"
+        },
+        {
+          "hanja": "區하다",
+          "koDefinition": "ward, district; administrative division of a large city.",
+          "enDefinitionHint": "ward, district; administrative division of a large city.",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.182,
+          "sourceId": "wiktionary:구:區:1050"
+        },
+        {
+          "hanja": "口하다",
+          "koDefinition": "Used to count family members.; gateway",
+          "enDefinitionHint": "Used to count family members.",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.175,
+          "sourceId": "wiktionary:구:口:1053"
+        },
+        {
+          "hanja": "九하다",
+          "koDefinition": "nine",
+          "enDefinitionHint": "nine",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:구:九:1047"
+        },
+        {
+          "hanja": "俱하다",
+          "koDefinition": "tool for...",
+          "enDefinitionHint": "tool for...",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:구:俱:1055"
+        },
+        {
+          "hanja": "溝하다",
+          "koDefinition": "the number 10³²",
+          "enDefinitionHint": "the number 10³²",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:구:溝:1056"
+        },
+        {
+          "hanja": "球하다",
+          "koDefinition": "sphere",
+          "enDefinitionHint": "sphere",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:구:球:1048"
+        },
+        {
+          "hanja": "舊하다",
+          "koDefinition": "former; defunct",
+          "enDefinitionHint": "former; defunct",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:구:舊:1049"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:만하다:to%20be%20worthy%20of%3B%20to%20be%20enough%2C%20to%20be%20sufficient",
+      "hangul": "만하다",
+      "englishGloss": "to be worthy of; to be enough, to be sufficient",
+      "englishSourceId": "wiktionary:en-만하다-ko-adj-L4XZB-vr",
+      "candidates": [
+        {
+          "hanja": "灣하다",
+          "koDefinition": "bay, gulf",
+          "enDefinitionHint": "bay, gulf",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:만:灣:182"
+        },
+        {
+          "hanja": "萬하다",
+          "koDefinition": "ten thousand",
+          "enDefinitionHint": "ten thousand",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:만:萬:181"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:민하다:to%20be%20stupid%2C%20foolish",
+      "hangul": "민하다",
+      "englishGloss": "to be stupid, foolish",
+      "englishSourceId": "wiktionary:en-민하다-ko-adj-0b4dqs61",
+      "candidates": [
+        {
+          "hanja": "民하다",
+          "koDefinition": "the people",
+          "enDefinitionHint": "the people",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:민:民:6005"
+        },
+        {
+          "hanja": "閔하다",
+          "koDefinition": "a Min surname from Chinese",
+          "enDefinitionHint": "a Min surname from Chinese",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:민:閔:6006"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:반하다:to%20fall%20in%20love%3B%20to%20become%20enamoured%20(of)",
+      "hangul": "반하다",
+      "englishGloss": "to fall in love; to become enamoured (of)",
+      "englishSourceId": "wiktionary:en-반하다-ko-verb-SZi37uPg",
+      "candidates": [
+        {
+          "hanja": "半하다",
+          "koDefinition": "half; semi-; half-",
+          "enDefinitionHint": "half",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:반:半:2402"
+        },
+        {
+          "hanja": "反하다",
+          "koDefinition": "anti-; opposite; anti-; against, opposing",
+          "enDefinitionHint": "anti-; opposite",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:반:反:2405"
+        },
+        {
+          "hanja": "班하다",
+          "koDefinition": "party; group; class (at a school)",
+          "enDefinitionHint": "party; group",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:반:班:2404"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:불화:a%20hanja%20name%20of%20the%20fire%20radical%3A%20%E7%81%AB%20(hwa)",
+      "hangul": "불화",
+      "englishGloss": "a hanja name of the fire radical: 火 (hwa)",
+      "englishSourceId": "wiktionary:en-불화-ko-noun-JwQRTH3y",
+      "candidates": [
+        {
+          "hanja": "弗化",
+          "koDefinition": "dollar (of various countries)",
+          "enDefinitionHint": "dollar (of various countries)",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [],
+          "score": 0.196,
+          "sourceId": "wiktionary:불:弗:1152"
+        },
+        {
+          "hanja": "佛化",
+          "koDefinition": "Short for 佛(불)蘭(란)西(서) (Bullanseo, “France”).; Short for 불란서(佛蘭西) (Bullanseo, “France”).",
+          "enDefinitionHint": "Short for 佛(불)蘭(란)西(서) (Bullanseo, “France”).",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [],
+          "score": 0.182,
+          "sourceId": "wiktionary:불:佛:7"
+        },
+        {
+          "hanja": "不化",
+          "koDefinition": "not; non-, un-, in-",
+          "enDefinitionHint": "not; non-, un-, in-",
+          "pos": [
+            "Noun"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:불:不:1153"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:사인하다:to%20sign%20(to%20write%20one's%20signature%20on%20a%20document)",
+      "hangul": "사인하다",
+      "englishGloss": "to sign (to write one's signature on a document)",
+      "englishSourceId": "wiktionary:en-사인하다-ko-verb-YZv9rQWb",
+      "candidates": [
+        {
+          "hanja": "死因하다",
+          "koDefinition": "cause of death",
+          "enDefinitionHint": "cause of death",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:사인:死因:6718"
+        },
+        {
+          "hanja": "私人하다",
+          "koDefinition": "private individual",
+          "enDefinitionHint": "private individual",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:사인:私人:6719"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:시장하다:hungry",
+      "hangul": "시장하다",
+      "englishGloss": "hungry",
+      "englishSourceId": "wiktionary:en-시장하다-ko-adj-ykF2E46k",
+      "candidates": [
+        {
+          "hanja": "市場하다",
+          "koDefinition": "market",
+          "enDefinitionHint": "market",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:시장:市場:2988"
+        },
+        {
+          "hanja": "市長하다",
+          "koDefinition": "mayor",
+          "enDefinitionHint": "mayor",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:시장:市長:2989"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:영사하다:to%20lose%20face%2C%20to%20be%20ashamed%2C%20to%20be%20embarrassed",
+      "hangul": "영사하다",
+      "englishGloss": "to lose face, to be ashamed, to be embarrassed",
+      "englishSourceId": "wiktionary:en-영사하다-ko-adj-f1xnUBau",
+      "candidates": [
+        {
+          "hanja": "領事하다",
+          "koDefinition": "consul",
+          "enDefinitionHint": "consul",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:영사:領事:11467"
+        },
+        {
+          "hanja": "映寫하다",
+          "koDefinition": "projection (of films, slides, etc.)",
+          "enDefinitionHint": "projection (of films, slides, etc.)",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:영사:映寫:11468"
+        },
+        {
+          "hanja": "映射하다",
+          "koDefinition": "reflection (of light)",
+          "enDefinitionHint": "reflection (of light)",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:영사:映射:11470"
+        },
+        {
+          "hanja": "營舍하다",
+          "koDefinition": "barracks",
+          "enDefinitionHint": "barracks",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:영사:營舍:11469"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:예스럽다:archaic",
+      "hangul": "예스럽다",
+      "englishGloss": "archaic",
+      "englishSourceId": "wiktionary:en-예스럽다-ko-adj-fyhPmUUU",
+      "candidates": [
+        {
+          "hanja": "例스럽다",
+          "koDefinition": "example",
+          "enDefinitionHint": "example",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:예:例:311"
+        },
+        {
+          "hanja": "禮스럽다",
+          "koDefinition": "decorum, ceremonial (code of decorous behavior that all people ought to follow)",
+          "enDefinitionHint": "decorum, ceremonial (code of decorous behavior that all people ought to follow)",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:예:禮:312"
+        },
+        {
+          "hanja": "濊스럽다",
+          "koDefinition": "an ancient tribe living in Korea in the early first millennium",
+          "enDefinitionHint": "an ancient tribe living in Korea in the early first millennium",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:예:濊:315"
+        },
+        {
+          "hanja": "羿스럽다",
+          "koDefinition": "Hou Yi, a legendary archer in Chinese mythology",
+          "enDefinitionHint": "Hou Yi, a legendary archer in Chinese mythology",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:예:羿:316"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:일하다:to%20work%2C%20to%20do%20one's%20job%3B%20to%20labor",
+      "hangul": "일하다",
+      "englishGloss": "to work, to do one's job; to labor",
+      "englishSourceId": "wiktionary:en-일하다-ko-verb-rrijUDte",
+      "candidates": [
+        {
+          "hanja": "日하다",
+          "koDefinition": "Short for 日(일)本(본) (Ilbon, “Japan”).; day (twenty-four hours, a thirtieth of the month); Short for 일요일(日曜日) (iryoil, “Sunday”).; Short for 일본(日本) (Ilbon, “Japan”).",
+          "enDefinitionHint": "Short for 日(일)本(본) (Ilbon, “Japan”).",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.099,
+          "sourceId": "wiktionary:일:日:10"
+        },
+        {
+          "hanja": "一하다",
+          "koDefinition": "one; first",
+          "enDefinitionHint": "one",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.096,
+          "sourceId": "wiktionary:일:一:24"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:일하다:to%20serve%2C%20to%20work",
+      "hangul": "일하다",
+      "englishGloss": "to serve, to work",
+      "englishSourceId": "wiktionary:en-일하다-ko-verb-1EYkyRv1",
+      "candidates": [
+        {
+          "hanja": "一하다",
+          "koDefinition": "one; first",
+          "enDefinitionHint": "one",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.086,
+          "sourceId": "wiktionary:일:一:24"
+        },
+        {
+          "hanja": "日하다",
+          "koDefinition": "Short for 日(일)本(본) (Ilbon, “Japan”).; day (twenty-four hours, a thirtieth of the month); Short for 일요일(日曜日) (iryoil, “Sunday”).; Short for 일본(日本) (Ilbon, “Japan”).",
+          "enDefinitionHint": "Short for 日(일)本(본) (Ilbon, “Japan”).",
+          "pos": [
+            "Verb"
+          ],
+          "domains": [],
+          "score": 0.086,
+          "sourceId": "wiktionary:일:日:10"
+        }
+      ]
+    },
+    {
+      "id": "review-derived:필롭다:to%20be%20uncomfortable%2C%20inconvenient",
+      "hangul": "필롭다",
+      "englishGloss": "to be uncomfortable, inconvenient",
+      "englishSourceId": "wiktionary:en-필롭다-ko-adj-Kgqn38Wi",
+      "candidates": [
+        {
+          "hanja": "匹롭다",
+          "koDefinition": "A head of horse or cattle",
+          "enDefinitionHint": "A head of horse or cattle",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:필:匹:5967"
+        },
+        {
+          "hanja": "畢롭다",
+          "koDefinition": "done",
+          "enDefinitionHint": "done",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:필:畢:5968"
+        },
+        {
+          "hanja": "疋롭다",
+          "koDefinition": "A bolt or roll of cloth",
+          "enDefinitionHint": "A bolt or roll of cloth",
+          "pos": [
+            "Adjective"
+          ],
+          "domains": [],
+          "score": 0.166,
+          "sourceId": "wiktionary:필:疋:5966"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1024 @@
+{
+  "metadata": {
+    "builtAt": "2026-05-15T06:13:04.908Z",
+    "sources": {
+      "koSenseCount": 7,
+      "englishEntryCount": 3,
+      "hanjaReadingCount": 292457,
+      "reviewedDecisionCount": 0,
+      "wiktionaryIncluded": true,
+      "wiktionaryEntryLimit": "all"
+    },
+    "derivedHanja": {
+      "hangulOnlyBefore": 13579,
+      "derivableEntries": 42,
+      "inferredDefinitions": 36,
+      "ambiguousDefinitions": 15,
+      "unresolvedDerivableEntries": 14,
+      "hangulOnlyAfter": 13551,
+      "hangulOnlyReducedBy": 28
+    }
+  },
+  "unresolvedHangulOnlySamples": [
+    {
+      "hangul": "-가",
+      "definition": "Synonym of 이 (-i, nominative case marker) used after words ending with a vowel.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-간",
+      "definition": "a plain-style interrogative suffix",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-갓-",
+      "definition": "Pyongan, Hwanghae, and Yukjin form of 겠 (-get-, “will, intend, probably”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-갔-",
+      "definition": "Northern and western Gyeonggi and western Gangwon form of 겠 (-get-, “will, intend, probably”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-같이",
+      "definition": "like, in a similar way",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-개",
+      "definition": "Attaches to verbal stems to derive agentive nouns.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-갯-",
+      "definition": "Hamgyong and Yukjin form of 겠 (-get-, “will, intend, probably”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-갰-",
+      "definition": "Hamgyong and Yukjin form of 겠 (-get-, “will, intend, probably”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-거나",
+      "definition": "or",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-거든",
+      "definition": "if; provided (that)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-거들랑",
+      "definition": "if, given that",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-거리다",
+      "definition": "Suffix deriving frequentative verbs from ideophonic terms",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-걸랑",
+      "definition": "if",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-것-",
+      "definition": "Obsolete and southern dialectal form of 겠 (-get-, confirmative suffix).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-겄-",
+      "definition": "Southern dialectal form of 겠 (get, “will, intend”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-게",
+      "definition": "-ly; a suffix attached to the stems of verbs and adjectives to derive adverbs.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-겠-",
+      "definition": "A general future speculative suffix; it attaches directly to the stem, including the honorific 으시 (-eusi-), and precedes another verbal suffix.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-고",
+      "definition": "that; quotative particle marking indirect quotes. Attaches to mood-marking verb-final suffixes of the \"plain style\".",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-고는 하다",
+      "definition": "customarily, habitually; (in the past tense) would...",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-고요",
+      "definition": "See 고 (-go, intimate style suffix/particle) and 요 (-yo, politeness-adding particle attaching to the intimate style).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-구",
+      "definition": "Dialectal and slang form of 고 (-go, “and”, connective suffix).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-구-",
+      "definition": "Derives certain causative verbs. No longer productive.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-구나",
+      "definition": "a plain-style exclamatory suffix used to express a certain feeling (surprise, wonder, admiration, etc.) upon discovering or hearing about a new fact.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-구요",
+      "definition": "See 구 (-gu, colloquial form of 고 (-go)) and 요 (-yo, politeness-adding particle attaching to the intimate style).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-군",
+      "definition": "I see; in the intimate style or in monologues, used to emphasize a new fact that the speaker has learned.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-군요",
+      "definition": "See 군 (-gun, intimate style suffix) and 요 (-yo, politeness-adding particle attaching to the intimate style).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-기",
+      "definition": "to, -ing, that...; derives verbal and adjectival substantives.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-기-",
+      "definition": "A verbal suffix deriving the stems of causative verbs, particularly but not exclusively attaching to verb or adjective stems which end in ㅁ (m), ㄴ (n), or ㅅ (s). No longer productive.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-기오",
+      "definition": "imperative suffix in the plain style of speech",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-까",
+      "definition": "an interrogative particle not used in isolation in Modern Korean. It appears in the following compositions",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-까정",
+      "definition": "until, by",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-까지",
+      "definition": "until, till, by (a time), up to",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-깔",
+      "definition": "a suffix denoting the nature, state, or property of something.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-꺼정",
+      "definition": "until, by",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-꺼지",
+      "definition": "Alternative form of 까지 (-kkaji, “until, by”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-껏",
+      "definition": "to the utmost of, as much as",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-께",
+      "definition": "The honorific form of the particle 에게 (ege) meaning to, by, or for",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-께서",
+      "definition": "The honorific form of the particles 이 (-i) and 가 (-ga) denoting the subject of a sentence.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-꾸마",
+      "definition": "Post-vowel or post-liquid allomorphic form of 으꾸마 (-eukkuma, formal polite declarative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-꾼",
+      "definition": "an agent suffix",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-끼리",
+      "definition": "between",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄴ가",
+      "definition": "Alternative form of 은가 (-eun'ga) (for adjectival stems ending in a vowel or ㄹ (l))",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄴ게",
+      "definition": "Post-vowel and post-ㄹ allomorphic form of 으니게 (-eunige)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄴ께",
+      "definition": "Post-vowel and post-ㄹ allomorphic form of 으니께 (-eunikke).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄴ다",
+      "definition": "Post-vocalic and post-liquid form of 는다 (-neunda)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-나",
+      "definition": "An interrogative marker in the familiar speech level; with 요 (-yo), also used in the polite speech level.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-내",
+      "definition": "through, throughout",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-내기",
+      "definition": "suffix used to refer to a person who was born and raised in a certain region and/or who has that local characteristic",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-냐",
+      "definition": "a plain-style interrogative suffix",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-네",
+      "definition": "In the familiar style, a declarative suffix.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-노",
+      "definition": "In the plain style, an interrogative suffix marking wh-word questions.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-느",
+      "definition": "Alternative form of 는 (-neun, “post vowel allomorph of 은 (-eun)”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-느냐",
+      "definition": "Synonym of 냐 (-nya)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-느니",
+      "definition": "rather; marks the following clause as a preferable choice.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는",
+      "definition": "that is..., that [one] is..., -ing, etc.; suffix attached to the stem of verbs or the existential adjectives 있다 (itda) and 없다 (eopda) to turn the clause into a dependent one in the present tense.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는-",
+      "definition": "A present tense-marking suffix for verbs; it attaches directly to the stem, including the honorific 으시 (-eusi-), and precedes another verbal suffix.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는가",
+      "definition": "a final ending indicating a question or a guess, attached to a verb",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는교",
+      "definition": "Interrogative suffix in the 하소체 (hasoche) style of speech.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는구나",
+      "definition": "See 는 (-neun-), 구나 (-guna).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는다",
+      "definition": "A suffix in the \"plain\" speech level, ubiquitous in literature but less common nowadays in Seoul speech:",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는데",
+      "definition": "since; used to convey current relevant circumstances before an explanation, suggestion, question, etc.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는디",
+      "definition": "Dialectal form of 는데 (-neunde, “since; used to convey relevant circumstances surrounding an explanation, suggestion, etc.”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-는지",
+      "definition": "indirect question marker: whether, if, who, what, where, how ...",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-니",
+      "definition": "A plain-style interrogative suffix, with a more friendly tone than 냐 (-nya).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-니까",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으니까 (-eunikka, “because, since, as”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-니께",
+      "definition": "Post-vowel and post-ㄹ allomorphic form of 으니께 (-eunikke).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-니껴",
+      "definition": "Dialectal form of ㅂ니까 (-mnikka, “post-vowel or post-liquid allomorphic form of 습니까”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-닝께",
+      "definition": "Post-vowel and post-ㄹ allomorphic form of 으닝께 (-euningkke).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다",
+      "definition": "In the plain style, the sentence-final declarative mood suffix.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다 뿐이지",
+      "definition": "Synonym of 을 뿐이지 (-eul ppun-i-ji).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다 하면",
+      "definition": "if... always; expresses the inevitable, and usually quickly ensuing, result of a hypothetical.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다가",
+      "definition": "An emphatic particle.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다고",
+      "definition": "Used other than figuratively or idiomatically: see 다 (-da), 고 (-go).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다는",
+      "definition": "Used for the indirect quotation of sentences in the declarative, additionally modifying the noun that follows it.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다능",
+      "definition": "A sentence-final declarative mood suffix.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다니",
+      "definition": "In the intimate style or in monologues, used to express surprise or anger at something one has just learned or remembered. Often followed by a sentence expanding on the emotion being felt.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-다랗다",
+      "definition": "Attached after adjectives and less commonly some roots; an intensifying suffix creating h-irregular adjectives",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-단이",
+      "definition": "A derivational suffix for girls, also common in pet names for children or nicknames between friends.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-답다",
+      "definition": "Attached after nouns or roots, to form adjectives expressing the sense of “to have the property/feeling of; (already) like a ...; typical of”. Forms p-irregular adjectives.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-대",
+      "definition": "In the intimate style, used to convey something someone else has said:",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-댓-",
+      "definition": "Dialectal form of 었 (-eot-, “past tense marker going onto the main verb, adjective or copula of the sentence”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-댔-",
+      "definition": "Dialectal form of 었 (-eot-, “past tense marker going onto the main verb, adjective or copula of the sentence”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-더",
+      "definition": "A vocative case marker showing respect for the addressee without conceding one's own social status.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-더-",
+      "definition": "The retrospective suffix, marking that the speaker (in declaratives) or the addressee (in interrogatives) has personally observed the action/state conveyed by the verb/adjective, or a fact from which the action/state could be inferred; that either this action/state was not taken by the observer, or the observer did not do so purposefully; and that this action/state occurred at a place or time removed from the current conversation. It adds a nuance that one is speaking of the action/state from the subjective viewpoint of an external observer.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-더니",
+      "definition": "as, so, since, because (of), owing to",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-더라",
+      "definition": "See 더 (-deo-, retrospective suffix) and 라 (-ra, declarative mood suffix).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-더라도",
+      "definition": "even if, even though",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-더랫-",
+      "definition": "Dialectal form of 었 (-eot-, “past tense marker going onto the main verb, adjective or copula of the sentence”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-더면",
+      "definition": "See 더 (-deo-, retrospective suffix) and 면 (-myeon, conditional suffix).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-던",
+      "definition": "The imperfective adnominal marker, used to make verbs and adjectives attribute nouns:",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-던데",
+      "definition": "Equivalent to 더 (-deo-) + 는데 (-neunde). See there for more.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-덜",
+      "definition": "Pronunciation spelling of 들 (-deul, plural marker), representing Gyeongsang Korean.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-데",
+      "definition": "Intimate-style equivalent form of 더라 (-deora).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-도다",
+      "definition": "A formal non-polite exclamatory ending used to express admiration or surprise.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-도록",
+      "definition": "so that, so as to: a suffix used to indicate a purpose, goal of a certain action.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-되",
+      "definition": "however, but: a suffix connecting contradictory facts",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-둥이",
+      "definition": "-er; an agent suffix, especially used for a person who has a characteristic.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-드랫-",
+      "definition": "Dialectal form of 었 (-eot-, “past tense marker going onto the main verb, adjective or copula of the sentence”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-든",
+      "definition": "no matter whether, -ever; used to suggest various options that make no difference in the end.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-든지",
+      "definition": "no matter which/what/where, whether... or..., -ever",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-들",
+      "definition": "An auxiliary plural particle with an emphasis on the individuality of each item. See Usage notes for more.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-듯",
+      "definition": "Shortened form of 듯이 (-deusi, “as if, just like”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-듯이",
+      "definition": "as, like, similarly to",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-디",
+      "definition": "Pyongan, Yukjin, and Russia form of 지 (-ji, “Suffix for contrasting two facts regarding the same topic, thereby emphasizing both facts.”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-뜨기",
+      "definition": "agent suffix denoting negative characteristics",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-뜨리다",
+      "definition": "creates the causative form of many compound verbs formed by the auxiliary 지다 (jida) (third sense), especially verbs with ideophonic nuances or relating to movement.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄹ게",
+      "definition": "Post-vocalic and post-liquid allomorphic form of 을게 (-eulge).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄹ까",
+      "definition": "Post-vowel and post-liquid allomorphic form of 을까 (-eulkka).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄹ래",
+      "definition": "Post-vowel and post-liquid allomorphic form of 을래 (-eullae).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄹ려고",
+      "definition": "Nonstandard form of 려고 (-ryeogo, “in order to”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄹ세",
+      "definition": "Used with 이다 (-ida) and 아니다 (anida) to make declarations.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㄹ수록",
+      "definition": "the more: a suffix which expresses the equivalent of \"the more (x), (result)\"",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라",
+      "definition": "Alternative form of 다 (-da, declarative suffix), found in the following environments:",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라고",
+      "definition": "Alternative form of 다고 (-dago), obligatory after the inflecting stems of 이다 (-ida, “to be”) and 아니다 (anida, “to not be”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라구",
+      "definition": "Alternative form of 라고 (-rago).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라뇨",
+      "definition": "Post-vowel allomorphic form of 이라뇨 (-iranyo)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라는",
+      "definition": "Alternative form of 다는 (-daneun, declarative, noun-modifying quotative suffix) in the following environments:",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라능",
+      "definition": "Alternative form of 다능 (-daneung, (humorous) declarative mood suffix) in the following environments:",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라니",
+      "definition": "Alternative form of 다니 (-dani), used in the environments where 라 (-ra) is required. In particular, always used after the stem of 이다 (-ida, “to be”, copula), whether present or elided, and its negative 아니다 (anida, “to not be”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라도",
+      "definition": "even if; used to indicate that something does not matter, whether it is true or not. Used only in the environments of the 라 (-ra) allomorph of 다 (-da); see the former entry for more.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라며",
+      "definition": "See 라 (-ra, allomorphic form of 다 (-da)) and 며 (-myeo, short for 고 하며 (-go ha-myeo) or alternative form of 면서 (-myeonseo)).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라서",
+      "definition": "because, since; used directly after the stem of 이다 (-ida, “to be”, copula), whether present or elided, and its negative 아니다 (anida, “to not be”). It is the equivalent of 어서 (-eoseo) for other stems.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-라우",
+      "definition": "Post-vowel allomorphic form of 이라우 (-irau, politeness-marking particle (Jeolla dialect)).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-랑",
+      "definition": "Post-vowel allomorphic form of 이랑 (-irang).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-래",
+      "definition": "Short for 라(고) 해 (-ra(-go) hae, “[one] says that...”); alternative form of 대 (-dae), used in the environments of the allomorph 라 (-ra) of 다 (-da).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-래르",
+      "definition": "so that, so as to",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-래요",
+      "definition": "Used other than figuratively or idiomatically: see 래 (-rae), 요 (-yo).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-러",
+      "definition": "Post-vowel and post-liquid allomorphic form of 으러 (-eureo).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-레",
+      "definition": "suffix used after words ending with a vowel.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-려고",
+      "definition": "Post-vowel and post-ㄹ allomorphic form of 으려고 (-euryeogo, “in order to”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-로",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으로 (-euro, “by, with”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-로서",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으로서 (-euroseo).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-로세",
+      "definition": "Alternative form of ㄹ세 (-lse)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-롭다",
+      "definition": "Used to form adjectives from abstract nouns. Forms p-irregular adjectives.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-르",
+      "definition": "Gangwon and Hamgyong form of 를 (-reul).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-를",
+      "definition": "Post-vowel allomorphic form of 을 (-eul, direct object marker).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-리",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으리 (-euri, future/prospective suffix).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-리-",
+      "definition": "A verbal suffix deriving the stems of causative verbs, attaching to verb or adjective stems which end in ㄹ (l), or the irregular ㄷ (d) ~ ㄹ (l) stems. No longer productive.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅁ까",
+      "definition": "Post-vowel or post-liquid allomorphic form of 슴까 (-seumkka, formal polite interrogative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅁ다",
+      "definition": "Post-vowel or post-liquid allomorphic form of 슴다 (-seumda, formal polite declarative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅁ두",
+      "definition": "Dialectal form of ㅁ둥 (-mdung, “post-vowel or post-liquid allomorphic form of -슴둥”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅁ둥",
+      "definition": "Post-vowel or post-liquid allomorphic form of 슴둥 (-seumdung, formal polite interrogative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅁ메",
+      "definition": "Post-vowel or post-liquid allomorphic form of 슴메 (-seumme, “declarative or interrogative suffix in the plain style of speech”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-마",
+      "definition": "Post-vowel allomorphic form of 으마 (-euma).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-마다",
+      "definition": "each, every",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-마동",
+      "definition": "Alternative form of 마다 (-mada, “every”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-마저",
+      "definition": "even; including (stronger than 도 (-do))",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-만",
+      "definition": "only",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-만큼",
+      "definition": "the degree or extent to which",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-매",
+      "definition": "shape",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-맨",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으맨 (-eumaen, “(dialectal) if, when”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-멘",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으면서 (-eumyeonseo, “while”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-며",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으며 (-eumyeo).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-면",
+      "definition": "Post-vowel and post-liquid allomorphic form of 으면 (-eumyeon, “if, when”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-면서",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으면서 (-eumyeonseo).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-모",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으모 (-eumo, “(dialect) if, when”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-무",
+      "definition": "Synonym of 면 (-myeon).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-믄",
+      "definition": "Post-vowel and post-ㄹ (l) allomorphic form of 으믄 (-eumeun, “(dialectal) if, when”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-민서",
+      "definition": "Post-vowel allomorphic of 으민서 (-euminseo) form of 으민서 (-euminseo).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅂ네까",
+      "definition": "Post-vowel or post-liquid allomorphic form of 습네까 (-seumnekka, formal polite interrogative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅂ네다",
+      "definition": "Post-vowel or post-liquid allomorphic form of 습네다 (-seumneda, formal polite declarative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅂ니까",
+      "definition": "Post-vowel or post-liquid allomorphic form of 습니까 (-seumnikka, formal polite interrogative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅂ니껴",
+      "definition": "Dialectal form of ㅂ니까 (-mnikka, “post-vowel or post-liquid allomorphic form of 습니까”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅂ니다",
+      "definition": "Alternative form of 습니다 (-seumnida) (allomorph after a verb stem ending in a vowel or /l/)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-ㅂ지",
+      "definition": "Post-vowel or post-liquid allomorphic form of 습지 (-seupji, “a declarative suffix in the formal polite speech level.”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-박이",
+      "definition": "a suffix attached to the end of some nouns, meaning something is a person, animal, or thing embedded in it",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-밖에",
+      "definition": "other than",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-뱅이",
+      "definition": "person or thing characterized",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-버텀",
+      "definition": "Pyongan, Hwanghae, Hamgyong, and Gangwon form of 부터 (-buteo, “from, a particle used to denote when or where a certain action or even will occur, a particle used to illustrate an order of a series of actions.”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-보다",
+      "definition": "than; used to form comparisons, optionally with 더 (deo, “more”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-보다도",
+      "definition": "Synonym of 보다 (-boda)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-부터",
+      "definition": "Used to show when or where an action or situation started.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-붕이",
+      "definition": "A suffix designating a member of an Internet community website, generally attached to the first syllable of the website in question.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-붙이",
+      "definition": "a suffix meaning close relation to the subject",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-뿐",
+      "definition": "only, nothing more than, just",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-사",
+      "definition": "Post-vocalic and liquid allomorphic form of 으사 (-eusa).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-새",
+      "definition": "form, shape; way, mode, manner",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-서",
+      "definition": "Contraction of 에서 (-eseo).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-서꺼랑",
+      "definition": "and, with",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-서껀",
+      "definition": "and, with",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-세",
+      "definition": "Let's. Hortative suffix for sentence-final verbs in the 하게체 (hageche) speech level.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-세요",
+      "definition": "Post-vowel and post-liquid allomorphic form of 으세요 (-euseyo).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-소",
+      "definition": "Used in the semi-formal style, a register in which the speaker acknowledges the listener's high status without conceding their own:",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-수다",
+      "definition": "a politeness-adding particle in the intimate style of speech.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-슈",
+      "definition": "Chungcheong form of 세요 (-seyo, “A non-past honorific informal polite style suffix expressing declarative, interrogative, imperative, and suggestive moods depending on context”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-스",
+      "definition": "-'s",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-스럽다",
+      "definition": "Attached after nouns or roots, to form adjectives expressing the sense of \"to have the property/feeling of\". Forms p-irregular adjectives.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-스무니까",
+      "definition": "Alternative form of 습니까 (-seumnikka) used to denote that the person speaking is Japanese.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-스무니다",
+      "definition": "Alternative form of 습니다 (-seumnida) used to denote that the person speaking is Japanese.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-슬람",
+      "definition": "A suffix combined with the first letter of a noun to form a word for a person who is fanatical and stubborn about the noun.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-슴",
+      "definition": "In the formal polite style, the chief declarative suffix.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-슴까",
+      "definition": "Dialectal form of 습니까 (-seumnikka, “Interrogative suffix for sentence-final verbs”)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-슴다",
+      "definition": "Colloquial version of 습니다 (seumnida), a declarative suffix in the 하십시오체 (hasipsioche, “formal polite”) speech level.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-슴두",
+      "definition": "Dialectal form of 슴둥 (-seumdung, “Interrogative suffix for sentence-final verbs in the 하십시오체 (hasipsioche, “formal polite”) form of speech.”).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-슴둥",
+      "definition": "Interrogative suffix for sentence-final verbs in the 하십시오체 (hasipsioche, “formal polite”) speech level.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-슴메",
+      "definition": "declarative or interrogative suffix in the plain style of speech",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-습꾸마",
+      "definition": "the declarative suffix in the 하십시오체 (hasipsioche, “formal polite”) speech level.",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-습네까",
+      "definition": "Alternative form of 습니까 (-seumnikka, formal polite interrogative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-습네다",
+      "definition": "Alternative form of 습니다 (-seumnida, formal polite declarative suffix)",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-습니까",
+      "definition": "Interrogative suffix for sentence-final verbs in the 하십시오체 (hasipsioche, “formal polite”) speech level.",
+      "reviewStatus": "hangul-only"
+    }
+  ]
+}
