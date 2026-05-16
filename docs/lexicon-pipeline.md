@@ -112,6 +112,27 @@ but move decisions into Postgres or another durable datastore.
 4. Run `npm run lexicon:build` again to fold decisions into the lexicon.
 5. Commit source snapshots, review decisions, generated lexicon, and docs.
 
+## Unihan Character Sidebar
+
+Search responses include a `hanjaCharacters` side payload for the Hanja sidebar
+on `/search`. The payload is derived from the query and the returned entries'
+mixed-script lemmas, alternate forms, and productive-form annotations.
+
+Hun/eum readings come from `app/data/hanja.txt`. English meanings come from a
+compact Unihan export at `app/data/generated/unihan-readings.json` when present.
+If the compact Unihan export is missing, the sidebar still renders from the
+local Korean Hanja table and marks those meanings as a local fallback.
+
+To refresh the compact Unihan export without committing the full upstream zip:
+
+```sh
+curl -L https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip -o /tmp/Unihan.zip
+unzip -p /tmp/Unihan.zip Unihan_Readings.txt | npm run lexicon:import:unihan
+```
+
+The importer only keeps `kDefinition`, so it is safe to regenerate monthly with
+the rest of the lexicon outputs.
+
 ## Adding Source Adapters
 
 Keep adapters boring and provenance-preserving:
@@ -153,6 +174,22 @@ The same rule should be used for native Korean dictionary imports:
 This gives Saseo a cheap deterministic path for high-volume updates. LLMs can
 still be used as an optional monthly reviewer for ambiguous queue items, but
 they should not be required for routine Hanja labelling.
+
+## Productive Forms
+
+Saseo treats Sino-Korean roots as the canonical lexical anchors. Productive
+forms are folded back into the root when the root exists:
+
+- `簡單하다` definitions live under `簡單` with a `hada-adjective` or
+  `hada-verb` sense tag.
+- `簡單히` definitions live under `簡單` with a `hi-adv` sense tag.
+- the full forms remain searchable as per-sense form annotations, so searching
+  `간단하다`, `簡單하다`, or `gandanhada` still returns the `簡單` entry without
+  making `簡單하다` look like a spelling alternative of the root.
+
+This differs deliberately from Wiktionary-style Korean lemmatization. It better
+matches Saseo's mixed-script-first model and keeps roots, `-하다` forms, and
+`-히` adverbs in one lexical family instead of scattering them across pages.
 
 ## NIKL Open API Imports
 

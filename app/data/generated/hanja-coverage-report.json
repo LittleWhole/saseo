@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "builtAt": "2026-05-15T06:13:04.908Z",
+    "builtAt": "2026-05-16T08:19:50.417Z",
     "sources": {
       "koSenseCount": 7,
       "englishEntryCount": 3,
@@ -17,6 +17,10 @@
       "unresolvedDerivableEntries": 14,
       "hangulOnlyAfter": 13551,
       "hangulOnlyReducedBy": 28
+    },
+    "productiveForms": {
+      "foldedEntries": 1238,
+      "foldedDefinitions": 1384
     }
   },
   "unresolvedHangulOnlySamples": [

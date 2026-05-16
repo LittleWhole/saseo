@@ -5,6 +5,7 @@
 :root {
   --background: #0d0b09;
   --foreground: #f5f0e8;
+  --font-cjk: "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,7 +27,13 @@ body {
 }
 
 .ruby-headword {
+  font-family: var(--font-cjk);
   ruby-align: center;
+}
+
+.headword-script {
+  font-family: var(--font-cjk);
+  font-synthesis-weight: none;
 }
 
 .ruby-headword rt {

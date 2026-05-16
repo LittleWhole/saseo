@@ -21,20 +21,35 @@ export type Definition = {
   text: string;
   examples: string[];
   tags: string[];
+  formOf?: AlternateForm;
   sourceIds?: string[];
   confidence?: number;
 };
 
+export type HanjaCharacter = {
+  character: string;
+  meanings: string[];
+  hun: string[];
+  eum: string[];
+  sources: string[];
+};
+
 type SearchResponse = {
   entries: SearchResult[];
+  hanjaCharacters?: HanjaCharacter[];
   error?: string;
+};
+
+export type SearchPayload = {
+  entries: SearchResult[];
+  hanjaCharacters: HanjaCharacter[];
 };
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchSearch(searchTerm: string): Promise<SearchResult[]> {
+async function fetchSearch(searchTerm: string): Promise<SearchPayload> {
   const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`, {
     cache: "no-cache",
   });
@@ -49,10 +64,13 @@ async function fetchSearch(searchTerm: string): Promise<SearchResult[]> {
     throw new Error(data.error ?? "Search failed");
   }
 
-  return data.entries;
+  return {
+    entries: data.entries,
+    hanjaCharacters: data.hanjaCharacters ?? [],
+  };
 }
 
-export async function searchDictData(searchTerm: string): Promise<SearchResult[]> {
+export async function searchDictData(searchTerm: string): Promise<SearchPayload> {
   try {
     return await fetchSearch(searchTerm);
   } catch (error) {

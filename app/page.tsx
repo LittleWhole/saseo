@@ -14,7 +14,7 @@ export default function Home() {
             <Ruby text="書" ruby="서"/> Saseo
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-stone-400 md:text-lg">
-            A Korean-English dictionary centered on mixed script, Hanja, and lexical nuance.
+            Korean&apos;s answer to jisho.org
           </p>
         </div>
         <div className="w-full max-w-3xl">

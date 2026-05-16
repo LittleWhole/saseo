@@ -17,6 +17,7 @@ const POS_NORMALIZATION = new Map([
   ["noun", "Noun"],
   ["verb", "Verb"],
   ["adjective", "Adjective"],
+  ["adv", "Adverb"],
   ["adverb", "Adverb"],
   ["proper noun", "Proper noun"],
   ["name", "Proper noun"],
@@ -42,6 +43,11 @@ const DERIVED_SUFFIX_RULES = [
   { suffix: "성", hanjaSuffix: "性", label: "derived suffix -성" },
   { suffix: "히", hanjaSuffix: "히", label: "derived suffix -히" },
 ].sort((left, right) => right.suffix.length - left.suffix.length);
+
+const PRODUCTIVE_FORM_FOLDING_RULES = [
+  { suffix: "하다", hanjaSuffix: "하다", alternateLabel: "hada form" },
+  { suffix: "히", hanjaSuffix: "히", alternateLabel: "hi form" },
+];
 
 const HANJA_SEMANTICS = new Map([
   ["防", ["prevent", "block", "protect", "proof", "waterproof", "waterproofing", "resistance", "resistant", "guard"]],
@@ -870,6 +876,83 @@ function inferDerivedHanja(entries, hanjaReadings) {
   };
 }
 
+function productiveFormTag(rule, definition) {
+  const pos = new Set(normalizePos(definition.pos));
+  if (rule.suffix === "히") return "hi-adv";
+  if (rule.suffix === "하다" && pos.has("Adjective")) return "hada-adjective";
+  if (rule.suffix === "하다" && pos.has("Verb")) return "hada-verb";
+  if (rule.suffix === "하다") return "hada-form";
+  return `${rule.suffix}-form`;
+}
+
+function isRootPlaceholderDefinition(definition) {
+  return (
+    /^Root of\s+/u.test(definition.text) &&
+    (definition.tags ?? []).some((tag) => ["morpheme", "root"].includes(String(tag).toLowerCase()))
+  );
+}
+
+function productiveBaseForEntry(entry, hanjaReadings) {
+  for (const rule of PRODUCTIVE_FORM_FOLDING_RULES) {
+    if (!entry.hangul.endsWith(rule.suffix) || !entry.hanja.endsWith(rule.hanjaSuffix)) continue;
+    const baseHangul = entry.hangul.slice(0, -rule.suffix.length);
+    const baseHanja = entry.hanja.slice(0, -rule.hanjaSuffix.length);
+    if (!baseHangul || !baseHanja || baseHangul === entry.hangul || baseHanja === entry.hanja) continue;
+    if (!scriptFormMatchesReading(baseHanja, baseHangul, hanjaReadings)) continue;
+    return { ...rule, baseHangul, baseHanja };
+  }
+  return null;
+}
+
+function foldProductiveFormsIntoRoots(entries, hanjaReadings) {
+  const byKey = new Map(entries.map((entry) => [`${entry.hangul}\u0000${entry.hanja}`, entry]));
+  const removed = new Set();
+  const stats = {
+    foldedEntries: 0,
+    foldedDefinitions: 0,
+  };
+
+  for (const entry of entries) {
+    const rule = productiveBaseForEntry(entry, hanjaReadings);
+    if (!rule) continue;
+
+    const root = byKey.get(`${rule.baseHangul}\u0000${rule.baseHanja}`);
+    if (!root) continue;
+
+    root.definitions = [
+      ...(root.definitions ?? []).filter((definition) => !isRootPlaceholderDefinition(definition)),
+      ...(entry.definitions ?? []).map((definition) => ({
+        ...definition,
+        pos: normalizePos(definition.pos),
+        tags: uniqueValues([productiveFormTag(rule, definition), ...(definition.tags ?? [])]),
+        formOf: {
+          form: entry.hanja,
+          reading: entry.hangul,
+          label: rule.alternateLabel,
+        },
+      })),
+    ];
+    root.searchForms = mergeAlternateForms(root.searchForms ?? [], [
+      {
+        form: entry.hanja,
+        reading: entry.hangul,
+        label: rule.alternateLabel,
+      },
+    ]);
+    root.provenance = uniqueValues([...(root.provenance ?? []), ...(entry.provenance ?? [])]);
+    root.confidence = Math.max(root.confidence ?? 0, entry.confidence ?? 0);
+
+    stats.foldedEntries += 1;
+    stats.foldedDefinitions += entry.definitions?.length ?? 0;
+    removed.add(entry.id);
+  }
+
+  return {
+    entries: entries.filter((entry) => !removed.has(entry.id)),
+    stats,
+  };
+}
+
 async function main() {
   const args = new Set(process.argv.slice(2));
   const includeWiktionary = args.has("--include-wiktionary");
@@ -889,8 +972,9 @@ async function main() {
     mergeAlternativeHanjaForms(mergeNorthKoreanSpellingVariants(mergeDuplicateEntries([...aligned.lexicon, ...wiktionary]))),
     hanjaReadings,
   );
+  const folded = foldProductiveFormsIntoRoots(mergeDuplicateEntries(derived.entries), hanjaReadings);
   const lexicon = applyReviewedDecisions(
-    mergeDuplicateEntries(derived.entries),
+    mergeDuplicateEntries(folded.entries),
     reviewed,
   );
   const reviewItems = [...aligned.reviewQueue, ...derived.reviewQueue];
@@ -910,6 +994,7 @@ async function main() {
         : 0,
     },
     derivedHanja: derived.stats,
+    productiveForms: folded.stats,
   };
 
   await writeFile(lexiconPath, `${JSON.stringify({ metadata, entries: lexicon }, null, 2)}\n`);

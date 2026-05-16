@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Ruby } from "@/components/ui/ruby";
 import { ArrowRight, Search } from "lucide-react";
 
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
@@ -65,7 +66,10 @@ export function SearchBar({ searchPage, initialQuery = "", customFunction }: Sea
           type="submit"
           className="h-12 flex-shrink rounded-full bg-emerald-300 px-5 text-sm font-semibold text-stone-950 shadow-[0_10px_25px_rgba(110,231,183,0.22)] hover:bg-emerald-200"
         >
-          Search
+          <span className="headword-script text-base leading-none">
+            <Ruby text="檢" ruby="검" />
+            <Ruby text="索" ruby="색" />
+          </span>
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
         </div>
