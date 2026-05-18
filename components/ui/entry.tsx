@@ -1,7 +1,7 @@
 "use client";
 
 import { Ruby } from "./ruby";
-import { AlternateForm, Definition, ProficiencyBadge, SenseExample } from "@/app/search/helpers";
+import { AlternateForm, Definition, MiddleKoreanForm, ProficiencyBadge, SenseExample } from "@/app/search/helpers";
 import { Table2, X } from "lucide-react";
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 
@@ -812,9 +812,35 @@ function shouldStackHeadword(hanja: string, hangul: string) {
     return compactDisplay.length >= 10 || compactReading.length >= 12;
 }
 
+type DefinitionBlock =
+    | { kind: "single"; definition: Definition }
+    | { kind: "group"; label: string; definitions: Definition[] };
+
+function groupedDefinitionBlocks(definitions: Definition[]) {
+    const blocks: DefinitionBlock[] = [];
+
+    for (const definition of definitions) {
+        const label = definition.senseGroup?.label;
+        const previous = blocks[blocks.length - 1];
+        if (label && previous?.kind === "group" && previous.label === label) {
+            previous.definitions.push(definition);
+            continue;
+        }
+        if (label) {
+            blocks.push({ kind: "group", label, definitions: [definition] });
+            continue;
+        }
+        blocks.push({ kind: "single", definition });
+    }
+
+    return blocks;
+}
+
 export function Entry({
     hanja,
     hangul,
+    middleKorean = [],
+    showMiddleKorean = false,
     alternateHanja = [],
     alternateForms = [],
     definitions,
@@ -822,6 +848,8 @@ export function Entry({
 }: Readonly<{
     hanja: string;
     hangul: string;
+    middleKorean?: MiddleKoreanForm[];
+    showMiddleKorean?: boolean;
     alternateHanja?: string[];
     alternateForms?: AlternateForm[];
     definitions: Definition[];
@@ -836,6 +864,7 @@ export function Entry({
         () => (conjugationTarget ? buildConjugationTable(conjugationTarget) : null),
         [conjugationTarget],
     );
+    const definitionBlocks = useMemo(() => groupedDefinitionBlocks(definitions), [definitions]);
     const cleanedAlternates: AlternateForm[] = [
         ...alternateForms,
         ...alternateHanja
@@ -873,12 +902,100 @@ export function Entry({
         };
     }, [hanja, hangul]);
 
+    const renderDefinitionMeta = (definition: Definition) => {
+        const target = conjugationTargetForDefinition(definition, hanja, hangul);
+
+        return (
+            <div className="mb-1 flex flex-wrap items-center gap-2 text-sm font-semibold text-stone-400">
+                <span>{definition.pos.join(", ")}</span>
+                {definition.tags.length > 0 && (
+                    definition.tags.map((tag) => (
+                        <span
+                            key={tag}
+                            className="rounded-full bg-emerald-300/10 px-2 py-0.5 text-xs font-medium text-emerald-200"
+                        >
+                            {tag}
+                        </span>
+                    ))
+                )}
+                {target && (
+                    <button
+                        type="button"
+                        onClick={() => setConjugationTarget(target)}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/20 bg-stone-950/40 px-2 py-0.5 text-xs font-semibold text-emerald-200 transition-colors hover:bg-emerald-300/10"
+                    >
+                        <Table2 className="h-3.5 w-3.5" />
+                        conjugate
+                    </button>
+                )}
+            </div>
+        );
+    };
+
+    const renderDefinitionContent = (definition: Definition) => (
+        <div>
+            {definition.formOf && (
+                <a
+                    href={searchHref(definition.formOf)}
+                    className="mr-2 inline-flex items-center rounded-full bg-emerald-300/12 px-2.5 py-1 align-middle text-sm font-semibold text-emerald-200 ring-1 ring-emerald-300/20 transition-colors hover:bg-emerald-300/18 hover:text-emerald-100"
+                >
+                    <span className="font-[family-name:var(--font-ui)]">as&nbsp;</span>
+                    <span className="korean-text">{definition.formOf.form}</span>
+                </a>
+            )}
+            {definition.discriminator && (
+                <span className="mr-2 inline-flex items-center rounded-full bg-stone-800/80 px-2.5 py-1 align-middle text-xs font-semibold text-stone-300 ring-1 ring-white/[0.06]">
+                    {definition.discriminator}
+                </span>
+            )}
+            <span>{renderSearchLinkedText(definition.text)}</span>
+            {definition.seeAlso && definition.seeAlso.length > 0 && (
+                <span className="ml-3 inline-flex flex-wrap items-center gap-2 align-middle text-base text-stone-400">
+                    <span className="font-semibold">See also</span>
+                    {definition.seeAlso.map((form) => (
+                        <a
+                            key={`${form.form}-${form.reading ?? ""}-${form.label ?? ""}`}
+                            href={searchHref(form)}
+                            className="inline-flex items-baseline gap-1 rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 font-semibold text-sky-200 transition-colors hover:border-sky-200/45 hover:bg-sky-300/15 hover:text-sky-100"
+                        >
+                            <span className={hasKoreanScript(form.form) ? "korean-text" : undefined}>{form.form}</span>
+                            {form.reading && form.reading !== form.form && (
+                                <span className="korean-text text-sm text-sky-100/70">{form.reading}</span>
+                            )}
+                        </a>
+                    ))}
+                </span>
+            )}
+            {definition.examples.length > 0 && (
+                <div className="mt-4 space-y-3">
+                    {definition.examples.map((example, exampleIndex) => renderExample(example, exampleIndex))}
+                </div>
+            )}
+        </div>
+    );
+
     return (
         <article className={articleClassName}>
             <div className="min-w-0">
                 <div ref={headwordRef} className={headwordClassName}>
                     {renderHeadword(hanja, hangul)}
                 </div>
+                {showMiddleKorean && middleKorean.length > 0 && (
+                    <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-xs text-stone-600">
+                        <span className="font-medium text-stone-600">Middle Korean</span>
+                        {middleKorean.map((form) => (
+                            <span
+                                key={`${form.form}-${form.yale ?? ""}`}
+                                className="inline-flex items-baseline gap-1.5 text-stone-500"
+                            >
+                                <span className="middle-korean-text text-sm text-stone-300/80">{form.form}</span>
+                                {form.yale && (
+                                    <span className="text-[0.68rem] text-stone-600">{form.yale}</span>
+                                )}
+                            </span>
+                        ))}
+                    </div>
+                )}
                 {proficiency.length > 0 && (
                     <div className="mt-5 flex flex-wrap gap-2">
                         {proficiency.map((badge) => (
@@ -922,69 +1039,35 @@ export function Entry({
             </div>
             <div className="min-w-0">
                 <ol className="space-y-5">
-                    {definitions.map((definition, index) => (
-                        <li key={`${definition.text}-${index}`} className="grid grid-cols-[2rem_1fr] gap-3 text-lg leading-relaxed text-stone-100">
+                    {definitionBlocks.map((block, index) => (
+                        <li
+                            key={block.kind === "group" ? `${block.label}-${index}` : `${block.definition.text}-${index}`}
+                            className="grid grid-cols-[2rem_1fr] gap-3 text-lg leading-relaxed text-stone-100"
+                        >
                             <div className="flex h-7 w-7 items-center justify-center rounded-full border border-stone-700 bg-stone-950/60 text-sm font-semibold text-stone-400">
                                 {index + 1}
                             </div>
                             <div>
-                            <div className="mb-1 flex flex-wrap items-center gap-2 text-sm font-semibold text-stone-400">
-                                <span>{definition.pos.join(", ")}</span>
-                                {definition.tags.length > 0 && (
-                                    definition.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="rounded-full bg-emerald-300/10 px-2 py-0.5 text-xs font-medium text-emerald-200"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))
-                                )}
-                                {conjugationTargetForDefinition(definition, hanja, hangul) && (
-                                    <button
-                                        type="button"
-                                        onClick={() => setConjugationTarget(conjugationTargetForDefinition(definition, hanja, hangul))}
-                                        className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/20 bg-stone-950/40 px-2 py-0.5 text-xs font-semibold text-emerald-200 transition-colors hover:bg-emerald-300/10"
-                                    >
-                                        <Table2 className="h-3.5 w-3.5" />
-                                        conjugate
-                                    </button>
-                                )}
-                            </div>
-                            <div>
-                                {definition.formOf && (
-                                    <a
-                                        href={searchHref(definition.formOf)}
-                                        className="mr-2 inline-flex items-center rounded-full bg-emerald-300/12 px-2.5 py-1 align-middle text-sm font-semibold text-emerald-200 ring-1 ring-emerald-300/20 transition-colors hover:bg-emerald-300/18 hover:text-emerald-100"
-                                    >
-                                        <span className="font-[family-name:var(--font-ui)]">as&nbsp;</span>
-                                        <span className="korean-text">{definition.formOf.form}</span>
-                                    </a>
-                                )}
-                                <span>{renderSearchLinkedText(definition.text)}</span>
-                                {definition.seeAlso && definition.seeAlso.length > 0 && (
-                                    <span className="ml-3 inline-flex flex-wrap items-center gap-2 align-middle text-base text-stone-400">
-                                        <span className="font-semibold">See also</span>
-                                        {definition.seeAlso.map((form) => (
-                                            <a
-                                                key={`${form.form}-${form.reading ?? ""}-${form.label ?? ""}`}
-                                                href={searchHref(form)}
-                                                className="inline-flex items-baseline gap-1 rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 font-semibold text-sky-200 transition-colors hover:border-sky-200/45 hover:bg-sky-300/15 hover:text-sky-100"
-                                            >
-                                                <span className={hasKoreanScript(form.form) ? "korean-text" : undefined}>{form.form}</span>
-                                                {form.reading && form.reading !== form.form && (
-                                                    <span className="korean-text text-sm text-sky-100/70">{form.reading}</span>
-                                                )}
-                                            </a>
-                                        ))}
-                                    </span>
-                                )}
-                                {definition.examples.length > 0 && (
-                                    <div className="mt-4 space-y-3">
-                                        {definition.examples.map((example, exampleIndex) => renderExample(example, exampleIndex))}
+                                {block.kind === "single" ? (
+                                    <>
+                                        {renderDefinitionMeta(block.definition)}
+                                        {renderDefinitionContent(block.definition)}
+                                    </>
+                                ) : (
+                                    <div>
+                                        <div className="mb-3 text-base font-semibold text-stone-300">
+                                            {renderSearchLinkedText(block.label)}
+                                        </div>
+                                        <ol className="space-y-4 border-l border-stone-800 pl-4">
+                                            {block.definitions.map((definition, childIndex) => (
+                                                <li key={`${definition.text}-${definition.discriminator ?? ""}-${childIndex}`}>
+                                                    {renderDefinitionMeta(definition)}
+                                                    {renderDefinitionContent(definition)}
+                                                </li>
+                                            ))}
+                                        </ol>
                                     </div>
                                 )}
-                            </div>
                             </div>
                         </li>
                     ))}

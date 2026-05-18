@@ -94,6 +94,12 @@ function normalizeDefinition(definition, fallbackSourceId) {
     pos: normalizePos(definition.pos),
     examples: stringList(definition.examples),
     tags: stringList(definition.tags),
+    senseGroup: definition.senseGroup?.label
+      ? {
+          label: compactWhitespace(definition.senseGroup.label),
+        }
+      : undefined,
+    discriminator: compactWhitespace(definition.discriminator) || undefined,
     formOf: definition.formOf
       ? {
           form: compactWhitespace(definition.formOf.form),

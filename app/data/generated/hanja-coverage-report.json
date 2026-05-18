@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "builtAt": "2026-05-17T22:08:43.901Z",
+    "builtAt": "2026-05-18T21:34:02.721Z",
     "sourceContractVersion": "saseo-source-v1",
     "sources": {
       "files": [
@@ -36,17 +36,19 @@
       "englishEntryCount": 3,
       "lexiconEntryCount": 0,
       "hanjaReadingCount": 292457,
+      "hunmongJahoeReadingCount": 1424,
+      "hunmongJahoeSourceUrl": "https://ko.wikisource.org/wiki/%ED%9B%88%EB%AA%BD%EC%9E%90%ED%9A%8C",
       "reviewedDecisionCount": 0,
       "wiktionaryIncluded": true,
       "wiktionaryEntryLimit": "all"
     },
     "derivedHanja": {
-      "hangulOnlyBefore": 13584,
+      "hangulOnlyBefore": 13525,
       "derivableEntries": 42,
       "inferredDefinitions": 36,
       "ambiguousDefinitions": 15,
       "unresolvedDerivableEntries": 14,
-      "hangulOnlyAfter": 13556,
+      "hangulOnlyAfter": 13497,
       "hangulOnlyReducedBy": 28
     },
     "dueumCanonicalAlternates": {
@@ -366,7 +368,7 @@
     },
     {
       "hangul": "-는다",
-      "definition": "A suffix in the \"plain\" speech level, ubiquitous in literature but less common nowadays in Seoul speech:",
+      "definition": "The present-tense declarative suffix.",
       "reviewStatus": "hangul-only"
     },
     {
@@ -466,7 +468,7 @@
     },
     {
       "hangul": "-대",
-      "definition": "In the intimate style, used to convey something someone else has said:",
+      "definition": "they say, apparently; used to report or ask about something one has heard about (often from an unclear source), adding a nuance that one is only reporting what other people have said rather than claiming so personally.",
       "reviewStatus": "hangul-only"
     },
     {
@@ -516,7 +518,7 @@
     },
     {
       "hangul": "-던",
-      "definition": "The imperfective adnominal marker, used to make verbs and adjectives attribute nouns:",
+      "definition": "After verb stems, indicates an action or state which was interrupted and hence not completed.",
       "reviewStatus": "hangul-only"
     },
     {
@@ -636,7 +638,7 @@
     },
     {
       "hangul": "-라",
-      "definition": "Alternative form of 다 (-da, declarative suffix), found in the following environments:",
+      "definition": "Directly after the stem of 이다 (-ida, “to be”, copula), whether present or elided, and its negative 아니다 (anida, “to not be”):",
       "reviewStatus": "hangul-only"
     },
     {
@@ -656,12 +658,12 @@
     },
     {
       "hangul": "-라는",
-      "definition": "Alternative form of 다는 (-daneun, declarative, noun-modifying quotative suffix) in the following environments:",
+      "definition": "Directly after the stem of 이다 (-ida, “to be”, copula), whether present or elided, and its negative 아니다 (anida, “to not be”).",
       "reviewStatus": "hangul-only"
     },
     {
       "hangul": "-라능",
-      "definition": "Alternative form of 다능 (-daneung, (humorous) declarative mood suffix) in the following environments:",
+      "definition": "Directly after the stem of 이다 (-ida, “to be”, copula), whether present or elided, and its negative 아니다 (anida, “to not be”).",
       "reviewStatus": "hangul-only"
     },
     {
@@ -986,7 +988,7 @@
     },
     {
       "hangul": "-소",
-      "definition": "Used in the semi-formal style, a register in which the speaker acknowledges the listener's high status without conceding their own:",
+      "definition": "Marks the declarative mood.",
       "reviewStatus": "hangul-only"
     },
     {

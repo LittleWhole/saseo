@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "builtAt": "2026-05-17T22:08:43.901Z",
+    "builtAt": "2026-05-18T21:34:02.721Z",
     "sourceContractVersion": "saseo-source-v1",
     "sources": {
       "files": [
@@ -36,17 +36,19 @@
       "englishEntryCount": 3,
       "lexiconEntryCount": 0,
       "hanjaReadingCount": 292457,
+      "hunmongJahoeReadingCount": 1424,
+      "hunmongJahoeSourceUrl": "https://ko.wikisource.org/wiki/%ED%9B%88%EB%AA%BD%EC%9E%90%ED%9A%8C",
       "reviewedDecisionCount": 0,
       "wiktionaryIncluded": true,
       "wiktionaryEntryLimit": "all"
     },
     "derivedHanja": {
-      "hangulOnlyBefore": 13584,
+      "hangulOnlyBefore": 13525,
       "derivableEntries": 42,
       "inferredDefinitions": 36,
       "ambiguousDefinitions": 15,
       "unresolvedDerivableEntries": 14,
-      "hangulOnlyAfter": 13556,
+      "hangulOnlyAfter": 13497,
       "hangulOnlyReducedBy": 28
     },
     "dueumCanonicalAlternates": {
@@ -497,7 +499,7 @@
           ],
           "domains": [],
           "score": 0.166,
-          "sourceId": "wiktionary:고소:告訴:24314"
+          "sourceId": "wiktionary:고소:告訴:24295"
         },
         {
           "hanja": "苦笑하다",
@@ -508,7 +510,7 @@
           ],
           "domains": [],
           "score": 0.166,
-          "sourceId": "wiktionary:고소:苦笑:24315"
+          "sourceId": "wiktionary:고소:苦笑:24296"
         },
         {
           "hanja": "高所하다",
@@ -519,7 +521,7 @@
           ],
           "domains": [],
           "score": 0.166,
-          "sourceId": "wiktionary:고소:高所:24316"
+          "sourceId": "wiktionary:고소:高所:24297"
         }
       ]
     },
@@ -538,7 +540,7 @@
           ],
           "domains": [],
           "score": 0.214,
-          "sourceId": "wiktionary:공변:公辨:18562"
+          "sourceId": "wiktionary:공변:公辨:18547"
         },
         {
           "hanja": "共變되다",
@@ -549,7 +551,7 @@
           ],
           "domains": [],
           "score": 0.166,
-          "sourceId": "wiktionary:공변:共變:18563"
+          "sourceId": "wiktionary:공변:共變:18548"
         }
       ]
     },
@@ -907,7 +909,7 @@
           ],
           "domains": [],
           "score": 0.166,
-          "sourceId": "wiktionary:영사:領事:11467"
+          "sourceId": "wiktionary:영사:領事:11463"
         },
         {
           "hanja": "映寫하다",
@@ -918,7 +920,7 @@
           ],
           "domains": [],
           "score": 0.166,
-          "sourceId": "wiktionary:영사:映寫:11468"
+          "sourceId": "wiktionary:영사:映寫:11464"
         },
         {
           "hanja": "映射하다",
@@ -929,7 +931,7 @@
           ],
           "domains": [],
           "score": 0.166,
-          "sourceId": "wiktionary:영사:映射:11470"
+          "sourceId": "wiktionary:영사:映射:11466"
         },
         {
           "hanja": "營舍하다",
@@ -940,7 +942,7 @@
           ],
           "domains": [],
           "score": 0.166,
-          "sourceId": "wiktionary:영사:營舍:11469"
+          "sourceId": "wiktionary:영사:營舍:11465"
         }
       ]
     },

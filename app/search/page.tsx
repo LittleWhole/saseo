@@ -4,9 +4,10 @@ import { SearchBar } from "@/components/searchbar";
 import { Entry } from "@/components/ui/entry";
 import { Ruby } from "@/components/ui/ruby";
 
+import { Settings } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { HanjaCharacter, InflectionAnalysis, SearchResult } from "./helpers";
+import { HanjaCharacter, InflectionAnalysis, SearchPagination, SearchResult } from "./helpers";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { searchDictData } from "./helpers";
 
@@ -19,6 +20,28 @@ function wait(ms: number) {
 
 function searchHrefForValue(value: string) {
   return `/search?q=${encodeURIComponent(value)}`;
+}
+
+function searchPageHref(query: string, page: number) {
+  const params = new URLSearchParams({ q: query });
+  if (page > 1) params.set("page", String(page));
+  return `/search?${params.toString()}`;
+}
+
+function parsePageParam(value: string | null) {
+  const page = Number.parseInt(String(value ?? "1"), 10);
+  return Number.isFinite(page) && page > 0 ? page : 1;
+}
+
+function defaultPagination(): SearchPagination {
+  return {
+    page: 1,
+    pageSize: 100,
+    totalEntries: 0,
+    totalPages: 0,
+    hasNextPage: false,
+    hasPreviousPage: false,
+  };
 }
 
 function ReadingRow({ label, values }: Readonly<{ label: string; values: string[] }>) {
@@ -218,29 +241,190 @@ function InflectionNotice({ inflections }: Readonly<{ inflections: InflectionAna
   );
 }
 
+function PaginationControls({ pagination, query }: Readonly<{ pagination: SearchPagination; query: string }>) {
+  if (pagination.totalPages <= 1) return null;
+
+  const pageNumbers = Array.from(
+    new Set([
+      1,
+      pagination.page - 1,
+      pagination.page,
+      pagination.page + 1,
+      pagination.totalPages,
+    ].filter((page) => page >= 1 && page <= pagination.totalPages)),
+  ).sort((left, right) => left - right);
+  const pageStart = (pagination.page - 1) * pagination.pageSize + 1;
+  const pageEnd = Math.min(pagination.page * pagination.pageSize, pagination.totalEntries);
+
+  return (
+    <nav className="mt-6 flex flex-col gap-3 border-t border-stone-800/80 pt-5 text-sm text-stone-400 md:flex-row md:items-center md:justify-between" aria-label="Search result pages">
+      <div>
+        Showing <span className="text-stone-100">{pageStart}-{pageEnd}</span> of{" "}
+        <span className="text-stone-100">{pagination.totalEntries}</span>
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <Link
+          href={searchPageHref(query, pagination.page - 1)}
+          aria-disabled={!pagination.hasPreviousPage}
+          className={`rounded-md border px-3 py-2 font-semibold transition-colors ${
+            pagination.hasPreviousPage
+              ? "border-stone-700 bg-stone-950/50 text-stone-200 hover:border-emerald-300/45 hover:text-emerald-100"
+              : "pointer-events-none border-stone-800 bg-stone-950/25 text-stone-600"
+          }`}
+        >
+          Previous
+        </Link>
+        {pageNumbers.map((page, index) => {
+          const previousPage = pageNumbers[index - 1];
+          const hasGap = previousPage !== undefined && page - previousPage > 1;
+
+          return (
+            <span key={page} className="flex items-center gap-2">
+              {hasGap && <span className="px-1 text-stone-600">...</span>}
+              <Link
+                href={searchPageHref(query, page)}
+                aria-current={page === pagination.page ? "page" : undefined}
+                className={`min-w-10 rounded-md border px-3 py-2 text-center font-semibold transition-colors ${
+                  page === pagination.page
+                    ? "border-emerald-300/45 bg-emerald-300/12 text-emerald-100"
+                    : "border-stone-700 bg-stone-950/50 text-stone-200 hover:border-emerald-300/45 hover:text-emerald-100"
+                }`}
+              >
+                {page}
+              </Link>
+            </span>
+          );
+        })}
+        <Link
+          href={searchPageHref(query, pagination.page + 1)}
+          aria-disabled={!pagination.hasNextPage}
+          className={`rounded-md border px-3 py-2 font-semibold transition-colors ${
+            pagination.hasNextPage
+              ? "border-stone-700 bg-stone-950/50 text-stone-200 hover:border-emerald-300/45 hover:text-emerald-100"
+              : "pointer-events-none border-stone-800 bg-stone-950/25 text-stone-600"
+          }`}
+        >
+          Next
+        </Link>
+      </div>
+    </nav>
+  );
+}
+
+function MiddleKoreanToggle({
+  checked,
+  onChange,
+}: Readonly<{
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}>) {
+  return (
+    <label className="flex w-full cursor-pointer items-center justify-between gap-4 rounded-md px-2 py-1.5 text-sm font-medium text-stone-300 transition-colors hover:bg-emerald-300/10">
+      <span>Middle Korean</span>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(event) => onChange(event.target.checked)}
+        className="peer sr-only appearance-none focus:outline-none focus:ring-0"
+      />
+      <span
+        aria-hidden="true"
+        className="relative h-4 w-7 rounded-full bg-stone-800 transition-colors after:absolute after:left-0.5 after:top-0.5 after:h-3 after:w-3 after:rounded-full after:bg-stone-500 after:transition-transform peer-checked:bg-emerald-300/55 peer-checked:after:translate-x-3 peer-checked:after:bg-emerald-100 peer-focus-visible:ring-2 peer-focus-visible:ring-emerald-300/45 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-[#15110f]"
+      />
+    </label>
+  );
+}
+
+function SearchDisplayOptions({
+  showMiddleKorean,
+  onShowMiddleKoreanChange,
+}: Readonly<{
+  showMiddleKorean: boolean;
+  onShowMiddleKoreanChange: (checked: boolean) => void;
+}>) {
+  const [isOpen, setIsOpen] = useState(false);
+  const popoverRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (target instanceof Node && !popoverRef.current?.contains(target)) {
+        setIsOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
+  return (
+    <div ref={popoverRef} className="relative">
+      <button
+        type="button"
+        aria-label="Display options"
+        aria-expanded={isOpen}
+        aria-haspopup="dialog"
+        onClick={() => setIsOpen((current) => !current)}
+        className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border bg-stone-950/70 text-sm font-semibold text-stone-100 shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d0b09] ${
+          isOpen
+            ? "border-emerald-300/45 bg-emerald-300/10 text-emerald-100"
+            : "border-stone-700/80 hover:border-emerald-300/45 hover:bg-emerald-300/10 hover:text-emerald-100"
+        }`}
+      >
+        <Settings className="h-4 w-4" aria-hidden="true" />
+      </button>
+      {isOpen && (
+        <div
+          role="dialog"
+          aria-label="Display options"
+          className="absolute right-0 z-30 mt-3 w-56 rounded-lg border border-emerald-300/20 bg-[#15110f] p-2 shadow-[0_18px_46px_rgba(0,0,0,0.55)] ring-1 ring-black"
+        >
+          <MiddleKoreanToggle checked={showMiddleKorean} onChange={onShowMiddleKoreanChange} />
+        </div>
+      )}
+    </div>
+  );
+}
+
 function SearchPageContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q");
   const normalizedQuery = query?.trim() ?? "";
+  const requestedPage = parsePageParam(searchParams.get("page"));
   const latestSearchId = useRef(0);
+  const latestRequestedKey = useRef("");
   const [entries, setEntries] = useState<SearchResult[]>([]);
   const [hanjaCharacters, setHanjaCharacters] = useState<HanjaCharacter[]>([]);
   const [inflections, setInflections] = useState<InflectionAnalysis[]>([]);
+  const [pagination, setPagination] = useState<SearchPagination>(defaultPagination);
   const [activeQuery, setActiveQuery] = useState("");
+  const [activePage, setActivePage] = useState(1);
   const [status, setStatus] = useState<SearchStatus>("idle");
   const [error, setError] = useState("");
+  const [showMiddleKorean, setShowMiddleKorean] = useState(false);
+  const requestKey = normalizedQuery ? `${normalizedQuery}\u0000${requestedPage}` : "";
 
-  const handleSearch = useCallback(async (nextQuery?: string) => {
+  const handleSearch = useCallback(async (nextQuery?: string, nextPage = 1) => {
     const term = (nextQuery ?? query ?? "").trim();
     if (term) {
       const searchId = latestSearchId.current + 1;
       const startedAt = performance.now();
       latestSearchId.current = searchId;
       setActiveQuery(term);
+      setActivePage(nextPage);
       setStatus("loading");
       setError("");
       try {
-        const results = await searchDictData(term);
+        const results = await searchDictData(term, nextPage);
         const elapsed = performance.now() - startedAt;
         if (elapsed < MIN_SEARCH_LOADING_MS) {
           await wait(MIN_SEARCH_LOADING_MS - elapsed);
@@ -249,6 +433,7 @@ function SearchPageContent() {
         setEntries(results.entries);
         setHanjaCharacters(results.hanjaCharacters);
         setInflections(results.inflections);
+        setPagination(results.pagination);
         setStatus("success");
       } catch (searchError) {
         const elapsed = performance.now() - startedAt;
@@ -259,39 +444,58 @@ function SearchPageContent() {
         setEntries([]);
         setHanjaCharacters([]);
         setInflections([]);
+        setPagination(defaultPagination());
         setError(searchError instanceof Error ? searchError.message : "Search failed");
         setStatus("error");
       }
     } else {
       latestSearchId.current += 1;
+      latestRequestedKey.current = "";
       setActiveQuery("");
+      setActivePage(1);
       setStatus("idle");
       setEntries([]);
       setHanjaCharacters([]);
       setInflections([]);
+      setPagination(defaultPagination());
       setError("");
     }
   }, [query]);
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
-    if (!normalizedQuery) {
-      void handleSearch("");
-      return;
-    }
-    if (activeQuery !== normalizedQuery || status === "idle") {
-      void handleSearch(normalizedQuery);
-    }
+      if (!normalizedQuery) {
+        if (latestRequestedKey.current || status !== "idle") {
+          void handleSearch("");
+        }
+        return;
+      }
+
+      if (latestRequestedKey.current !== requestKey) {
+        latestRequestedKey.current = requestKey;
+        void handleSearch(normalizedQuery, requestedPage);
+      }
     }, 0);
     return () => window.clearTimeout(timeoutId);
-  }, [activeQuery, handleSearch, normalizedQuery, status]);
+  }, [handleSearch, normalizedQuery, requestedPage, requestKey, status]);
 
-  const isSearching = Boolean(normalizedQuery) && (status === "loading" || activeQuery !== normalizedQuery);
-  const hasCompletedCurrentSearch = status === "success" && activeQuery === normalizedQuery;
+  useEffect(() => {
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (!event.persisted) return;
+      latestRequestedKey.current = "";
+      void handleSearch(normalizedQuery, requestedPage);
+    };
+
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, [handleSearch, normalizedQuery, requestedPage]);
+
+  const isSearching = Boolean(normalizedQuery) && (status === "loading" || activeQuery !== normalizedQuery || activePage !== requestedPage);
+  const hasCompletedCurrentSearch = status === "success" && activeQuery === normalizedQuery && activePage === requestedPage;
   const resultCountLabel = isSearching
     ? "Searching..."
     : hasCompletedCurrentSearch
-      ? `${entries.length} ${entries.length === 1 ? "entry" : "entries"} found`
+      ? `${pagination.totalEntries} ${pagination.totalEntries === 1 ? "entry" : "entries"} found`
       : normalizedQuery
         ? "Search pending"
         : "Enter a query";
@@ -308,9 +512,15 @@ function SearchPageContent() {
             </span>
           </Link>
           <div className="min-w-0 flex-1">
-            <SearchBar searchPage={true} initialQuery={query ?? ""} isSearching={isSearching} customFunction={handleSearch}/>
+            <SearchBar searchPage={true} initialQuery={query ?? ""} isSearching={isSearching} />
           </div>
-          <ReportBugLink className="self-start md:self-auto" />
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            <SearchDisplayOptions
+              showMiddleKorean={showMiddleKorean}
+              onShowMiddleKoreanChange={setShowMiddleKorean}
+            />
+            <ReportBugLink />
+          </div>
         </div>
       </header>
 
@@ -341,18 +551,23 @@ function SearchPageContent() {
             ) : hasCompletedCurrentSearch && entries.length === 0 ? (
               <EmptySearchState query={normalizedQuery} />
             ) : (
-              entries.map((entry) => (
-                <Entry
-                  key={entry.id}
-                  hanja={entry.hanja}
-                  hangul={entry.hangul}
-                  alternateHanja={entry.alternateHanja}
-                  alternateForms={entry.alternateForms}
-                  definitions={entry.definitions}
-                  confidence={entry.confidence}
-                  proficiency={entry.proficiency}
-                />
-              ))
+              <>
+                {entries.map((entry) => (
+                  <Entry
+                    key={entry.id}
+                    hanja={entry.hanja}
+                    hangul={entry.hangul}
+                    middleKorean={entry.middleKorean}
+                    showMiddleKorean={showMiddleKorean}
+                    alternateHanja={entry.alternateHanja}
+                    alternateForms={entry.alternateForms}
+                    definitions={entry.definitions}
+                    confidence={entry.confidence}
+                    proficiency={entry.proficiency}
+                  />
+                ))}
+                <PaginationControls pagination={pagination} query={normalizedQuery} />
+              </>
             )}
           </div>
           <HanjaSidePanel characters={hanjaCharacters} isLoading={isSearching} />

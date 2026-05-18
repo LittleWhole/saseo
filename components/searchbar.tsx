@@ -9,6 +9,7 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -32,6 +33,10 @@ export function SearchBar({ searchPage, initialQuery = "", isSearching = false, 
       query: initialQuery,
     },
   });
+
+  useEffect(() => {
+    form.reset({ query: initialQuery });
+  }, [form, initialQuery]);
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     if (searchPage) {

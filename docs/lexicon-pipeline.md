@@ -41,6 +41,14 @@ The primary object is a Hanja-backed Korean sense, not a Hangul spelling.
 Multiple entries may share the same Hangul spelling. That is intentional:
 `방수/防水` and `방수/放水` are separate lexical senses.
 
+Definitions may optionally carry sparse presentation structure when a source has
+real nested sense organization. For example, Wiktionary entries such as `하다`
+use parent glosses like `to say (that):` followed by narrower sub-senses. Saseo
+stores the parent as `senseGroup.label` on the narrower definitions instead of
+rendering the heading as another independent sense. A definition may also carry
+`discriminator` when a source gloss has a useful leading qualifier such as
+`after an indirect quotation` or `with a noun`.
+
 ## Source Layout
 
 Normalized snapshots live in `app/data/sources`.
@@ -135,6 +143,35 @@ At search time, structural hyphens are formatting sugar. The public entry still
 renders infixes and affixes with hyphens, but the search index also stores
 hyphenless variants, so a query like `겠` finds the displayed infix `-겠-`.
 
+## Middle Korean Forms
+
+Entries may carry optional `middleKorean` forms. These are displayed near the
+headword only when the source evidence is explicit enough; otherwise the field
+is omitted.
+
+The pipeline keeps `app/data/generated/hunmong-jahoe-readings.json` as the
+primary Hanja-reading table for Middle Korean composition. Refresh it with
+`npm run lexicon:import:hunmong`; the importer reads the Korean Wikisource
+transcription of `訓蒙字會` section pages and stores one historical
+Sino-Korean reading per Hanja/modern-reading pair.
+
+The Wiktionary importer then mines two conservative evidence paths:
+
+- term-level etymology templates such as `ko-etym-native`, direct `okm`
+  inheritance, and adjacent `okm-l`/`okm-inline` templates that explicitly mark
+  a Middle Korean source form;
+- Hanja character etymologies with historical-reading templates such as
+  `hanja-hunmong`, `hanja-dongguk`, or structured `hanja-ety` fields. For Hanja
+  compounds, the builder composes a Middle Korean spelling only when every Hanja
+  character has a historically sourced reading matching the entry's modern
+  Hangul reading.
+
+Preferred Hanja reading sources are direct Wikisource `訓蒙字會` readings when
+available, with Wiktionary's structured Hunmong/Dongguk character etymologies
+as corroboration and fallback. Source labels stay in the generated data for
+auditing, but `/api/search` strips them before returning the public response so
+entry cards show only the form and Yale romanization.
+
 ## Search Query Language
 
 Search is intentionally lexical, not just string-matching.
@@ -212,6 +249,20 @@ phonological-identity problem from assigning unrelated Hanja to an inflected
 query. When a candidate is accepted, `/api/search` returns an `inflections`
 payload and boosts the lemma results; the frontend renders a Jisho-like notice
 above the result list.
+
+## Search Result Pagination
+
+`/api/search` returns at most 100 entries per response. It accepts a one-based
+`page` query parameter and includes a `pagination` payload with the current
+page, page size, total entry count, total pages, and previous/next flags. The
+API ranks and collapses the full match set before slicing the requested page,
+then attaches heavier per-entry data such as sentence examples only to the
+current 100-entry page.
+
+The search page reads and writes the same `page` parameter. When more than 100
+matches exist, it renders previous/next controls plus nearby page links while
+keeping the header count as the total match count, not just the current page
+length.
 
 ## Human Review
 

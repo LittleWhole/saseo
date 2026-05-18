@@ -11,6 +11,7 @@ const sourceDir = path.join(root, "app", "data", "sources");
 const lexiconPath = path.join(generatedDir, "lexicon.json");
 const reviewQueuePath = path.join(generatedDir, "review-queue.json");
 const coverageReportPath = path.join(generatedDir, "hanja-coverage-report.json");
+const hunmongJahoeReadingsPath = path.join(generatedDir, "hunmong-jahoe-readings.json");
 const decisionsPath = path.join(root, "app", "data", "review-decisions.jsonl");
 
 const DERIVED_SUFFIX_RULES = [
@@ -39,6 +40,7 @@ const PRODUCTIVE_FORM_FOLDING_RULES = [
 
 const DUEUM_CANONICAL_LABEL = "North Korea, Yanbian, or archaic";
 const DUEUM_IOTIZED_JUNG_INDEXES = new Set([2, 3, 6, 7, 12, 17, 20]);
+const MIXED_SCRIPT_FORM_OF_PATTERN = /^Hanja-Hangul mixed script form of\b/u;
 
 const HANJA_SEMANTICS = new Map([
   ["防", ["prevent", "block", "protect", "proof", "waterproof", "waterproofing", "resistance", "resistant", "guard"]],
@@ -53,6 +55,20 @@ const HANJA_SEMANTICS = new Map([
   ["技", ["skill", "technique", "craft"]],
   ["士", ["specialist", "officer", "scholar"]],
 ]);
+
+const MIDDLE_KOREAN_SOURCE_LABELS = new Map([
+  ["bn", "Beonyeok Nogeoldae"],
+  ["dk", "Dongguk Jeongun"],
+  ["gy", "Jilin Leishi"],
+  ["hj", "Hunmin Jeongeum"],
+  ["hm", "Hunmong Jahoe"],
+  ["ss", "Seokbo Sangjeol"],
+  ["yb", "Yongbi Eocheon'ga"],
+]);
+
+function compactWhitespace(value) {
+  return String(value ?? "").replace(/\s+/g, " ").trim();
+}
 
 function tokenize(text) {
   return String(text ?? "")
@@ -165,6 +181,21 @@ async function loadHanjaReadings() {
   return readings;
 }
 
+async function loadHunmongJahoeMiddleKoreanReadings() {
+  if (!existsSync(hunmongJahoeReadingsPath)) {
+    return {
+      metadata: null,
+      readings: [],
+    };
+  }
+
+  const parsed = JSON.parse(await readFile(hunmongJahoeReadingsPath, "utf8"));
+  return {
+    metadata: parsed.metadata ?? null,
+    readings: Array.isArray(parsed.readings) ? parsed.readings : [],
+  };
+}
+
 function isKoreanScript(char) {
   return /[\uAC00-\uD7AF\u4E00-\u9FFF]/u.test(char);
 }
@@ -206,6 +237,217 @@ function scriptFormMatchesReading(form, hangul, hanjaReadings) {
 
 function filterReadableScriptForms(forms, hangul, hanjaReadings) {
   return uniqueValues(forms).filter((form) => scriptFormMatchesReading(form, hangul, hanjaReadings));
+}
+
+function hasKoreanScript(value) {
+  return /[\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF]/u.test(String(value ?? ""));
+}
+
+function cleanMiddleKoreanForm(value) {
+  return String(value ?? "")
+    .normalize("NFC")
+    .replace(/<\/?[^>]+>/g, "")
+    .replace(/\^\S+/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function middleKoreanFormFromHtml(value) {
+  const html = String(value ?? "");
+  const langMatch = html.match(/lang=["']okm["'][^>]*>([^<]+)</u);
+  return cleanMiddleKoreanForm(langMatch?.[1] ?? html.match(/>([^<]+)</u)?.[1] ?? html);
+}
+
+function middleKoreanYaleFromHtml(value) {
+  return String(value ?? "").match(/Yale:\s*([^)<]+)/u)?.[1]?.trim();
+}
+
+function middleKoreanSourceFromCode(code, fallback = "wiktionary") {
+  return MIDDLE_KOREAN_SOURCE_LABELS.get(String(code ?? "")) ?? fallback;
+}
+
+function middleKoreanRecord(form, yale, source, confidence = 0.9) {
+  const cleanedForm = cleanMiddleKoreanForm(form);
+  if (!cleanedForm || !hasKoreanScript(cleanedForm)) return null;
+  return {
+    form: cleanedForm,
+    yale: String(yale ?? "").trim() || undefined,
+    source,
+    confidence,
+  };
+}
+
+function mergeMiddleKoreanForms(...groups) {
+  const merged = [];
+  for (const form of groups.flat().filter(Boolean)) {
+    const sources = (Array.isArray(form.source) ? form.source.flat(Infinity) : [form.source]).filter(Boolean);
+    const existing = merged.find((candidate) =>
+      candidate.form === form.form &&
+      (candidate.yale === form.yale || !candidate.yale || !form.yale)
+    );
+    if (!existing) {
+      merged.push({
+        ...form,
+        source: sources,
+      });
+      continue;
+    }
+    if (!existing.yale && form.yale) existing.yale = form.yale;
+    for (const source of sources) {
+      if (!existing.source.includes(source)) existing.source.push(source);
+    }
+    existing.confidence = Math.max(existing.confidence ?? 0, form.confidence ?? 0);
+  }
+  return merged.sort((left, right) => (right.confidence ?? 0) - (left.confidence ?? 0));
+}
+
+function extractTemplateMiddleKoreanForms(entry) {
+  const forms = [];
+  let nextOkmSource = "";
+
+  for (const template of entry.etymology_templates ?? []) {
+    const args = template.args ?? {};
+    const name = template.name ?? "";
+
+    if (name === "ko-etym-native" && args["2"] && hasKoreanScript(args["2"]) && /Middle Korean/u.test(template.expansion ?? entry.etymology_text ?? "")) {
+      forms.push(middleKoreanRecord(args["2"], args["3"], middleKoreanSourceFromCode(args["1"], "Wiktionary etymology"), 0.95));
+      nextOkmSource = "";
+      continue;
+    }
+
+    if ((name === "inh" || name === "der") && args["2"] === "okm") {
+      if (args["3"] && args["3"] !== "-") {
+        forms.push(middleKoreanRecord(args["3"], args.tr, "Wiktionary etymology", 0.92));
+        nextOkmSource = "";
+      } else {
+        nextOkmSource = "Wiktionary etymology";
+      }
+      continue;
+    }
+
+    if ((name === "okm-l" || name === "okm-inline") && nextOkmSource) {
+      forms.push(middleKoreanRecord(args["1"], args["2"], nextOkmSource, 0.9));
+      nextOkmSource = "";
+      continue;
+    }
+
+    if (name !== "anchor" && name !== "number box") nextOkmSource = "";
+  }
+
+  return mergeMiddleKoreanForms(forms);
+}
+
+function modernHanjaReadingsFromEntry(entry) {
+  const readings = [];
+  for (const template of entry.etymology_templates ?? []) {
+    const sort = template.args?.sort;
+    if (sort && /^[\uAC00-\uD7AF]+$/u.test(sort)) readings.push(sort);
+  }
+  for (const sound of entry.sounds ?? []) {
+    const reading = String(sound.hangeul ?? "").replace(/[()ː:]/gu, "").trim();
+    if (reading && /^[\uAC00-\uD7AF]+$/u.test(reading)) readings.push(reading);
+  }
+  for (const form of entry.forms ?? []) {
+    if (!form.tags?.includes("eumhun")) continue;
+    const reading = String(form.form ?? "").trim().split(/\s+/u).at(-1);
+    if (reading && /^[\uAC00-\uD7AF]+$/u.test(reading)) readings.push(reading);
+  }
+  return uniqueValues(readings);
+}
+
+function extractHanjaEtymologyMiddleKoreanForms(entry) {
+  const forms = [];
+  for (const template of entry.etymology_templates ?? []) {
+    const args = template.args ?? {};
+    const name = template.name ?? "";
+    if (name === "hanja-hunmong") {
+      forms.push(middleKoreanRecord(args["1"], args["2"], "Hunmong Jahoe", 0.98));
+      continue;
+    }
+    if (name === "hanja-dongguk") {
+      forms.push(middleKoreanRecord(args["1"], args["2"], "Dongguk Jeongun", 0.96));
+      continue;
+    }
+    if (name === "hanja-ety") {
+      for (const [key, value] of Object.entries(args)) {
+        if (key === "dk") {
+          forms.push(middleKoreanRecord(middleKoreanFormFromHtml(value), middleKoreanYaleFromHtml(value), "Dongguk Jeongun", 0.94));
+        }
+        if (/^m\d*$/u.test(key)) {
+          forms.push(middleKoreanRecord(middleKoreanFormFromHtml(value), middleKoreanYaleFromHtml(value), "Hunmong Jahoe", 0.94));
+        }
+      }
+    }
+  }
+
+  const text = String(entry.etymology_text ?? "");
+  for (const match of text.matchAll(/Recorded as Middle Korean\s+(?:[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]+\/)?([^\s(,]+)(?:\s+\(([^)]+)\))?\s+\(Yale:\s*([^)]+)\)\s+in\s+([^,.]+?)(?:,|\.)/gu)) {
+    const source = match[4]?.includes("Dongguk") || match[4]?.includes("동국정운")
+      ? "Dongguk Jeongun"
+      : match[4]?.includes("Hunmong") || match[4]?.includes("훈몽자회")
+        ? "Hunmong Jahoe"
+        : "Wiktionary etymology";
+    forms.push(middleKoreanRecord(match[1], match[3] ?? match[2], source, 0.9));
+  }
+
+  return mergeMiddleKoreanForms(forms);
+}
+
+function buildMiddleKoreanHanjaIndex(entries, hunmongJahoeReadings = []) {
+  const byCharacterAndReading = new Map();
+
+  for (const entry of entries) {
+    if (entry.lang_code !== "ko" || entry.pos !== "character" || !/^[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]$/u.test(entry.word ?? "")) continue;
+    const forms = extractHanjaEtymologyMiddleKoreanForms(entry);
+    if (!forms.length) continue;
+    for (const reading of modernHanjaReadingsFromEntry(entry)) {
+      const key = `${entry.word}\u0000${reading}`;
+      byCharacterAndReading.set(key, mergeMiddleKoreanForms(byCharacterAndReading.get(key) ?? [], forms));
+    }
+  }
+
+  for (const reading of hunmongJahoeReadings) {
+    if (!reading?.character || !reading?.reading || !reading?.form) continue;
+    const key = `${reading.character}\u0000${reading.reading}`;
+    byCharacterAndReading.set(
+      key,
+      mergeMiddleKoreanForms(
+        byCharacterAndReading.get(key) ?? [],
+        [middleKoreanRecord(reading.form, reading.yale, "Hunmong Jahoe (Wikisource)", 0.99)],
+      ),
+    );
+  }
+
+  return byCharacterAndReading;
+}
+
+function selectMiddleKoreanHanjaForm(forms) {
+  if (!forms?.length) return null;
+  return forms.find((form) => form.source?.includes("Hunmong Jahoe")) ?? forms[0];
+}
+
+function composeMiddleKoreanHanjaTerm(hanja, hangul, hanjaMiddleKoreanIndex) {
+  const hanjaUnits = structuralUnits(hanja);
+  const readingUnits = structuralUnits(hangul);
+  if (!hanjaUnits.length || hanjaUnits.length !== readingUnits.length) return [];
+  if (hanjaUnits.some((unit) => !isHanja(unit.char))) return [];
+
+  const parts = [];
+  for (let index = 0; index < hanjaUnits.length; index += 1) {
+    const forms = hanjaMiddleKoreanIndex.get(`${hanjaUnits[index].char}\u0000${readingUnits[index].char}`);
+    const form = selectMiddleKoreanHanjaForm(forms);
+    if (!form) return [];
+    parts.push(form);
+  }
+
+  return mergeMiddleKoreanForms([
+    {
+      form: parts.map((part) => part.form).join(""),
+      yale: parts.every((part) => part.yale) ? parts.map((part) => part.yale).join("-") : undefined,
+      source: uniqueValues(parts.flatMap((part) => part.source ?? [])).join(" + "),
+      confidence: Math.min(...parts.map((part) => part.confidence ?? 0.85)) - 0.08,
+    },
+  ]);
 }
 
 function isGrammarMorphemeEntry(entry) {
@@ -417,7 +659,48 @@ function hangulFromWiktionaryEntry(entry) {
   return "";
 }
 
-async function loadWiktionaryAlignedEntries(limit, hanjaReadings) {
+function structuralGlossHeading(gloss) {
+  const text = compactWhitespace(gloss);
+  if (!text.endsWith(":")) return "";
+  return compactWhitespace(text.replace(/[:：]+$/u, ""));
+}
+
+function splitQualifierParts(text) {
+  return text
+    .split(",")
+    .map((part) => compactWhitespace(part))
+    .filter(Boolean);
+}
+
+function publicGlossDiscriminator(rawGloss, normalizedGloss) {
+  const raw = compactWhitespace(rawGloss);
+  if (!raw.startsWith("(")) return undefined;
+
+  const qualifiers = [];
+  let rest = raw;
+  while (rest.startsWith("(")) {
+    const end = rest.indexOf(")");
+    if (end <= 0) break;
+    qualifiers.push(rest.slice(1, end));
+    rest = compactWhitespace(rest.slice(end + 1));
+  }
+
+  if (!qualifiers.length || rest !== compactWhitespace(normalizedGloss)) return undefined;
+
+  const lexicalQualifiers = qualifiers
+    .flatMap(splitQualifierParts)
+    .filter((part) => {
+      const normalized = part.toLowerCase();
+      if (["transitive", "intransitive", "auxiliary", "colloquial", "euphemistic", "often", "polite", "usually"].includes(normalized)) {
+        return false;
+      }
+      return /^(after|as|by|from|in|of|used|whether|with)\b/u.test(normalized) || normalized.includes(" as ") || normalized.includes(" with ");
+    });
+
+  return lexicalQualifiers.length ? lexicalQualifiers.join("; ") : undefined;
+}
+
+async function loadWiktionaryAlignedEntries(limit, hanjaReadings, hunmongJahoeReadings = []) {
   const dictPath = path.join(root, "app", "data", "dict.json");
   if (!existsSync(dictPath)) return [];
 
@@ -430,6 +713,7 @@ async function loadWiktionaryAlignedEntries(limit, hanjaReadings) {
   });
 
   const parsed = JSON.parse(chunks.join(""));
+  const hanjaMiddleKoreanIndex = buildMiddleKoreanHanjaIndex(parsed, hunmongJahoeReadings);
   const results = [];
   for (const entry of parsed) {
     if (Number.isFinite(limit) && results.length >= limit) break;
@@ -440,14 +724,21 @@ async function loadWiktionaryAlignedEntries(limit, hanjaReadings) {
     const hanja = hanjaForms[0] ?? "";
     const definitions = [];
     for (const sense of entry.senses ?? []) {
-      for (const gloss of sense.glosses ?? []) {
+      const glosses = sense.glosses ?? [];
+      const groupLabel = glosses.length > 1 ? structuralGlossHeading(glosses[0]) : "";
+      for (const [glossIndex, gloss] of glosses.entries()) {
         if (gloss.startsWith("hanja form of")) continue;
+        if (MIXED_SCRIPT_FORM_OF_PATTERN.test(gloss)) continue;
         if (gloss.includes("MC reading:") || gloss.startsWith("More information")) continue;
+        if (groupLabel && glossIndex === 0) continue;
+        const rawGloss = sense.raw_glosses?.[glossIndex];
         definitions.push({
           text: gloss,
           pos: normalizePos(entry.pos),
           examples: (sense.examples ?? []).map((example) => example.text).filter(Boolean),
           tags: sense.tags ?? [],
+          senseGroup: groupLabel ? { label: groupLabel } : undefined,
+          discriminator: rawGloss ? publicGlossDiscriminator(rawGloss, gloss) : undefined,
           sourceIds: [`wiktionary:${sense.id ?? entry.word}`],
           confidence: 0.86,
         });
@@ -455,11 +746,16 @@ async function loadWiktionaryAlignedEntries(limit, hanjaReadings) {
     }
     if (definitions.length === 0) continue;
     const hasExplicitHanja = hanja && /[\u4E00-\u9FFF]/u.test(hanja);
+    const middleKorean = mergeMiddleKoreanForms(
+      extractTemplateMiddleKoreanForms(entry),
+      hasExplicitHanja ? composeMiddleKoreanHanjaTerm(hanja, hangul, hanjaMiddleKoreanIndex) : [],
+    );
     results.push({
       id: `wiktionary:${hangul}:${hasExplicitHanja ? hanja : "hangul-only"}:${results.length}`,
       hangul,
       hanja: hasExplicitHanja ? hanja : hangul,
       alternateHanja: hasExplicitHanja ? hanjaForms.slice(1) : [],
+      middleKorean: middleKorean.length ? middleKorean.slice(0, 3) : undefined,
       definitions: definitions.map((definition) => ({
         ...definition,
         confidence: hasExplicitHanja ? definition.confidence : 0.55,
@@ -562,18 +858,22 @@ function mergeDuplicateEntries(entries) {
     const key = `${entry.hangul}\u0000${entry.hanja}`;
     const existing = byKey.get(key);
     if (!existing) {
-      byKey.set(key, {
+      const merged = {
         ...entry,
         definitions: [...entry.definitions],
         alternateHanja: [...new Set(entry.alternateHanja ?? [])],
         alternateForms: [...(entry.alternateForms ?? [])],
         provenance: [...new Set(entry.provenance ?? [])],
-      });
+      };
+      if (entry.middleKorean?.length) merged.middleKorean = [...entry.middleKorean];
+      byKey.set(key, merged);
       continue;
     }
     existing.definitions.push(...entry.definitions);
     existing.alternateHanja = [...new Set([...(existing.alternateHanja ?? []), ...(entry.alternateHanja ?? [])])];
     existing.alternateForms = mergeAlternateForms(existing.alternateForms ?? [], entry.alternateForms ?? []);
+    existing.middleKorean = mergeMiddleKoreanForms(existing.middleKorean ?? [], entry.middleKorean ?? []).slice(0, 3);
+    if (!existing.middleKorean.length) delete existing.middleKorean;
     existing.provenance = [...new Set([...(existing.provenance ?? []), ...(entry.provenance ?? [])])];
     existing.confidence = Math.max(existing.confidence ?? 0, entry.confidence ?? 0);
     if (entry.reviewStatus === "reviewed") existing.reviewStatus = "reviewed";
@@ -1235,6 +1535,7 @@ async function main() {
 
   await mkdir(generatedDir, { recursive: true });
   const hanjaReadings = await loadHanjaReadings();
+  const hunmongJahoe = await loadHunmongJahoeMiddleKoreanReadings();
   const {
     koSenses,
     englishEntries,
@@ -1243,7 +1544,7 @@ async function main() {
     manifest: sourceManifest,
   } = await loadNormalizedSources({ root, sourceDir, decisionsPath });
   const aligned = alignSeedSources(koSenses, englishEntries);
-  const wiktionary = includeWiktionary ? await loadWiktionaryAlignedEntries(wiktionaryLimit, hanjaReadings) : [];
+  const wiktionary = includeWiktionary ? await loadWiktionaryAlignedEntries(wiktionaryLimit, hanjaReadings, hunmongJahoe.readings) : [];
   const derived = inferDerivedHanja(
     mergeAlternativeHanjaForms(mergeNorthKoreanSpellingVariants(mergeDuplicateEntries([...aligned.lexicon, ...lexiconEntries, ...wiktionary]))),
     hanjaReadings,
@@ -1268,6 +1569,8 @@ async function main() {
       englishEntryCount: englishEntries.length,
       lexiconEntryCount: lexiconEntries.length,
       hanjaReadingCount: hanjaReadings.size,
+      hunmongJahoeReadingCount: hunmongJahoe.readings.length,
+      hunmongJahoeSourceUrl: hunmongJahoe.metadata?.sourceUrl ?? null,
       reviewedDecisionCount: reviewed.length,
       wiktionaryIncluded: includeWiktionary,
       wiktionaryEntryLimit: includeWiktionary

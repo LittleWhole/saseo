@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Saseo Noto Sans CJK KR";
+  src: url("./fonts/NotoSansCJKkr-Regular.otf") format("opentype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  unicode-range: U+1100-11FF, U+302E-302F, U+A960-A97F, U+AC00-D7AF, U+D7B0-D7FF;
+}
+
 :root {
   --background: #0d0b09;
   --foreground: #f5f0e8;
   --font-ui: Arial, Helvetica, sans-serif;
   --font-cjk: "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
   --font-hanja: "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+  --font-middle-korean: "Saseo Noto Sans CJK KR", "Noto Sans CJK KR", "Noto Serif CJK KR", "NanumBarunGothic YetHangul", "NanumMyeongjo YetHangul", "AppleMyungjo", var(--font-cjk);
   --font-mixed: var(--font-ui);
   --font-korean-weight: 500;
 }
@@ -51,6 +61,13 @@ body {
   font-family: var(--font-cjk);
   font-weight: var(--font-korean-weight);
   font-synthesis-weight: none;
+}
+
+:where(.middle-korean-text) {
+  font-family: var(--font-middle-korean);
+  font-feature-settings: "ljmo" 1, "vjmo" 1, "tjmo" 1;
+  font-synthesis: none;
+  letter-spacing: 0;
 }
 
 :where(.ruby-headword rt) {

@@ -11,6 +11,7 @@
     "lexicon:build": "node scripts/lexicon/build-lexicon.mjs",
     "lexicon:build:sentences": "node scripts/lexicon/build-sentence-bank.mjs",
     "lexicon:build:wiktionary": "node scripts/lexicon/build-lexicon.mjs --include-wiktionary",
+    "lexicon:import:hunmong": "node scripts/lexicon/import-hunmong-jahoe.mjs",
     "lexicon:import:topik": "node scripts/lexicon/import-topik-levels.mjs",
     "lexicon:import:unihan": "node scripts/lexicon/import-unihan-readings.mjs",
     "lexicon:import:krdict": "node scripts/lexicon/import-nikl-openapi.mjs --source=krdict --terms-from-generated-hangul-only",

@@ -8,6 +8,10 @@ type LexiconDefinition = {
   pos: string[];
   examples: Array<string | SenseExample>;
   tags: string[];
+  senseGroup?: {
+    label: string;
+  };
+  discriminator?: string;
   seeAlso?: Array<{
     form: string;
     reading?: string;
@@ -32,6 +36,12 @@ type LexiconEntry = {
   id: string;
   hangul: string;
   hanja: string;
+  middleKorean?: Array<{
+    form: string;
+    yale?: string;
+    source?: string[];
+    confidence?: number;
+  }>;
   alternateHanja?: string[];
   alternateForms?: Array<{
     form: string;
@@ -167,6 +177,15 @@ type HanjaMatchCandidate = {
   score: number;
 };
 
+type SearchPagination = {
+  page: number;
+  pageSize: number;
+  totalEntries: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+};
+
 const INITIALS = ["g", "kk", "n", "d", "tt", "r", "m", "b", "pp", "s", "ss", "", "j", "jj", "ch", "k", "t", "p", "h"];
 const MEDIALS = [
   "a",
@@ -228,10 +247,11 @@ let cachedTopikIndex: TopikIndex | null = null;
 let cachedSentenceBankIndex: SentenceBankIndex | null = null;
 
 const HANJA_CHAR = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/;
+const SEARCH_PAGE_SIZE = 100;
 const STRUCTURAL_HYPHENS = /[-‐‑‒–—―]/g;
 const SYNONYM_OF_PATTERN = /^(?:\([^)]+\)\s*)?(?:North Korean\s+)?[Ss]ynonym of\s+(.+?)[.。]?$/;
 const NORTH_KOREA_REDIRECT_PATTERN = /^North Korea standard (?:form|spelling) of\s+(.+?)(?:[.。]|$)/;
-const REDIRECT_GLOSS_PATTERN = /^(?:\([^)]+\)\s*)?(?:North Korean\s+)?[Ss]ynonym of\s+|^Alternative form of\s+|^North Korea standard (?:form|spelling) of\s+/;
+const REDIRECT_GLOSS_PATTERN = /^(?:\([^)]+\)\s*)?(?:North Korean\s+)?[Ss]ynonym of\s+|^Alternative form of\s+|^North Korea standard (?:form|spelling) of\s+|^Hanja-Hangul mixed script form of\s+/;
 const INFLECTED_FORM_GLOSS_PATTERN = /\bform of\b|\b(?:indicative|interrogative|declarative|imperative|propositive|connective|adnominal|nominalized)\b.*\bform of\b/;
 const HANGUL_BASE = 0xac00;
 const HANGUL_LAST = 0xd7a3;
@@ -476,6 +496,8 @@ function entrySearchFields(entry: LexiconEntry) {
   const definitionText = entry.definitions
     .flatMap((definition) => [
       definition.text,
+      definition.senseGroup?.label,
+      definition.discriminator,
       definition.formOf?.form,
       definition.formOf?.reading,
       definition.formOf?.label,
@@ -1416,6 +1438,10 @@ function isRedirectGloss(text: string | undefined) {
   return REDIRECT_GLOSS_PATTERN.test(String(text ?? ""));
 }
 
+function hasPublicDefinitions(entry: LexiconEntry) {
+  return entry.definitions.some((definition) => !isRedirectGloss(definition.text));
+}
+
 function targetEntriesForSynonym(definition: LexiconDefinition, lookup: Map<string, IndexedEntry[]>) {
   const target = parseSynonymTarget(definition.text);
   if (!target?.form) return [];
@@ -1483,6 +1509,27 @@ function productiveFormKey(form: NonNullable<LexiconDefinition["formOf"]>) {
   return `${form.form}\u0000${form.reading ?? ""}`;
 }
 
+function canonicalPublicDefinitionText(text: string | undefined) {
+  return normalizeSearchText(text)
+    .replace(/[;:：.。]+$/g, "")
+    .replace(/\s+/g, " ");
+}
+
+function canonicalPublicDefinitionGroup(definition: LexiconDefinition) {
+  return canonicalPublicDefinitionText(definition.senseGroup?.label);
+}
+
+function structuralDefinitionHeading(definition: LexiconDefinition) {
+  const text = definition.text.trim();
+  if (!text.endsWith(":")) return "";
+  return text.replace(/[:：]+$/u, "").trim();
+}
+
+function definitionsShareSource(left: LexiconDefinition, right: LexiconDefinition) {
+  const leftSourceIds = new Set(left.sourceIds ?? []);
+  return (right.sourceIds ?? []).some((sourceId) => leftSourceIds.has(sourceId));
+}
+
 function promoteSharedHadaFormEntry(entry: LexiconEntry): LexiconEntry {
   if (!entry.definitions.length) return entry;
 
@@ -1507,9 +1554,10 @@ function promoteSharedHadaFormEntry(entry: LexiconEntry): LexiconEntry {
 
 function definitionDedupeKey(definition: LexiconDefinition) {
   return [
-    normalizeSearchText(definition.text),
+    canonicalPublicDefinitionGroup(definition),
+    canonicalPublicDefinitionText(definition.text),
+    canonicalPublicDefinitionText(definition.discriminator),
     definition.pos.join("|"),
-    definition.tags.join("|"),
     definition.formOf ? productiveFormKey(definition.formOf) : "",
   ].join("\u0000");
 }
@@ -1539,6 +1587,39 @@ function dedupePublicDefinitions(entry: LexiconEntry): LexiconEntry {
   }
 
   if (definitions.length === entry.definitions.length) return entry;
+  return {
+    ...entry,
+    definitions,
+  };
+}
+
+function structureDefinitionGroups(entry: LexiconEntry): LexiconEntry {
+  const definitions: LexiconDefinition[] = [];
+
+  for (let index = 0; index < entry.definitions.length; index += 1) {
+    const definition = entry.definitions[index];
+    if (definition.senseGroup?.label) {
+      definitions.push(definition);
+      continue;
+    }
+
+    const groupLabel = structuralDefinitionHeading(definition);
+    const nextDefinition = entry.definitions[index + 1];
+    if (groupLabel && nextDefinition && !nextDefinition.senseGroup?.label && definitionsShareSource(definition, nextDefinition)) {
+      definitions.push({
+        ...nextDefinition,
+        senseGroup: { label: groupLabel },
+        examples: nextDefinition.examples?.length ? nextDefinition.examples : definition.examples,
+        sourceIds: uniqueValues([...(definition.sourceIds ?? []), ...(nextDefinition.sourceIds ?? [])]),
+      });
+      index += 1;
+      continue;
+    }
+
+    definitions.push(definition);
+  }
+
+  if (definitions.length === entry.definitions.length && definitions.every((definition, index) => definition === entry.definitions[index])) return entry;
   return {
     ...entry,
     definitions,
@@ -2039,6 +2120,10 @@ function toPublicEntry(entry: IndexedEntry): LexiconEntry {
 function stripPublicCitations(entry: LexiconEntry): LexiconEntry {
   return {
     ...entry,
+    middleKorean: entry.middleKorean?.map((form) => ({
+      form: form.form,
+      yale: form.yale,
+    })),
     provenance: undefined,
     reviewStatus: undefined,
     definitions: entry.definitions.map((definition) => ({
@@ -2048,9 +2133,35 @@ function stripPublicCitations(entry: LexiconEntry): LexiconEntry {
   };
 }
 
+function parseSearchPage(value: string | null) {
+  const page = Number.parseInt(String(value ?? "1"), 10);
+  return Number.isFinite(page) && page > 0 ? page : 1;
+}
+
+function paginationFor(totalEntries: number, requestedPage: number): SearchPagination {
+  const totalPages = Math.ceil(totalEntries / SEARCH_PAGE_SIZE);
+  const page = totalPages ? Math.min(requestedPage, totalPages) : 1;
+  return {
+    page,
+    pageSize: SEARCH_PAGE_SIZE,
+    totalEntries,
+    totalPages,
+    hasNextPage: page < totalPages,
+    hasPreviousPage: page > 1,
+  };
+}
+
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams.get("q")?.trim().normalize("NFC") ?? "";
-  if (!query) return NextResponse.json({ metadata: {}, entries: [], hanjaCharacters: [] });
+  const requestedPage = parseSearchPage(request.nextUrl.searchParams.get("page"));
+  if (!query) {
+    return NextResponse.json({
+      metadata: {},
+      entries: [],
+      hanjaCharacters: [],
+      pagination: paginationFor(0, requestedPage),
+    });
+  }
 
   try {
     const searchIndex = await loadSearchIndex();
@@ -2062,7 +2173,7 @@ export async function GET(request: NextRequest) {
       ? []
       : resolveInflectionAnalyses(query, searchIndex);
     const inflectionLemmas = inflections.map((inflection) => inflection.lemma);
-    const entries = mergeNorthKoreanRedirectEntries(
+    const matchedEntries = mergeNorthKoreanRedirectEntries(
       searchIndex.entries
         .map((entry) => ({
           entry,
@@ -2081,17 +2192,22 @@ export async function GET(request: NextRequest) {
         .map((result) => toPublicEntry(result.entry))
         .map((entry) => resolveSynonymDefinitions(entry, searchIndex.byLookupKey))
         .map(promoteSharedHadaFormEntry)
-        .map(dedupePublicDefinitions)
-        .map((entry) => attachSentenceExamples(entry, sentenceBankIndex, searchIndex))
-        .map((entry) => attachProficiency(entry, topikIndex)),
+        .map(structureDefinitionGroups)
+        .map(dedupePublicDefinitions),
       searchIndex.byLookupKey,
-    )
+    ).filter(hasPublicDefinitions);
+    const pagination = paginationFor(matchedEntries.length, requestedPage);
+    const pageStart = (pagination.page - 1) * pagination.pageSize;
+    const entries = matchedEntries
+      .slice(pageStart, pageStart + pagination.pageSize)
+      .map((entry) => attachSentenceExamples(entry, sentenceBankIndex, searchIndex))
+      .map((entry) => attachProficiency(entry, topikIndex))
       .map(stripPublicCitations)
-      .slice(0, 100);
+      .slice(0, pagination.pageSize);
     const hanjaMetadata = await loadHanjaMetadata();
     const hanjaCharacters = buildHanjaCharacters(query, entries, hanjaMetadata);
 
-    return NextResponse.json({ metadata: {}, entries, hanjaCharacters, inflections });
+    return NextResponse.json({ metadata: {}, entries, hanjaCharacters, inflections, pagination });
   } catch (error) {
     console.error("Failed to search generated lexicon:", error);
     return NextResponse.json(
