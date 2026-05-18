@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Ruby } from "@/components/ui/ruby";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight, LoaderCircle, Search } from "lucide-react";
 
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
@@ -15,10 +15,11 @@ import { useRouter } from "next/navigation";
 interface SearchBarProps {
   searchPage?: boolean;
   initialQuery?: string;
+  isSearching?: boolean;
   customFunction?: (query: string) => Promise<void> | void;
 }
 
-export function SearchBar({ searchPage, initialQuery = "", customFunction }: SearchBarProps) {
+export function SearchBar({ searchPage, initialQuery = "", isSearching = false, customFunction }: SearchBarProps) {
   const router = useRouter();
 
   const formSchema = z.object({
@@ -53,7 +54,7 @@ export function SearchBar({ searchPage, initialQuery = "", customFunction }: Sea
                   <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-500" />
                   <Input
                     type="text"
-                    placeholder="Search Korean, Hanja, or English..."
+                    placeholder="Search Korean, Hanja, Romaja, or English..."
                     className="h-12 rounded-full border-0 bg-transparent pl-11 pr-4 text-base text-stone-100 placeholder:text-stone-500 focus-visible:ring-0 focus-visible:ring-offset-0"
                     {...field}
                   />
@@ -65,12 +66,23 @@ export function SearchBar({ searchPage, initialQuery = "", customFunction }: Sea
         <Button
           type="submit"
           className="h-12 flex-shrink rounded-full bg-emerald-300 px-5 text-sm font-semibold text-stone-950 shadow-[0_10px_25px_rgba(110,231,183,0.22)] hover:bg-emerald-200"
+          aria-busy={isSearching}
         >
-          <span className="headword-script text-base leading-none">
-            <Ruby text="檢" ruby="검" />
-            <Ruby text="索" ruby="색" />
-          </span>
-          <ArrowRight className="ml-2 h-4 w-4" />
+          {isSearching ? (
+            <>
+              <LoaderCircle className="mr-2 h-4 w-4 animate-spin motion-reduce:animate-none" />
+              <span>Searching</span>
+            </>
+          ) : (
+            <>
+              <span>Search&nbsp;</span>
+              <span className="headword-script text-base leading-none">
+                <Ruby text="檢" ruby="검" rtStyle={{ color: "#0c0a09" }} />
+                <Ruby text="索" ruby="색" rtStyle={{ color: "#0c0a09" }} />
+              </span>
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </>
+          )}
         </Button>
         </div>
       </form>

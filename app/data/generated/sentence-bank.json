@@ -1,0 +1,3729 @@
+{
+  "metadata": {
+    "builtAt": "2026-05-17T21:55:00.115Z",
+    "sourceSummary": {
+      "lexiconExamples": 309,
+      "sentenceFiles": {
+        "sentences.seed.jsonl": 5
+      }
+    },
+    "entryCount": 296
+  },
+  "entries": [
+    {
+      "id": "lexicon:wiktionary:콜:hangul-only:11330:3:1",
+      "korean": "— 치맥 어때?",
+      "english": "OK!",
+      "source": "lexicon-example",
+      "terms": [
+        "콜"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-콜-ko-intj-mjxurxUU"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:훈:訓:112:1:2",
+      "korean": "'人(인)'의 음은 '인'이고 훈은 '사람'이다.",
+      "english": "The meaning of [the Chinese character] \"人\" is \"person\" and is pronounced in.",
+      "source": "lexicon-example",
+      "terms": [
+        "훈",
+        "訓"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-훈-ko-noun-4wwsUzLS"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:진정:鎭靜:25601:3:1",
+      "korean": "(혼잣말로) 진정하자.",
+      "english": "(Talking to oneself) Calm down. Audio (South Korea): (file)",
+      "source": "lexicon-example",
+      "terms": [
+        "진정",
+        "鎭靜",
+        "鎭靜하다",
+        "진정하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-진정하다-ko-verb-OMRQrb~o"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:구니:拘泥:5650:1:1",
+      "korean": "1929, Song Jin-u, 소작입법의 필요 (\"Tenant farming legislation needed\"), 지주가 부질없이 목전의 이해에만 구니되어 영원한 장래를 보지 못함은 심히 한심한 일이다.",
+      "english": "The landlords' inability to envision the eternal future, due to being obsessed solely with a futile understanding of what is in front of their eyes, is profoundly regrettable.",
+      "source": "lexicon-example",
+      "terms": [
+        "구니",
+        "拘泥",
+        "拘泥하다",
+        "구니하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-구니-ko-noun-OP9wRUgO"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:신탁통치:信託統治:7038:1:1",
+      "korean": "1994, 강만길, ｢한국역사17:분단구조의 정착 1｣, 한길사, pp. 134-5. 조선인이 자치능력이 없기 때문에 실시한다는 신탁통치는 과거 수천 년간 자치정부를 가져온 조선인에게는 모욕적인 것이었다.",
+      "english": "The imposition of a trusteeship on account of Koreans' lack of autonomous capability was offensive to Koreans who had obtained self-government thousands of years in the past.",
+      "source": "lexicon-example",
+      "terms": [
+        "신탁통치",
+        "信託統治"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-신탁통치-ko-noun-WY0UMws4"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:결과:結果:3503:1:1",
+      "korean": "2000, Korea Highway Corporation Act (ko:한국도로공사법), Article 14 Paragraph 1, 공사는 매 사업연도의 결산결과 이익이 생긴 때에는 다음 각호의 순으로 이를 처리한다.",
+      "english": "If the Corporation has a net profit as a result of the annual settlement of accounts, this shall be processed in the following sequence.",
+      "source": "lexicon-example",
+      "terms": [
+        "결과",
+        "結果"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-결과-ko-adv-qm3MEjD2"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:거래:去來:2122:1:1",
+      "korean": "2001, 대한민국 상법 / 大韓民國 商法 (South Korean corporate law), Wikisource 제2항에 규정한 권리는 영업주가 그 거래를 안 날로부터 2주간을 경과하거나 그 거래가 있은 날로부터 1년을 경과하면 소멸한다.",
+      "english": "The rights stipulated in clause 2 are lost 2 weeks after the business owner learns of the transaction, or one year after the transaction takes place.",
+      "source": "lexicon-example",
+      "terms": [
+        "거래",
+        "去來"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-거래-ko-noun-v~NLu47d"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:엄친아:hangul-only:9902:1:1",
+      "korean": "2012: 싸이 아버지 회사 테마주, Dong-A Ilbo 그가 엄친아로 착실하게 성장해 사업가가 됐다면 우리는 가수 싸이를 잃었을 것이다.",
+      "english": "As an eomchina, had Psy worked hard to become a successful businessman, the world would have never experienced his musical talent.",
+      "source": "lexicon-example",
+      "terms": [
+        "엄친아"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-엄친아-ko-noun-NYW-3JNO"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:답정너:答定너:13431:1:1",
+      "korean": "2013, 철수 and 존슨, 취업학개론 왠지 답정너, 이미 답을 정해놓은 거 같더라고. 결국 여자만 두 명 뽑더만.",
+      "english": "In the end only two women were chosen.",
+      "source": "lexicon-example",
+      "terms": [
+        "답정너",
+        "答定너"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-답정너-ko-noun-jdeQdN~l"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:도가니:hangul-only:10145:1:1",
+      "korean": "2014, 대장장이 유이: 돼지부대 어르신은 항상 도가니를 잘 관리해야 한다고 말했다.",
+      "english": "The elder said that one must always take good care of the crucible.",
+      "source": "lexicon-example",
+      "terms": [
+        "도가니"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-도가니-ko-noun-NA1ruXLC"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:안성맞춤:hangul-only:9060:1:3",
+      "korean": "2014, 순한글 이름 쓰면 아산 스파가 공짜! 남녀노소 누구나 안전하게 이용할 수 있는 다양한 풀장 시설도 갖추고 있어 ‘가족 휴양지’로서도 안성맞춤이다.",
+      "english": "Equipped with a variety of pool facilities which can be safely used by people of all sexes and ages, this is the perfect \"family resort\".",
+      "source": "lexicon-example",
+      "terms": [
+        "안성맞춤"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-안성맞춤-ko-noun-daUjvpNE"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:자장가:hangul-only:6300:1:1",
+      "korean": "2014, 엄마가 당신에게 말하지 않은 10가지 엄마는 자장가를 부르면서도 눈꺼풀은 자꾸 감겼다.",
+      "english": "When mum was singing the lullaby, her eyes were falling shut.",
+      "source": "lexicon-example",
+      "terms": [
+        "자장가"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-자장가-ko-noun-ARsLsImG"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:엉덩방아:hangul-only:9231:1:2",
+      "korean": "2014, 오늘 대설…수도권 스키장 일제히 개장 멋진 묘기를 시도하다가 엉덩방아를 찧기도 합니다.",
+      "english": "While trying to do cool stunts, he landed straight on his backside.",
+      "source": "lexicon-example",
+      "terms": [
+        "엉덩방아"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-엉덩방아-ko-noun-uPzrftut"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:갈림길:hangul-only:8905:2:2",
+      "korean": "2014, 전북경찰, 추석 연휴 생사 갈림길 시민구조 빛났다 전북지역 경찰관들의 슬기로운 대응이 추석 연휴기간 생사(生死)의 갈림길에 놓였던 시민들을 잇따라 구조해 주목을 받고 있다.",
+      "english": "The wise rescue actions of policemen in the Jeonbuk region during the Harvest Festival holiday period, in response to civilians who were at the crossroads of life and death, have put themselves under the spotlight.",
+      "source": "lexicon-example",
+      "terms": [
+        "갈림길"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-갈림길-ko-noun--e8T8bYu"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:젓가락:hangul-only:331:1:4",
+      "korean": "2014, 중국의 도둑 클래스, 젓가락으로 스마트폰 훔치고 `끝` 사진 속에는 자전거를 타고 가는 여성의 뒤를 따라가며 젓가락으로 스마트폰을 훔치는 남성이 담겨 있다.",
+      "english": "The picture shows the thief following the woman riding the bicycle and using chopsticks to snatch the smartphone from her.",
+      "source": "lexicon-example",
+      "terms": [
+        "젓가락"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-젓가락-ko-noun-Rz~sDsuT"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:샅샅이:hangul-only:8002:1:1",
+      "korean": "2014, 팔달산 '토막 시신' 혈액형 A형 확인…목장갑 출처 파악 주력 경찰들이 수색견과 함께 눈 쌓인 팔달산 주변과 골목길을 샅샅이 살핍니다.",
+      "english": "The policemen and their police dogs searched the snow-covered Paldalsan Mountain and its side roads thoroughly.",
+      "source": "lexicon-example",
+      "terms": [
+        "샅샅이"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-샅샅이-ko-adv-3nrSIqb1"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:호주머니:胡주머니:9485:2:1",
+      "korean": "2015, '나 홀로' 성장하던 미국 경제 주춤세 완연, 왜? 일단 휘발유 값 하락으로 미국인의 호주머니 사정은 좋아지고 있다.",
+      "english": "Americans are doing better in their wallets once the gasoline price falls.",
+      "source": "lexicon-example",
+      "terms": [
+        "호주머니",
+        "胡주머니"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-호주머니-ko-noun-hsTohuX4"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:호주머니:胡주머니:9485:1:2",
+      "korean": "2015, 2015년 2월 별자리 운세 교제가 잦을수록 호주머니도 비어간다.",
+      "english": "The more you socialise, the sooner your pocket becomes empty.",
+      "source": "lexicon-example",
+      "terms": [
+        "호주머니",
+        "胡주머니"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-호주머니-ko-noun-YvXViP05"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:민족:民族:3561:1:3",
+      "korean": "2016, 舊(구)소련권 영토 갈등 분출… 러, 親(친)러 지역 독립 부추겨 25년 전 소련 붕괴 당시의 국경·민족·종교 혼란상이 재현되고 있다는 의미다.",
+      "english": "It means the chaos of national borders, ethnicities and religions 25 years ago during the collapse of the Soviet Union is being reproduced.",
+      "source": "lexicon-example",
+      "terms": [
+        "민족",
+        "民族"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-민족-ko-noun-VcIvbkj3"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:변이하다:變異하다:14528:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그 목적은 바이러스가 변이할 기회를 가져 현존하는 백신의 효력이 별로 없어지게 되는 일이 생기기 전에 모두에게 백신을 접종하려는 것이다.",
+      "english": "The goal is to vaccinate everyone before the virus has a chance to change, making the existing vaccines less effective.",
+      "source": "lexicon-example",
+      "terms": [
+        "변이하다",
+        "變異하다",
+        "변리하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-변이하다-ko-verb-6XgAfi9e"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:얼마나:hangul-only:3542:1:2",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그 집단이 직면하고 있는 어려움 중의 하나는 이 지역들의 사람들이 얼마나 자주 이동하는지라고 그는 말한다.",
+      "english": "He says that one of the difficulties the group faces is how often people in these areas move.",
+      "source": "lexicon-example",
+      "terms": [
+        "얼마나"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-얼마나-ko-adv-pWw~3UaO"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:추적하다:追跡하다:14515:2:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그는, 씨디씨(CDC)가 이주자 집단을 추적하기 위한 과학기술을 이용한다고 말한다.",
+      "english": "He says the CDC uses technology to track migrant groups.",
+      "source": "lexicon-example",
+      "terms": [
+        "추적하다",
+        "追跡하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-추적하다-ko-verb-cGA2NUq4"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:달아나다:hangul-only:10342:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그들은 경제적 문제, 정치적 상황 또는 폭력을 피해 달아나는 일이 빈번하다.",
+      "english": "They often flee economic problems, political situations or violence.",
+      "source": "lexicon-example",
+      "terms": [
+        "달아나다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-달아나다-ko-verb-ANMf01Xe"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:분량:分量:11669:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그들은 또한 짧은 시간에 여러 명이 접종할 분량의 백신을 배달해야 한다.",
+      "english": "They also have to deliver several doses of the vaccine in a short period of time.",
+      "source": "lexicon-example",
+      "terms": [
+        "분량",
+        "分量"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-분량-ko-noun-e4li1utS"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:야기하다:惹起하다:14527:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그러나 그 프로그램의 성공은 새로운 문제점을 야기했다.",
+      "english": "But the program’s success has introduced new problems.",
+      "source": "lexicon-example",
+      "terms": [
+        "야기하다",
+        "惹起하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-야기하다-ko-verb-JAWf8ifn"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:중:中:8:6:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그러나 약간의 사례가 가장 접근하기 어려운 지역들 중에 남아 있다.",
+      "english": "But, a few cases remain in areas that are among the most difficult to reach.",
+      "source": "lexicon-example",
+      "terms": [
+        "중",
+        "中"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-중-ko-noun-baahS3b6"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:전투:戰鬪:6867:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그러나 이들 백신접종 팀은 전투 중의 짧은 휴식 기간에 재빠르게 움직여야 한다.",
+      "english": "But these vaccination teams have to move quickly during short breaks in the fighting.",
+      "source": "lexicon-example",
+      "terms": [
+        "전투",
+        "戰鬪"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-전투-ko-noun-L1DtbR3S"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:존재:存在:4202:4:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그러나, 그와 다른 전문가들이 경고하는 바는, 만약 소아마비가 어디에서든 계속 존재한다면, 다시 한번 확산할 수도 있다는 것이다.",
+      "english": "But, he and other experts warn, if polio continues to exist anywhere, it could once again spread.",
+      "source": "lexicon-example",
+      "terms": [
+        "존재",
+        "存在",
+        "存在하다",
+        "존재하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-존재하다-ko-verb-n-Jbd-ah"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:분쟁:紛爭:14510:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그러나, 이들 지역의 불안정성, 분쟁 그리고 극단적인 원격성이 수천 명의 아이들이 금년에 소아마비 백신을 받지 못하도록 하고 있다.",
+      "english": "But unrest, conflict and the extreme remoteness of these areas has kept thousands of children from receiving polio vaccines this year.",
+      "source": "lexicon-example",
+      "terms": [
+        "분쟁",
+        "紛爭"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-분쟁-ko-noun-5X~S64DJ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:알다:hangul-only:2613:2:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그러한 팀들은 그 지역의 문화와 관습을 잘 알 것 같다.",
+      "english": "Such teams are likely to be aware of an area’s culture and customs.",
+      "source": "lexicon-example",
+      "terms": [
+        "알다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-알다-ko-verb-NzM5HcVL"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:접종:接種:21921:2:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 그리고 의료팀이 아이들을 접종하기 위한 이주자 추적을 항상 할 수는 없다.",
+      "english": "And medical teams cannot always track the migrants in order to vaccinate the children.",
+      "source": "lexicon-example",
+      "terms": [
+        "접종",
+        "接種",
+        "接種하다",
+        "접종하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-접종하다-ko-verb-1ed64ipf"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:빼앗다:hangul-only:8489:3:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 다른 곳에서는, 반정부 세력이 지배하는 지역을 병사들이 빼앗았을 때, 그들이 아이들에게 백신을 접종한다.",
+      "english": "In other places, soldiers vaccinate children when they take over an area run by anti-government forces.",
+      "source": "lexicon-example",
+      "terms": [
+        "빼앗다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-빼앗다-ko-verb-2Kbai8FA"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:근절:根絶:24103:2:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 바이러스를 완전히 근절하기 위해서, 의료팀들은 세 나라의 어린이들에게 백신을 접종하기 위해 노력 중이다.",
+      "english": "To eradicate the virus completely, medical teams are trying to vaccinate children in three countries.",
+      "source": "lexicon-example",
+      "terms": [
+        "근절",
+        "根絶",
+        "根絶하다",
+        "근절하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-근절하다-ko-verb-X3secfXs"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:수리:修理:2010:1:2",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 수리된 건물과 풀이 자라지 않은 도로가 있다면, 이로써 연구자들은 사람들이 주변에 거주하고 있을 수 있다고 생각한다.",
+      "english": "Structures that have been repaired and roads without grass growing on them may show researchers that people are living nearby.",
+      "source": "lexicon-example",
+      "terms": [
+        "수리",
+        "修理",
+        "修理하다",
+        "수리하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-수리-ko-noun-y-mYEXcc"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:일하다:hangul-only:3131:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 앤드류 엣사노는 적십자의 면역 전문가로 일한다.",
+      "english": "Andrew Etsano works as an immunization expert for the Red Cross.",
+      "source": "lexicon-example",
+      "terms": [
+        "일하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-일하다-ko-verb-rrijUDte"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:결과적:結果的:14511:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 엣사노가 말하기를, 결과적으로 사람들이 바이러스를 한 곳에서 다른 곳으로 옮긴다고 한다.",
+      "english": "Etsano says that, as a result, people take the virus from one place to another.",
+      "source": "lexicon-example",
+      "terms": [
+        "결과적",
+        "結果的"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-결과적-ko-noun-7TBzaHqh"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:살펴보다:hangul-only:3738:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 연구자들은 단서를 찾기 위해 인공위성에서 전송된 사진들을 살펴본다.",
+      "english": "Researchers look at images from satellites for clues.",
+      "source": "lexicon-example",
+      "terms": [
+        "살펴보다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-살펴보다-ko-verb-Wr7lgj~k"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:보건:保健:14524:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 재정적 후원자들, 지도자들, 보건 종사자들 그리고 대중은 이 문제를 취급하는 데에 지쳐 있다. 특히, 소아마비를 본 적이 없는 사람들이 그렇다.",
+      "english": "Financial supporters, leaders, health workers and the public are tired of dealing with the problem, especially those who have never seen polio.",
+      "source": "lexicon-example",
+      "terms": [
+        "보건",
+        "保健"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-보건-ko-noun-1~D2uLR0"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:기관:機關:218:2:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 존 베르트푀이 박사는 미국의 보건 기관인 질병통제 및 예방 센터와 함께 한다.",
+      "english": "government’s health protection agency, the Centers for Disease Control and Prevention.",
+      "source": "lexicon-example",
+      "terms": [
+        "기관",
+        "機關"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-기관-ko-noun-xLKvRyLu"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:백신:hangul-only:9090:1:1",
+      "korean": "2018, Experts: Polio Could Again Spread Worldwide 효과적인 백신 덕분에, 소아마비 바이러스는 세상의 대부분의 곳에서 사라졌다.",
+      "english": "Thanks to an effective vaccine, the polio virus has disappeared from most of the world.",
+      "source": "lexicon-example",
+      "terms": [
+        "백신"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-백신-ko-noun-vMOqApoQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:내리다:hangul-only:3224:1:1",
+      "korean": "가끔 봄비도 내려요.",
+      "english": "Sometimes it rains too.",
+      "source": "lexicon-example",
+      "terms": [
+        "내리다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-내리다-ko-verb-3he7zmMB"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:길:hangul-only:432:6:1",
+      "korean": "갓 산 새 신발이라 아직 길이 안 들었다.",
+      "english": "Having just bought these shoes, they haven't been broken in yet.",
+      "source": "lexicon-example",
+      "terms": [
+        "길"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-길-ko-noun-DBvMWpML"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:하다:hangul-only:98:24:1",
+      "korean": "걔가 \"씨발\" 하고 욕하더라.",
+      "english": "He cussed, like \"fuck\".",
+      "source": "lexicon-example",
+      "terms": [
+        "하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-하다-ko-verb-0-plcqFu"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:테크:hangul-only:19733:1:2",
+      "korean": "걔는 우리나라가 일본 테크를 탈 거라고 그러던데?",
+      "english": "But he was saying that Korea is going to end up like Japan.",
+      "source": "lexicon-example",
+      "terms": [
+        "테크"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-테크-ko-noun-8f7NLn-o"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:것:hangul-only:592:3:2",
+      "korean": "걔는 태어날 때부터 그런 거야.",
+      "english": "He must have been like that since he was born. (literally, “He is a thing like that since he was born.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "것"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-것-ko-noun-56ME300B"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:게:hangul-only:2548:3:1",
+      "korean": "게 누구 있느냐?",
+      "english": "Is someone there?/Who's there?",
+      "source": "lexicon-example",
+      "terms": [
+        "게"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-게-ko-pron-voKKRPo7"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-이라고:hangul-only:22034:2:1",
+      "korean": "공부라고 한 게 이거야?",
+      "english": "So this is all the studying you did?",
+      "source": "lexicon-example",
+      "terms": [
+        "이라고"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--이라고-ko-particle--KtvRMBE"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:초대형:超大型:14229:1:1",
+      "korean": "관중과 수익 면에서 볼 때, 피파(FIFA) 월드컵이 그러한 종류 중에서는 가장 큰 초대형 체육 행사이다.",
+      "english": "In terms of viewing audience and revenue, the FIFA World Cup is the largest sport megaevent of its kind … 2012, John Nauright, Charles Parrish, Sports Around the World: History, Culture, and Practice (page 127) (The original sentence in English)",
+      "source": "lexicon-example",
+      "terms": [
+        "초대형",
+        "超大型"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-초대형-ko-noun-c9Gxsbwd"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-으나:hangul-only:21988:1:1",
+      "korean": "광주·전남지역은 곳에 따라 구름이 많이 끼겠으나 대체로 맑겠습니다.",
+      "english": "Gwangju and Jeonnam region will be partly cloudy, but mostly clear.",
+      "source": "lexicon-example",
+      "terms": [
+        "으나"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--으나-ko-suffix-zcKZN4hx"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:귀:hangul-only:604:1:3",
+      "korean": "귀에 걸면 귀(엣)고리, 코에 걸면 코(엣)고리.",
+      "english": "As indiscreet as applying a ring to the ear and to the nose alike.",
+      "source": "lexicon-example",
+      "terms": [
+        "귀"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-귀-ko-noun-sO8mxv3v"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:부모님:hangul-only:4746:1:2",
+      "korean": "그 가족은 부모님과 두 아이, 이렇게 네 명입니다.",
+      "english": "There are four people in the family: parents and two children.",
+      "source": "lexicon-example",
+      "terms": [
+        "부모님"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-부모님-ko-noun-HnemiJdT"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:아빠:hangul-only:889:1:1",
+      "korean": "그 가족은 아빠, 엄마, 두 아이, 이렇게 네 명입니다.",
+      "english": "There are four people in the family: a father, a mother, and two children.",
+      "source": "lexicon-example",
+      "terms": [
+        "아빠"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-아빠-ko-noun-gbtpq~Q2"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:가족:家族:887:1:2",
+      "korean": "그 가족은 아빠, 엄마, 아들, 딸, 이렇게 네 명입니다.",
+      "english": "There are four people in the family: father, mother, son, and daughter.",
+      "source": "lexicon-example",
+      "terms": [
+        "가족",
+        "家族"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-가족-ko-noun-bqM2ydnY"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:길:hangul-only:432:5:1",
+      "korean": "그 개는 길이 잘 들어서 말을 잘 듣는다.",
+      "english": "The dog is obedient because it was well-trained.",
+      "source": "lexicon-example",
+      "terms": [
+        "길"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-길-ko-noun-prA4wOMG"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:풍기다:hangul-only:3791:1:1",
+      "korean": "그 꽃에서는 독특한 향기가 풍겼다.",
+      "english": "The flower gave forth a distinct aroma.",
+      "source": "lexicon-example",
+      "terms": [
+        "풍기다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-풍기다-ko-verb-LIuCU1Ee"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:그:hangul-only:1024:1:1",
+      "korean": "그 남자는 일본인입니까 아니면 중국인입니까?",
+      "english": "He is Chinese.",
+      "source": "lexicon-example",
+      "terms": [
+        "그"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-그-ko-det-HTBjUnDM"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:로고:hangul-only:11053:1:1",
+      "korean": "그 로고는 약어, 브이아이피(VIP)의 형태를 띈 봉황으로 이루어져 있다.",
+      "english": "Its logo consists of a phoenix in the form of the acronym VIP.",
+      "source": "lexicon-example",
+      "terms": [
+        "로고"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-로고-ko-noun-NZjOb5Zb"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-더-:hangul-only:22170:1:5",
+      "korean": "그 말 듣고 있으니까 너무 화가 나더라.",
+      "english": "When I was listening to what he was saying, I got so angry.",
+      "source": "lexicon-example",
+      "terms": [
+        "더"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--더--ko-suffix-0AXMHwwX"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-들:hangul-only:22049:1:4",
+      "korean": "그 사람들은 가족이에요.",
+      "english": "Those people are family.",
+      "source": "lexicon-example",
+      "terms": [
+        "들"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--들-ko-particle-UfRfGIFF"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:그:hangul-only:1024:1:3",
+      "korean": "그 사람들은 가족입니다.",
+      "english": "Those people are family.",
+      "source": "lexicon-example",
+      "terms": [
+        "그"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-그-ko-det-HTBjUnDM"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:무엇하다:hangul-only:17996:2:1",
+      "korean": "그 사람을 안다고 하긴 좀 뭐하네.",
+      "english": "I think it's a bit awkward to say that I know that guy.",
+      "source": "lexicon-example",
+      "terms": [
+        "무엇하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-무엇하다-ko-adj-8adJ7KLJ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:화룡점정:畵龍點睛:20619:1:1",
+      "korean": "그 승전은 노장의 50년 전장 인생의 화룡점정 격이었다.",
+      "english": "That victory was like the coup de grâce of the old general's fifty years of battlefield life.",
+      "source": "lexicon-example",
+      "terms": [
+        "화룡점정",
+        "畵龍點睛"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-화룡점정-ko-noun-sgnYhe3R"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:악서:惡書:29113:1:1",
+      "korean": "그 惡書는 靑少年들에게 害로운 影響을 줄 수 있다. 그 악서는 청소년들에게 해로운 영향을 줄 수 있다.",
+      "english": "That harmful book can have a negative influence on teenagers.",
+      "source": "lexicon-example",
+      "terms": [
+        "악서",
+        "惡書"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-악서-ko-noun-WQYBJdgC"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:음악:音樂:3734:1:1",
+      "korean": "그 여자가 눈을 감고 음악을 듣고 있습니다.",
+      "english": "She is listening to music with her eyes closed.",
+      "source": "lexicon-example",
+      "terms": [
+        "음악",
+        "音樂"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-음악-ko-noun-gPGJmE5c"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-어야:hangul-only:22114:1:2",
+      "korean": "그 짓 안 했어야지... 그래야 사람이지!",
+      "english": "He doesn't even deserve to be called a person otherwise!",
+      "source": "lexicon-example",
+      "terms": [
+        "어야"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--어야-ko-suffix-7VhWin5F"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:과일:hangul-only:617:1:2",
+      "korean": "그 촉촉한 과일 요리는 아주 맛있다.",
+      "english": "That moist and fruity dish is simply delectable.",
+      "source": "lexicon-example",
+      "terms": [
+        "과일"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-과일-ko-noun-kglSaqph"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:미비:未備:27313:2:1",
+      "korean": "그 항구의 해안 방어 시설은 상태가 미비하다.",
+      "english": "The harbour's sea defences are in poor condition.",
+      "source": "lexicon-example",
+      "terms": [
+        "미비",
+        "未備",
+        "未備하다",
+        "미비하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-미비하다-ko-adj-cGjGnJyY"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:풍기다:hangul-only:3791:2:1",
+      "korean": "그녀에게서 자신감이 물씬 풍겼다.",
+      "english": "She exuded confidence.",
+      "source": "lexicon-example",
+      "terms": [
+        "풍기다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-풍기다-ko-verb-lBhzdsqz"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:라인:hangul-only:10934:2:1",
+      "korean": "그는 강호동 라인, 소위 강라인 연예인의 대표 격이다.",
+      "english": "He is like a prime example of a Kang Ho-dong line celebrity [a celebrity who is close to Kang Ho-dong].",
+      "source": "lexicon-example",
+      "terms": [
+        "라인"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-라인-ko-noun-MEE6FRiN"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:근사하다:近似하다:16738:2:1",
+      "korean": "그는 그의 방을 근사하게 꾸몄다.",
+      "english": "He fabulously decorated his room.",
+      "source": "lexicon-example",
+      "terms": [
+        "근사하다",
+        "近似하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-근사하다-ko-adj-mFqTHO32"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:길:hangul-only:432:2:1",
+      "korean": "그는 길을 잃고 숲속을 헤맸다.",
+      "english": "He got lost and wandered about the woods.",
+      "source": "lexicon-example",
+      "terms": [
+        "길"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-길-ko-noun-DiFTwpWb"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:갈아대다:hangul-only:21277:1:1",
+      "korean": "그는 닳아진 신발창을 갈아댔다.",
+      "english": "He resoled his worn-out shoesoles.",
+      "source": "lexicon-example",
+      "terms": [
+        "갈아대다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-갈아대다-ko-verb-jWOfDqft"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:길:hangul-only:432:1:2",
+      "korean": "그는 독신의 길을 택하였다.",
+      "english": "He chose the path of celibacy.",
+      "source": "lexicon-example",
+      "terms": [
+        "길"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-길-ko-noun-0wdO5qpP"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:무척:hangul-only:4742:1:1",
+      "korean": "그는 무척이나 노력하였고 잠시 레버에 매달렸다. 그리고 천천히 엔진은 다시 앞으로 나아갔다.",
+      "english": "Wells, The Sleeper Awakes, Chapter XXIV (The original sentence in English)",
+      "source": "lexicon-example",
+      "terms": [
+        "무척"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-무척-ko-adv-8u-~jjnT"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:욕:辱:10807:1:1",
+      "korean": "그는 영수의 면전에다 욕을 퍼부어 댔다.",
+      "english": "He started to abuse Yeongsu in his face.",
+      "source": "lexicon-example",
+      "terms": [
+        "욕",
+        "辱",
+        "辱하다",
+        "욕하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-욕-ko-noun-3Hae0zBB"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:죽다:hangul-only:3966:1:1",
+      "korean": "그는 이미 죽은 지 오래이다.",
+      "english": "He is already long dead.",
+      "source": "lexicon-example",
+      "terms": [
+        "죽다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-죽다-ko-verb-km26FjU3"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:양보:讓步:29161:2:1",
+      "korean": "그는 自己 潔白에 讓步가 없었다. 그는 자기 결백에 양보가 없었다.",
+      "english": "He made no concessions on his innocence.",
+      "source": "lexicon-example",
+      "terms": [
+        "양보",
+        "讓步",
+        "讓步하다",
+        "양보하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-양보-ko-noun-WY6jqPsy"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:기꺼이:hangul-only:14266:1:1",
+      "korean": "그는 제안을 기꺼이 받아들였다.",
+      "english": "He accepted the offer with alacrity.",
+      "source": "lexicon-example",
+      "terms": [
+        "기꺼이"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-기꺼이-ko-adv-pSt0GgW3"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:흔쾌히:欣快히:20550:1:1",
+      "korean": "그는 제안을 흔쾌히 받아드렸다.",
+      "english": "He accepted the offer with alacrity.",
+      "source": "lexicon-example",
+      "terms": [
+        "흔쾌히",
+        "欣快히"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-흔쾌히-ko-adv-pSt0GgW3"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:훌륭하다:hangul-only:4385:1:1",
+      "korean": "그는 축구를 좋아하고, 또 훌륭한 요리사야.",
+      "english": "He likes football, and he’s a great cook.",
+      "source": "lexicon-example",
+      "terms": [
+        "훌륭하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-훌륭하다-ko-adj-LhgEx~4B"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:고려:考慮:3044:2:1",
+      "korean": "그는 파리를 떠날 것을 고려하고 있다.",
+      "english": "He’s thinking about leaving Paris.",
+      "source": "lexicon-example",
+      "terms": [
+        "고려",
+        "考慮",
+        "考慮하다",
+        "고려하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-고려하다-ko-verb-GH4gEf5M"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:활력:活力:20779:1:1",
+      "korean": "그는 활력이 넘쳐났다.",
+      "english": "He was full of vigour.",
+      "source": "lexicon-example",
+      "terms": [
+        "활력",
+        "活力"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-활력-ko-noun-yGTc3Dez"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:성덕:成덕:29104:1:1",
+      "korean": "그는 IT 분야에서 성덕이다.",
+      "english": "He is a geek in the IT field.",
+      "source": "lexicon-example",
+      "terms": [
+        "성덕",
+        "成덕"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-성덕-ko-noun-DfVUd5Ew"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:보다:hangul-only:1026:1:2",
+      "korean": "그들은 여러가지 화초를 보고 있다.",
+      "english": "They are looking at various plants.",
+      "source": "lexicon-example",
+      "terms": [
+        "보다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-보다-ko-verb-bmTv0PFI"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:대다:hangul-only:4389:9:1",
+      "korean": "그들은 한 판에 천 원씩을 대고 노름을 시작하였다.",
+      "english": "They started gambling with ₩1000 on one hand.",
+      "source": "lexicon-example",
+      "terms": [
+        "대다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-대다-ko-verb-AWMBXpMe"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:여기:hangul-only:3492:1:1",
+      "korean": "그래, 나 여기 있어.",
+      "english": "Good. You are there. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "여기"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-여기-ko-pron-~OyRUJdZ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:쥐다:hangul-only:4953:2:2",
+      "korean": "그래서 그는 격자 무늬 어깨걸이를 벗고, 몸을 구부려 양 꼬리를 쥐고 당겼다.",
+      "english": "So he took off his plaid, and bent down and took hold of the sheep's tail, and he pulled! 1895, Joseph Jacobs (ed.), 《More Celtic Fairy Tales》 〈The Tail〉(The original sentence in English)",
+      "source": "lexicon-example",
+      "terms": [
+        "쥐다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-쥐다-ko-verb-X2s5PKln"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:수:手:352:1:1",
+      "korean": "그러는 수밖에 없겠네.",
+      "english": "I suppose that's all you can do.",
+      "source": "lexicon-example",
+      "terms": [
+        "수",
+        "手"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-수-ko-noun-eatSHHnQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:제작:製作:10000:1:1",
+      "korean": "그런데 이게 어찌 된 일인가? 세조실록은 박연이 제작한 정대업, 보태평, 발상, 봉래의를 세종이 하였다고 기록한 게 아닌가. 그렇다면 세종이 훈민정음을 창제하였다는 사실은 진실일까?",
+      "english": "Geureotamyeon sejong'i hunminjeong'eumeul changjehayeotdaneun sasireun jinsirilkka?",
+      "source": "lexicon-example",
+      "terms": [
+        "제작",
+        "製作",
+        "製作하다",
+        "제작하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-제작-ko-noun-WowWZDi3"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:균형:均衡:5129:1:2",
+      "korean": "그리고 균형 예산으로 또 다른 20만명이 일을 한다는 자존감과 긍지를 갖도록 도울 것입니다.",
+      "english": "And our balanced budget will help another 200,000 people move to the dignity and pride of work. 1999, Bill Clinton's Seventh State of the Union Address (The original sentence in English)",
+      "source": "lexicon-example",
+      "terms": [
+        "균형",
+        "均衡"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-균형-ko-noun-51ZxazCh"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-잖아:hangul-only:7962:1:1",
+      "korean": "그리고 너 그거 알잖아.",
+      "english": "And you know it.",
+      "source": "lexicon-example",
+      "terms": [
+        "잖아"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--잖아-ko-suffix-7Dg4bpca"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:모태:母胎:6863:2:1",
+      "korean": "그리스‐로마 사회는 서양 문명의 모태였다.",
+      "english": "The Greco-Roman world was the matrix for Western civilization.",
+      "source": "lexicon-example",
+      "terms": [
+        "모태",
+        "母胎"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-모태-ko-noun-bgDNVizC"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:속:hangul-only:3421:1:1",
+      "korean": "그림 속에 몇 명이 서 있습니까?",
+      "english": "How many people are standing in the picture?",
+      "source": "lexicon-example",
+      "terms": [
+        "속"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-속-ko-noun-27O7NRa4"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:모두:hangul-only:3486:1:1",
+      "korean": "그림은 모두 네 개입니다.",
+      "english": "There are four pictures in total.",
+      "source": "lexicon-example",
+      "terms": [
+        "모두"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-모두-ko-adv-YT9yIKLQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:출근:出勤:7743:1:1",
+      "korean": "그의 동료 중 누구도 그가 오전 아홉(9)시 전에 출근 카드를 기록한 것을 기억하지 못합니다.",
+      "english": "None of his colleagues remember he clocked in before 9 A.M.",
+      "source": "lexicon-example",
+      "terms": [
+        "출근",
+        "出勤",
+        "出勤하다",
+        "출근하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-출근-ko-noun-iooTzHnS"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-로:hangul-only:22227:1:1",
+      "korean": "기차가 어디로 갑니까?",
+      "english": "Where the train is going to go to?",
+      "source": "lexicon-example",
+      "terms": [
+        "로"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--로-ko-particle-I51d1Rl8"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:무례:無禮:11008:2:1",
+      "korean": "김 의원은 무례한 질문에도 정중하게 응대했다.",
+      "english": "Kim politely responded to impolite questions.",
+      "source": "lexicon-example",
+      "terms": [
+        "무례",
+        "無禮",
+        "無禮하다",
+        "무례하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-무례하다-ko-adj--W5wQQ1W"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-으면:hangul-only:22000:1:1",
+      "korean": "꼬리가 길면 밟힌다.",
+      "english": "One's evil deeds will eventually be discovered.",
+      "source": "lexicon-example",
+      "terms": [
+        "으면"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--으면-ko-suffix-9bFBT3~9"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:나머지:hangul-only:4841:2:1",
+      "korean": "나는 너무 기쁜 나머지 온몸이 떨렸다.",
+      "english": "I was so happy that my entire body trembled [with joy].",
+      "source": "lexicon-example",
+      "terms": [
+        "나머지"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-나머지-ko-noun-dblNjWST"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:멋지다:hangul-only:3271:1:3",
+      "korean": "나는 멋지고 따뜻한 기분이 들었다.",
+      "english": "by Leo Tolstoy, translated by Constance Garnett, Diary of a Lunatic (The original sentence in English)",
+      "source": "lexicon-example",
+      "terms": [
+        "멋지다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-멋지다-ko-adj-bJQiX5f9"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:좋아하다:hangul-only:3132:1:2",
+      "korean": "나는 모든 종류의 음식을 좋아해.",
+      "english": "I like all kinds of food.",
+      "source": "lexicon-example",
+      "terms": [
+        "좋아하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-좋아하다-ko-verb-EE~mlvhL"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:화끈:hangul-only:31256:1:1",
+      "korean": "나는 부끄러움에 얼굴이 화끈 달아올랐다.",
+      "english": "My face blushed with shame. (literally, “I, from shame, (my) face blushingly became hot.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "화끈"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-화끈-ko-adv-WknYqGLC"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:적:hangul-only:254:1:1",
+      "korean": "나는 절대 그런 말을 한 적이 없다.",
+      "english": "I've never said such a thing.",
+      "source": "lexicon-example",
+      "terms": [
+        "적"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-적-ko-noun-9DiKdbUs"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:신경쓰다:神經쓰다:29090:1:1",
+      "korean": "나는 恒常 細部事項에 神經쓴다. 나는 항상 세부사항에 신경쓴다.",
+      "english": "I always pay attention to details.",
+      "source": "lexicon-example",
+      "terms": [
+        "신경쓰다",
+        "神經쓰다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-신경쓰다-ko-verb-N3RwauEH"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:바로:hangul-only:3464:2:1",
+      "korean": "내 두 눈을 (똑)바로 쳐다보면서 말해라.",
+      "english": "Look straight into my two eyes while you are talking.",
+      "source": "lexicon-example",
+      "terms": [
+        "바로"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-바로-ko-adv-~Qpvm6Z2"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:천안문당하다:天安門당하다:24193:1:1",
+      "korean": "내가 올린 글이 천안문당했다.",
+      "english": "The post I uploaded got deleted. (literally, “The post I uploaded got Tian'anmen-ed.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "천안문당하다",
+        "天安門당하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-천안문당하다-ko-verb-NZCMQgA4"
+      ]
+    },
+    {
+      "id": "seed:sentence:겠:1",
+      "korean": "내일 비가 오겠습니다.",
+      "english": "It will rain tomorrow.",
+      "source": "seed",
+      "license": "project-seed",
+      "terms": [
+        "겠"
+      ],
+      "definitionSourceIds": []
+    },
+    {
+      "id": "lexicon:wiktionary:순도:純度:16890:1:1",
+      "korean": "너가 가지고 있는 금의 순도가 몇%인지 아느냐?",
+      "english": "Do you know the percentage of gold purity you have?",
+      "source": "lexicon-example",
+      "terms": [
+        "순도",
+        "純度"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-순도-ko-noun-YAe0Qyek"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:달러:hangul-only:2900:1:1",
+      "korean": "너는 달러의 $가 페소로부터 왔다는 것을 알고 있니?",
+      "english": "Did you know that the dollar sign originated from a Peso?",
+      "source": "lexicon-example",
+      "terms": [
+        "달러"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-달러-ko-noun-WI0sHR8j"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:빠지다:hangul-only:4119:11:1",
+      "korean": "넌 너무 순해 빠졌어, 세상 물정을 잘 모르네.",
+      "english": "You know little of the ways of the world.",
+      "source": "lexicon-example",
+      "terms": [
+        "빠지다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-빠지다-ko-verb-4dJnZkAX"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:팔자:八字:21560:1:2",
+      "korean": "넌 팔자도 좋다.",
+      "english": "You're so lucky in life.",
+      "source": "lexicon-example",
+      "terms": [
+        "팔자",
+        "八字"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-팔자-ko-noun-Q~vCGtGh"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:네:hangul-only:292:1:3",
+      "korean": "네 개의 그림이 있습니다.",
+      "english": "There are four pictures.",
+      "source": "lexicon-example",
+      "terms": [
+        "네"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-네-ko-det-J-YuTJhN"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:놀라다:hangul-only:3220:1:1",
+      "korean": "놀랐지!",
+      "english": "A party! Awesome! Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "놀라다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-놀라다-ko-verb-Hjn-b~br"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-ㅂ니까:hangul-only:7181:1:1",
+      "korean": "누가 물을 마십니까?",
+      "english": "Who is drinking water?",
+      "source": "lexicon-example",
+      "terms": [
+        "ㅂ니까"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--ㅂ니까-ko-suffix-OuvWhirw"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-고:hangul-only:5950:3:2",
+      "korean": "누가 자전거를 타고 있습니까?",
+      "english": "Who is riding a bicycle?",
+      "source": "lexicon-example",
+      "terms": [
+        "고"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--고-ko-suffix-G7ilMRxi"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:타다:hangul-only:3178:2:4",
+      "korean": "누가 자전거를 탑니까?",
+      "english": "Who is riding a bicycle?",
+      "source": "lexicon-example",
+      "terms": [
+        "타다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-타다-ko-verb-IWupXjje"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:누구:hangul-only:3445:2:2",
+      "korean": "누군가가 문을 두드리고 있습니다.",
+      "english": "Someone is knocking on the door.",
+      "source": "lexicon-example",
+      "terms": [
+        "누구"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-누구-ko-pron-KlnVnjgJ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:눼:hangul-only:2530:1:1",
+      "korean": "눼가 험데를 벗구 뽕을 먹너먼.",
+      "english": "The silkworm molts and eats mulberry leaf. (Chungcheong dialect, Yesan)",
+      "source": "lexicon-example",
+      "terms": [
+        "눼"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-눼-ko-noun-Parkm8kd"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:물:hangul-only:1574:2:1",
+      "korean": "뉴욕 갔다 오니 미국 물이 다 들었네.",
+      "english": "After coming back from New York, you've become so Americanized [in a bad way].",
+      "source": "lexicon-example",
+      "terms": [
+        "물"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-물-ko-noun-UBaRF5JS"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-더-:hangul-only:22170:2:2",
+      "korean": "니 어제 어디 갓더노?",
+      "english": "I was gone to Yeongdeok. (Gyeongsang dialect, Yeongdeok)",
+      "source": "lexicon-example",
+      "terms": [
+        "더"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--더--ko-suffix-pP6nAFVl"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-음:hangul-only:21969:3:3",
+      "korean": "님, 거기 가 봄?",
+      "english": "Have you been there?",
+      "source": "lexicon-example",
+      "terms": [
+        "음"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--음-ko-suffix-rrkonpSx"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:명:名:3435:2:1",
+      "korean": "다섯 명이 서 있습니다.",
+      "english": "There are five people standing.",
+      "source": "lexicon-example",
+      "terms": [
+        "명",
+        "名",
+        "名하다",
+        "명하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-명-ko-counter-eKBE-FDI"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:가다:hangul-only:728:1:3",
+      "korean": "대화가 산으로 간다.",
+      "english": "The conversation is going nowhere.",
+      "source": "lexicon-example",
+      "terms": [
+        "가다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-가다-ko-verb-gNM9bcDR"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:그래서:hangul-only:3458:1:1",
+      "korean": "데이지는 크로커 부인을 만나지 못하였다. 그래서 데이지는 그녀의 책을 사기로 했다.",
+      "english": "thus, Daisy decided to buy her book.",
+      "source": "lexicon-example",
+      "terms": [
+        "그래서"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-그래서-ko-adv-PG8nEgPk"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:심하다:甚하다:4134:1:1",
+      "korean": "두통이 아주 심한데, 두통약 좀 주시겠어요?",
+      "english": "Dutong-i aju simhande, dutong'yak jom jusigesseoyo?",
+      "source": "lexicon-example",
+      "terms": [
+        "심하다",
+        "甚하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-심하다-ko-adj-nSKEqZ57"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:들어오다:hangul-only:3523:1:1",
+      "korean": "들어오세요. 아나. 어서오세요.",
+      "english": "Thank you. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "들어오다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-들어오다-ko-verb-JPHf7Y-N"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:똥:hangul-only:2602:1:2",
+      "korean": "똥 묻은 개가 겨 묻은 개 나무란다.",
+      "english": "The pot calls the kettle black (literally, “The dung-smeared dog scolds the grain husk-smeared dog.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "똥"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-똥-ko-noun-ZaRfWx0H"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:국룰:hangul-only:20557:2:1",
+      "korean": "라면에는 김치가 국룰이다.",
+      "english": "Ramen with kimchi is amazing. (literally, “Ramen with kimchi is an obvious choice.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "국룰"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-국룰-ko-noun-nvFaty3v"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-게:hangul-only:22197:5:1",
+      "korean": "말만 하면 다 되게?",
+      "english": "Do you think you can solve every problem just by talking?",
+      "source": "lexicon-example",
+      "terms": [
+        "게"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--게-ko-suffix-0bEp2rHQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:묻다:hangul-only:3291:1:3",
+      "korean": "말씀 좀 묻겠습니다.",
+      "english": "May I ask you something?",
+      "source": "lexicon-example",
+      "terms": [
+        "묻다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-묻다-ko-verb-VZb94qvr"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:아니면:hangul-only:17892:1:1",
+      "korean": "맥주 먹을래, 아니면 위스키 먹을래?",
+      "english": "Do you want to drink beer, or whisky?",
+      "source": "lexicon-example",
+      "terms": [
+        "아니면"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-아니면-ko-adv-hsUkTFTo"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:신천지:新天地:29107:1:1",
+      "korean": "멀티미디어는 電子 産業의 新天地이다. 멀티미디어는 전자 산업의 신천지이다.",
+      "english": "Multimedia is a new realm in the electronics industry.",
+      "source": "lexicon-example",
+      "terms": [
+        "신천지",
+        "新天地"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-신천지-ko-noun-4ZRXhZmE"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:살:hangul-only:1647:16:1",
+      "korean": "몇 살입니까?",
+      "english": "How old are [you]? (literally, “How many years of age are [you]?”)",
+      "source": "lexicon-example",
+      "terms": [
+        "살"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-살-ko-counter-4GZOcfw6"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:음식:飮食:3551:1:1",
+      "korean": "무슨 종류의 음식을 좋아해?",
+      "english": "What kind of food do you like?",
+      "source": "lexicon-example",
+      "terms": [
+        "음식",
+        "飮食",
+        "飲食"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-음식-ko-noun-E3c~OLvi"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:부아:hangul-only:10707:2:2",
+      "korean": "물론 운동을 하는 사람의 폐활량이 보통 사람보다 많고, 25세에 가장 폐활량이 제일 크다가 점점 줄어들어 60세 정도에 20~30% 감소하고, 늙을수록 점점 준다. 이렇게 부아도 늙는다.",
+      "english": "Ireoke bua-do neungneunda.",
+      "source": "lexicon-example",
+      "terms": [
+        "부아"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-부아-ko-noun-bXNBgz-D"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:물론:勿論:2451:1:1",
+      "korean": "물론이지요, 바로 저기요.",
+      "english": "Sure, it’s over there.",
+      "source": "lexicon-example",
+      "terms": [
+        "물론",
+        "勿論"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-물론-ko-adv-3veNmReb"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-어야:hangul-only:22114:1:1",
+      "korean": "물을 많이 마셔야 살을 뺄 수 있어.",
+      "english": "You have to drink a lot of water to be able to lose weight.",
+      "source": "lexicon-example",
+      "terms": [
+        "어야"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--어야-ko-suffix-7VhWin5F"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:들다:hangul-only:3432:6:3",
+      "korean": "물이 어디에 들어 있어요?",
+      "english": "Where is water in?",
+      "source": "lexicon-example",
+      "terms": [
+        "들다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-들다-ko-verb-mZ3KStMb"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:한때:hangul-only:5096:1:1",
+      "korean": "미네소타는 한때, 주로 원재료 생산지였으나 미네소타의 경제는 최근 200(이백)년 동안 완제품과 서비스업을 강조하는 쪽으로 변모하였다.",
+      "english": "Once primarily a producer of raw materials, Minnesota's economy has transformed in the last 200 years to emphasize finished products and services.",
+      "source": "lexicon-example",
+      "terms": [
+        "한때"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-한때-ko-noun-xPT70S~z"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:구멍:hangul-only:867:1:2",
+      "korean": "바지에 구멍이 났다.",
+      "english": "bajie gumeong'i natda. [I’ve] got a hole in my trousers.",
+      "source": "lexicon-example",
+      "terms": [
+        "구멍"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-구멍-ko-noun-m4zvO4E6"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:반짝반짝:hangul-only:17335:1:1",
+      "korean": "반짝반짝 빛나는 별.",
+      "english": "A twinkling star.",
+      "source": "lexicon-example",
+      "terms": [
+        "반짝반짝"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-반짝반짝-ko-noun-AMOXgOjL"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:보이그룹:hangul-only:30827:1:2",
+      "korean": "방탄소년단(BTS)은 대한민국의 유명한 보이그룹이다.",
+      "english": "Bangtan Sonyeondan (BTS) is a famous boy band from South Korea.",
+      "source": "lexicon-example",
+      "terms": [
+        "보이그룹"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-보이그룹-ko-noun-HiWO9K09"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-라도:hangul-only:14522:1:2",
+      "korean": "뱀이라도 죽이면 안 된다.",
+      "english": "You should not kill even a snake.",
+      "source": "lexicon-example",
+      "terms": [
+        "라도"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--라도-ko-suffix-alR8Too6"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:미들네임:hangul-only:24242:1:1",
+      "korean": "버락 오바마의 미들네임은 후세인이다.",
+      "english": "Barack Obama's middle name is Hussein.",
+      "source": "lexicon-example",
+      "terms": [
+        "미들네임"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-미들네임-ko-noun-ctvZ4fIR"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:원말:原말:21349:1:1",
+      "korean": "비률(比率)은 비율(比率)의 원말이에요.",
+      "english": "Biryul is the original word for biyul.",
+      "source": "lexicon-example",
+      "terms": [
+        "원말",
+        "原말",
+        "元말"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-원말-ko-noun-roYWJFlV"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:시간:時間:3708:1:1",
+      "korean": "비제한적 관계절(계속적 용법의 관계절)은, 시간이나 장소를 나타내는 접속사가 이끄는 절과 유사하게, 삽입구로 쓰인다.",
+      "english": "Nonrestrictive relative clauses are parenthetic, as are similar clauses introduced by conjunctions indicating time or place.",
+      "source": "lexicon-example",
+      "terms": [
+        "시간",
+        "時間"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-시간-ko-noun-M2B0gF~I"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:비틀스:hangul-only:27584:1:1",
+      "korean": "비틀스는 전형적인 팝 그룹이었다.",
+      "english": "The Beatles were the archetypal pop group.",
+      "source": "lexicon-example",
+      "terms": [
+        "비틀스"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-비틀스-ko-name-I0Qy8pRn"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:오만:五萬:2871:2:1",
+      "korean": "살다 보니 오만 일을 다 본다.",
+      "english": "You see all sorts of things in life.",
+      "source": "lexicon-example",
+      "terms": [
+        "오만",
+        "五萬"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-오만-ko-det-nvuNOvgZ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:보다:hangul-only:1026:6:1",
+      "korean": "살다 보니 인생 별거 아니더라.",
+      "english": "Now that I've lived for a while, life really isn't something special.",
+      "source": "lexicon-example",
+      "terms": [
+        "보다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-보다-ko-verb-Ur~k7Jbc"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-라도:hangul-only:14522:1:1",
+      "korean": "살인마라도 법에 따라 처벌되어야 한다.",
+      "english": "Even a mass murderer should be punished according to the law.",
+      "source": "lexicon-example",
+      "terms": [
+        "라도"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--라도-ko-suffix-alR8Too6"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:소대가리:hangul-only:20182:1:1",
+      "korean": "삶은 소대가리도 앙천대소할 노릇이다.",
+      "english": "The situation is such that even a boiled cow's head would burst out laughing.",
+      "source": "lexicon-example",
+      "terms": [
+        "소대가리"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-소대가리-ko-noun-uyrOtUyY"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:어떻다:hangul-only:3079:1:3",
+      "korean": "새 아파트는 어때?",
+      "english": "The new apartment is great! Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "어떻다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-어떻다-ko-adj-UGdehwno"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:가다:hangul-only:728:1:2",
+      "korean": "서울에 가요.",
+      "english": "I'm going to Seoul. Audio (South Korea): (file)",
+      "source": "lexicon-example",
+      "terms": [
+        "가다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-가다-ko-verb-gNM9bcDR"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:서울:hangul-only:2745:2:1",
+      "korean": "서울에 가요.",
+      "english": "Seour-e gayo. (I am, you are, he is, etc.) going to Seoul. / Let's go to Seoul Audio (South Korea): (file)",
+      "source": "lexicon-example",
+      "terms": [
+        "서울"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-서울-ko-name-6esF9GZQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:공해:公害:11978:1:1",
+      "korean": "선생님은 우리에게 공해에 관한 숙제를 내주셨다.",
+      "english": "The teacher gave us an assignment on pollution.",
+      "source": "lexicon-example",
+      "terms": [
+        "공해",
+        "公害"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-공해-ko-noun-3iwtz~nu"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:선창:先唱:12339:2:1",
+      "korean": "先唱은 집단 行事에서 重要한 役割을 합니다. 선창은 집단 행사에서 중요한 역할을 합니다.",
+      "english": "Leading a slogan plays an important role in group events.",
+      "source": "lexicon-example",
+      "terms": [
+        "선창",
+        "先唱"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-선창-ko-noun-geylzwCX"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:선창:先唱:12339:1:1",
+      "korean": "先唱을 하는 사람이 되려면 堂堂함이 必要합니다. 선창을 하는 사람이 되려면 당당함이 필요합니다.",
+      "english": "To be a person who leads the way, confidence is necessary.",
+      "source": "lexicon-example",
+      "terms": [
+        "선창",
+        "先唱"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-선창-ko-noun-1jJJpVyF"
+      ]
+    },
+    {
+      "id": "seed:sentence:간단:1",
+      "korean": "설명은 간단할수록 좋다.",
+      "english": "The simpler the explanation, the better.",
+      "source": "seed",
+      "license": "project-seed",
+      "terms": [
+        "간단",
+        "簡單",
+        "간단하다",
+        "簡單하다"
+      ],
+      "definitionSourceIds": []
+    },
+    {
+      "id": "lexicon:wiktionary:데이트:hangul-only:8382:1:1",
+      "korean": "성훈이는 아킬의 여자친구가 데이트를 하는 것을 보았다.",
+      "english": "Seong-hoon saw Aqil's girlfriend on a date.",
+      "source": "lexicon-example",
+      "terms": [
+        "데이트"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-데이트-ko-noun-pquaWy4l"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:컴맹:hangul-only:9909:1:1",
+      "korean": "세종대왕은 문맹 없는 나라를 만드셨습니다. 세진컴퓨터랜드는 컴맹 없는 나라를 만들겠습니다.",
+      "english": "Sejin Computer Land will create a country without computer illiteracy.",
+      "source": "lexicon-example",
+      "terms": [
+        "컴맹"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-컴맹-ko-noun-REwX3haa"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:빗:hangul-only:1334:1:1",
+      "korean": "소녀가 핑크색 빗으로 머리를 빗고 있습니다.",
+      "english": "A girl is combing her hair with a pink comb.",
+      "source": "lexicon-example",
+      "terms": [
+        "빗"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-빗-ko-noun-n~mCLijQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:페인트:hangul-only:12232:1:1",
+      "korean": "소년이 벽 위에 페인트를 칠하고 있어요.",
+      "english": "I am painting a lion on a paper.",
+      "source": "lexicon-example",
+      "terms": [
+        "페인트"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-페인트-ko-noun-KX5hnbXu"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:칠:漆:151:2:1",
+      "korean": "소년이 벽에 페인트를 칠하고 있습니다.",
+      "english": "A boy is painting on the wall.",
+      "source": "lexicon-example",
+      "terms": [
+        "칠",
+        "漆",
+        "漆하다",
+        "칠하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-칠하다-ko-verb--wrVPjKY"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-어:hangul-only:22001:7:2",
+      "korean": "소년이 벽에 페인트를 칠하고 있어요.",
+      "english": "A boy is painting on the wall.",
+      "source": "lexicon-example",
+      "terms": [
+        "어"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--어-ko-suffix-p8CETgTH"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:채:hangul-only:595:7:1",
+      "korean": "숙제를 채 마치기도 전에 잠이 들었다.",
+      "english": "He fell asleep before he finished the homework.",
+      "source": "lexicon-example",
+      "terms": [
+        "채"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-채-ko-adv-zDFnZO21"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:지금:只今:1729:1:2",
+      "korean": "스튜디오 좀 봐도 되나요?",
+      "english": "Um, maybe another time? Right now I am busy. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "지금",
+        "只今"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-지금-ko-adv-7V65o34t"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:시계:時計:3941:1:1",
+      "korean": "시계가 열두 시를 울림과 동시에 나는 첫 울음소리를 냈다고 한다.",
+      "english": "It was remarked that the clock began to strike, and I began to cry, simultaneously. 1869, Dickens, David Copperfield, chapter 1 (The original sentence in English)",
+      "source": "lexicon-example",
+      "terms": [
+        "시계",
+        "時計"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-시계-ko-noun-wpvRGcrp"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-부터:hangul-only:5348:3:1",
+      "korean": "시험은 범위가 15 (십오)쪽부터 56 (오십육)쪽까지예요.",
+      "english": "Speaking of the test, it covers from page 15 to page 56.",
+      "source": "lexicon-example",
+      "terms": [
+        "부터"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--부터-ko-particle-Tyu5o6m0"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:보다:hangul-only:1026:10:1",
+      "korean": "시험을 잘 보면 좋겠습니다.",
+      "english": "I hope I do well on the test. (literally, “It would be good if I take the test well.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "보다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-보다-ko-verb-TuaAS407"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-은 지:hangul-only:22228:1:1",
+      "korean": "쌀 한 톨도 못 먹은 지 어언 사흘이 되었다.",
+      "english": "Somehow, it has been four days since I last ate even a grain of rice.",
+      "source": "lexicon-example",
+      "terms": [
+        "은 지"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--은_지-ko-suffix-gaM2Rp3Y"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:어찌:hangul-only:4685:1:1",
+      "korean": "아나: 피트 안녕. 안녕. 우리 여기 있어.",
+      "english": "piteu: annyeong, ana. annyeong. masya. -ana: annyeong. -piteu: neohui dureun eojji jinae? -masya: nan joa. Anna: Pete, hi! Hi, we are here! —Pete: Hi, Anna! Hi, Marsha! —Anna: Hi! —Pete: How are you two? —Marsha: I am great! Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "어찌"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-어찌-ko-adv-JJZPOmWG"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:아들:hangul-only:890:1:2",
+      "korean": "아들이 딸보다 키가 큽니다.",
+      "english": "The son is taller than the daughter.",
+      "source": "lexicon-example",
+      "terms": [
+        "아들"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-아들-ko-noun-mKpmdUgl"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:노래:hangul-only:3041:2:1",
+      "korean": "아들이 치킨 노래를 부른다.",
+      "english": "My son keeps pestering me to buy him fried chicken.",
+      "source": "lexicon-example",
+      "terms": [
+        "노래"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-노래-ko-noun-KvWyJEm~"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:경제:經濟:4187:1:1",
+      "korean": "아마도 미네소타 경제의 가장 두드러진 특징은 \"다양성\"일 것이다. 경제 부분의 상대적인 생산량(즉, 생산량의 비율)은 미국 전체의 그것과 대체적으로 매우 일치한다.",
+      "english": "Perhaps the most significant characteristic of Minnesota's economy is its diversity; the relative outputs of its business sectors closely match the United States as a whole.",
+      "source": "lexicon-example",
+      "terms": [
+        "경제",
+        "經濟"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-경제-ko-noun-b9orglK2"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:가방:hangul-only:3798:1:1",
+      "korean": "아빠는 가방을 들고 있습니다.",
+      "english": "Dad is carrying a bag.",
+      "source": "lexicon-example",
+      "terms": [
+        "가방"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-가방-ko-noun-pmdb4Rv8"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:안경:眼鏡:6033:1:1",
+      "korean": "아빠는 안경을 쓰고 있습니다.",
+      "english": "My daddy is wearing glasses.",
+      "source": "lexicon-example",
+      "terms": [
+        "안경",
+        "眼鏡"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-안경-ko-noun-O7PGR-Yk"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:아이:hangul-only:2324:1:1",
+      "korean": "아이가 무엇을 가지고 놉니까?",
+      "english": "What is a kid playing with?",
+      "source": "lexicon-example",
+      "terms": [
+        "아이"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-아이-ko-noun-5vLt9nGs"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:장난감:hangul-only:6078:1:1",
+      "korean": "아이가 자동차 장난감을 가지고 놉니다.",
+      "english": "A child plays with a car toy.",
+      "source": "lexicon-example",
+      "terms": [
+        "장난감"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-장난감-ko-noun-3ZxUrXvo"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:직장:職場:4444:1:1",
+      "korean": "아이들을 키우며 직장을 다니기란 어려운 일이다.",
+      "english": "It´s difficult taking care of children and holding down a job.",
+      "source": "lexicon-example",
+      "terms": [
+        "직장",
+        "職場"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-직장-ko-noun-7mC2s5Jn"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:포함되다:包含되다:9987:1:1",
+      "korean": "아침식사도 포함되어 있지요?",
+      "english": "Achimsiksa-do pohamdoeeo itjiyo?",
+      "source": "lexicon-example",
+      "terms": [
+        "포함되다",
+        "包含되다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-포함되다-ko-verb-zggrg5jQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:응:hangul-only:4476:1:1",
+      "korean": "안녕 조나단, 바빠?",
+      "english": "Yes, I’m busy. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "응"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-응-ko-intj-inmIkP6T"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:조금:hangul-only:2947:1:1",
+      "korean": "안녕, 아멜리아. 바빠?",
+      "english": "I’m a little busy. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "조금"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-조금-ko-adv-Jwy0w7C6"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:어떻게:hangul-only:3086:1:2",
+      "korean": "안녕, 피트. 어떻게 지내? 안녕 아나. 좋아. 넌 어떻게 지내? 굉장히 잘 지내. annyeong, piteu. eotteoke jinae? annyeong ana. joa. neon eotteoke jinae? goengjanghi jal jinae. Oh, hi, Pete. How’s it going?",
+      "english": "Things are awesome! Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "어떻게"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-어떻게-ko-adv-JScOTQAy"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-으세요:hangul-only:22017:1:2",
+      "korean": "안녕하세요?",
+      "english": "Hello.",
+      "source": "lexicon-example",
+      "terms": [
+        "으세요"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--으세요-ko-suffix-3WLYFMVI"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:안녕:安寧:1655:3:1",
+      "korean": "안녕하세요?",
+      "english": "I am sorry. You have the wrong number. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "안녕",
+        "安寧",
+        "安寧하다",
+        "안녕하다",
+        "安寧히",
+        "안녕히"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-안녕-ko-intj-RfP8CElH"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-어야:hangul-only:22114:2:1",
+      "korean": "알겠지만, 예뻐야 얼마나 예쁘겠나?",
+      "english": "I got that, but granted she is pretty, how pretty can she really be?",
+      "source": "lexicon-example",
+      "terms": [
+        "어야"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--어야-ko-suffix-J~HYYLop"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:다:hangul-only:661:5:1",
+      "korean": "애들이 놀자니까 잠은 다 잤다.",
+      "english": "The kids are asking me to play, so that's it for my plans for a nap. (literally, “The kids are asking me to play, so I've slept all my sleep [when one has really not slept at all].)”)",
+      "source": "lexicon-example",
+      "terms": [
+        "다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-다-ko-adv-eLkCgS8z"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:사내:hangul-only:5814:1:2",
+      "korean": "어느 중국인 사내가 한 시경에 그것을 내다 버렸습니다.",
+      "english": "A Chinese man dumped it around one.",
+      "source": "lexicon-example",
+      "terms": [
+        "사내"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-사내-ko-noun-ajDXTqYG"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:그쪽:hangul-only:10814:2:1",
+      "korean": "어떻게 지내세요? 네, 좋아요. 그쪽은요?",
+      "english": "And you?",
+      "source": "lexicon-example",
+      "terms": [
+        "그쪽"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-그쪽-ko-pron-CqufkA7o"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-더-:hangul-only:22170:1:2",
+      "korean": "어제 기분 좋아 보이더라. 무슨 좋은 일 있어?",
+      "english": "You looked happy yesterday—did something nice happen?",
+      "source": "lexicon-example",
+      "terms": [
+        "더"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--더--ko-suffix-0AXMHwwX"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:말:末:111:3:4",
+      "korean": "어제 일은 미안하다고 말하고 싶어요.",
+      "english": "It’s okay, Anna. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "말",
+        "末",
+        "末하다",
+        "말하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-말하다-ko-verb-mNed5I2C",
+        "derived:wiktionary:말:末:111:하다"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:어제:hangul-only:3927:2:1",
+      "korean": "어제, 기차를 탔습니다.",
+      "english": "Yesterday, I took a train.",
+      "source": "lexicon-example",
+      "terms": [
+        "어제"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-어제-ko-adv-lSPZ--eb"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:저:hangul-only:534:3:1",
+      "korean": "어제, 저는 기차를 탔습니다.",
+      "english": "Yesterday, I took a train.",
+      "source": "lexicon-example",
+      "terms": [
+        "저"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-저-ko-pron-3-92Sra~"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:모르다:hangul-only:724:3:2",
+      "korean": "어찌 슬펐는지 몰라.",
+      "english": "I was so sad.",
+      "source": "lexicon-example",
+      "terms": [
+        "모르다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-모르다-ko-verb-Cok2MPKi"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:모르다:hangul-only:724:3:1",
+      "korean": "얼마나 추운지 몰라.",
+      "english": "It's so cold.",
+      "source": "lexicon-example",
+      "terms": [
+        "모르다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-모르다-ko-verb-Cok2MPKi"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:묵다:hangul-only:9440:1:1",
+      "korean": "얼마동안 묵으시겠습니까?",
+      "english": "Eolma-dong'an mugeusigetseumnikka?",
+      "source": "lexicon-example",
+      "terms": [
+        "묵다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-묵다-ko-verb-e2zKQ37v"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:엄마:hangul-only:888:1:2",
+      "korean": "엄마는 바구니를 들고 있습니다.",
+      "english": "Mum is carrying a basket.",
+      "source": "lexicon-example",
+      "terms": [
+        "엄마"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-엄마-ko-noun-MpFZKLUV"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:여류:女流:30307:1:1",
+      "korean": "에밀리 브론테는 영국의 여류 소설가다.",
+      "english": "Emily Bronte is an English female novelist.",
+      "source": "lexicon-example",
+      "terms": [
+        "여류",
+        "女流",
+        "녀류"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-여류-ko-noun-L8z1wt5t"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:거의:hangul-only:2389:1:3",
+      "korean": "에세이에서 백퍼센트(100%)를 얻는다는 것은 거의 불가능하다.",
+      "english": "It's practically impossible to get 100% on the essay.",
+      "source": "lexicon-example",
+      "terms": [
+        "거의"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-거의-ko-adv-5xSg1DOT"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:왜년:倭년:9559:1:1",
+      "korean": "여기는 어째 이렇게 왜놈 왜년이 많나?",
+      "english": "Why are there so many Jap bitches here?",
+      "source": "lexicon-example",
+      "terms": [
+        "왜년",
+        "倭년"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-왜년-ko-noun-a9RKmws~"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:얼마나:hangul-only:3542:1:1",
+      "korean": "여기에 계신 지 얼마나 되셨어요? —두달이요.",
+      "english": "How long have you been here? ━ two months.",
+      "source": "lexicon-example",
+      "terms": [
+        "얼마나"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-얼마나-ko-adv-pWw~3UaO"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:맞다:hangul-only:2809:1:2",
+      "korean": "여보세요? 아나 맞아?",
+      "english": "Oh, yes. I am here! Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "맞다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-맞다-ko-verb-tf0u3f~y"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-니:hangul-only:22019:1:2",
+      "korean": "여우야, 여우야, 뭐 하니?",
+      "english": "Foxy, foxy, what are you doing?",
+      "source": "lexicon-example",
+      "terms": [
+        "니"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--니-ko-suffix-xBdpITwU"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-지:hangul-only:22288:3:2",
+      "korean": "영국 가봤어?",
+      "english": "Of course I did.",
+      "source": "lexicon-example",
+      "terms": [
+        "지"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--지-ko-suffix-UXtoNa6-"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:들어가다:hangul-only:1734:1:2",
+      "korean": "예를 들면, 많은 지역에서 여성들이 사람들에게 백신을 접종하는데, 그 이유는, 그들이 집에 들어갈 수 있고, 다른 여성들과 얘기를 나눌 수도 있고, 또 어린이들에게도 접근이 가능하기 때문이다.",
+      "english": "Original from 2018, VOA (Experts: Polio Could Again Spread Worldwide)",
+      "source": "lexicon-example",
+      "terms": [
+        "들어가다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-들어가다-ko-verb-7i9sCttr"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:오늘:hangul-only:147:1:1",
+      "korean": "오늘은 4(사)월 3(삼)일입니다.",
+      "english": "Today is April the third.",
+      "source": "lexicon-example",
+      "terms": [
+        "오늘"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-오늘-ko-noun-b3Unws5S"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:올라가다:hangul-only:4083:2:1",
+      "korean": "올라감 중입니다.",
+      "english": "He (Ree Hakbong (Ree Hakbong)) is on his way to Seoul.",
+      "source": "lexicon-example",
+      "terms": [
+        "올라가다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-올라가다-ko-verb-sZTpTr-d"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:옴:hangul-only:2622:1:1",
+      "korean": "옴 덕에 보지 긁는다. 사타구니 긁다 보지 긁는다.",
+      "english": "She scratches her pubes as well as her itchy thigh.",
+      "source": "lexicon-example",
+      "terms": [
+        "옴"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-옴-ko-noun-1bFHf-45"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:연구소:硏究所:5373:1:1",
+      "korean": "왕 씨와 그의 팀이 머무르는 연구소는 인구 백이십(120)만명이 사는 도시 리장의 외곽에 있다.",
+      "english": "The research station that houses Wang and his team is outside Lijiang, a city of about 1.2 million people.",
+      "source": "lexicon-example",
+      "terms": [
+        "연구소",
+        "硏究所"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-연구소-ko-noun-8cWlh1B6"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:말이 아니다:hangul-only:17763:1:1",
+      "korean": "왜 말이 아닌 질문을 하니?",
+      "english": "Why are you asking this unreasonable question?",
+      "source": "lexicon-example",
+      "terms": [
+        "말이 아니다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-말이_아니다-ko-phrase-Ppe0rT4-"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-ㅂ네까:hangul-only:27839:1:1",
+      "korean": "왜들 그럽네까? 그러디들 말소구레.",
+      "english": "The writer, Kim Nae-Sung, was born and raised in Namgot township of Taedong County (modern-day Kangnam County in Pyongyang).",
+      "source": "lexicon-example",
+      "terms": [
+        "ㅂ네까"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--ㅂ네까-ko-suffix-FslZ0B1f"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:재우다:hangul-only:30648:1:1",
+      "korean": "우리 집에서는 아이들을 10시에 재운다.",
+      "english": "We put our children to bed at 10 o’clock.",
+      "source": "lexicon-example",
+      "terms": [
+        "재우다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-재우다-ko-verb-bRgyLJ4Z"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-은:hangul-only:22003:5:2",
+      "korean": "우리 형 여기 있어.",
+      "english": "And your sister [TOP]?",
+      "source": "lexicon-example",
+      "terms": [
+        "은"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--은-ko-particle-Rel-j2mD"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-야요:hangul-only:24071:1:2",
+      "korean": "우리도 피난민이야요, 어듸메서 오셨시니까?",
+      "english": "We're refugees as well, where did you come from?",
+      "source": "lexicon-example",
+      "terms": [
+        "야요"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--야요-ko-suffix--R0-0o6n"
+      ]
+    },
+    {
+      "id": "seed:sentence:가하다:1",
+      "korean": "운전자는 속도를 가했다.",
+      "english": "The driver increased speed.",
+      "source": "seed",
+      "license": "project-seed",
+      "terms": [
+        "가하다",
+        "加하다",
+        "속도",
+        "速度"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-가하다-ko-verb-Le5cEK-q"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:수:手:352:1:2",
+      "korean": "움직일 수가 없다.",
+      "english": "I can't move.",
+      "source": "lexicon-example",
+      "terms": [
+        "수",
+        "手"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-수-ko-noun-eatSHHnQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:유모:乳母:8964:1:1",
+      "korean": "유모와 현명한 이웃 여인들은 직접 내 얼굴을 보기도 여러 달 전부터 나에게 지대한 관심을 가지고 있었는데, 그들은 내가 태어난 날과 시간을 헤아려보더니, 첫째, 내 일생이 불행한 운명을 타고 났으며, 둘째, 내가 유령과 망령을 보는 하나의 특별한 능력을 타고나리라 예언했다. 그들은 금요일 밤 자정 앞뒤에 태어난 불운한 아기들은 남녀를 막론하고 이러한 두 가지 선물을 면할 수 없다고 믿었다.",
+      "english": "In consideration of the day and hour of my birth, it was declared by the nurse, and by some sage women in the neighbourhood who had taken a lively interest in me several months before there was any possibility of our becoming personally acquainted, first, that I was destined to be unlucky in life; and secondly, that I was privileged to see ghosts and spirits; both these gifts inevitably attaching, as they believed, to all unlucky infants of either gender, born towards the small hours on a Friday night. 1869, Dickens, David Copperfield, chapter 1 (The original sentence in English)",
+      "source": "lexicon-example",
+      "terms": [
+        "유모",
+        "乳母"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-유모-ko-noun-pl2Q~A9Z"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-가:hangul-only:22124:1:3",
+      "korean": "의자가 있다.",
+      "english": "There is a chair.",
+      "source": "lexicon-example",
+      "terms": [
+        "가"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--가-ko-particle-k6nSTijD"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:연설:演說:13543:1:1",
+      "korean": "의장의 연설은 어땠어요? ―저는 아주 감동했어요. uijang'ui yeonseoreun eottaesseoyo? ―jeoneun aju gamdonghaesseoyo. What do you think of the chairman's speech?",
+      "english": "I was quite impressed.",
+      "source": "lexicon-example",
+      "terms": [
+        "연설",
+        "演說"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-연설-ko-noun-g5iPqHDv"
+      ]
+    },
+    {
+      "id": "seed:sentence:방수:1",
+      "korean": "이 가방은 방수가 된다.",
+      "english": "This bag is waterproof.",
+      "source": "seed",
+      "license": "project-seed",
+      "terms": [
+        "방수",
+        "防水"
+      ],
+      "definitionSourceIds": []
+    },
+    {
+      "id": "lexicon:wiktionary:현질:hangul-only:22291:1:1",
+      "korean": "이 게임은 현질을 해야만 이길 수 있다.",
+      "english": "This game is pay to win.",
+      "source": "lexicon-example",
+      "terms": [
+        "현질"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-현질-ko-noun-w4Gty5bs"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:그림:hangul-only:3582:1:2",
+      "korean": "이 그림을 보겠습니다.",
+      "english": "Let's take a look at this picture.",
+      "source": "lexicon-example",
+      "terms": [
+        "그림"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-그림-ko-noun-SSPaB4nJ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:건방:hangul-only:28041:1:1",
+      "korean": "이 새끼 너 건방져!",
+      "english": "You (Cha Ji-cheol) arrogant bastard!",
+      "source": "lexicon-example",
+      "terms": [
+        "건방"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-건방-ko-noun-jDcsHmyJ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:스카프:hangul-only:8858:1:1",
+      "korean": "이 스카프는 100% 모직이다.",
+      "english": "This scarf is 100% wool.",
+      "source": "lexicon-example",
+      "terms": [
+        "스카프"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-스카프-ko-noun-4b4AKYbK"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:잇몸:hangul-only:1545:1:1",
+      "korean": "이가 없으면 잇몸으로 산다.",
+      "english": "Make do with what you have.",
+      "source": "lexicon-example",
+      "terms": [
+        "잇몸"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-잇몸-ko-noun-63UCeKl-"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:보다:hangul-only:1026:5:2",
+      "korean": "이거 좀 봐봐.",
+      "english": "Have a look at this.",
+      "source": "lexicon-example",
+      "terms": [
+        "보다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-보다-ko-verb-VZZEenM3"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-은:hangul-only:22003:5:1",
+      "korean": "이건 엄마 꺼야.",
+      "english": "And for Dad [TOP]?",
+      "source": "lexicon-example",
+      "terms": [
+        "은"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--은-ko-particle-Rel-j2mD"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:이것:hangul-only:500:1:1",
+      "korean": "이것은 탁자야.",
+      "english": "This is a table.",
+      "source": "lexicon-example",
+      "terms": [
+        "이것"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-이것-ko-pron-HreWAkEe"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:다:hangul-only:661:4:1",
+      "korean": "이런 미친 놈이 다 있네.",
+      "english": "I can't believe this bastard is so crazy.",
+      "source": "lexicon-example",
+      "terms": [
+        "다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-다-ko-adv-wJ2Aq6N7"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:욱:hangul-only:25688:1:1",
+      "korean": "이렇게 열 십자로 짚을 곱게 다듬어서 깔아갖고는 가포래 깔고 그 욱에다가 밥을 퍼내.",
+      "english": "You would trim the straw into the shape of 'ten' (十), then you would spread the cloth and scoop out rice on top of it",
+      "source": "lexicon-example",
+      "terms": [
+        "욱"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-욱-ko-noun-CDZrMd~F"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:선택:選擇:4057:1:1",
+      "korean": "이메일 (선택): 당신의 메일 주소를 공개하지 않고 다른 사용자들과 이야기를 할 수 있습니다.",
+      "english": "Email (option): This provides a way for other users to contact [you] without revealing your email address.",
+      "source": "lexicon-example",
+      "terms": [
+        "선택",
+        "選擇",
+        "選擇하다",
+        "선택하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-선택-ko-noun-ALXpy70X"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:차이나타운:hangul-only:9135:1:1",
+      "korean": "이번 여름 방학에는 인천에 위치한 차이나타운에서 짜장면을 먹었다.",
+      "english": "This summer vacation, I had jjajangmyeon at a chinatown in Incheon..",
+      "source": "lexicon-example",
+      "terms": [
+        "차이나타운"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-차이나타운-ko-noun-DogY4Xxl"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:이야:hangul-only:10277:1:2",
+      "korean": "이야, 그거 새 옷이네.",
+      "english": "Myeonjeop ttaemun-e eoje gu'ip-haesseo-yo. Wow! That's a new dress. ―I just bought it yesterday for the job interview.",
+      "source": "lexicon-example",
+      "terms": [
+        "이야"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-이야-ko-intj-k~DL4bUl"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:멸망:滅亡:17127:2:1",
+      "korean": "이자성의 입성으로 명나라는 멸망했다.",
+      "english": "The Ming dynasty ended with Li Zicheng's entry into the city.",
+      "source": "lexicon-example",
+      "terms": [
+        "멸망",
+        "滅亡",
+        "滅亡하다",
+        "멸망하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-멸망-ko-noun-4uMVjyOT"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:있다:hangul-only:652:6:1",
+      "korean": "이제 가도 돼요? 아니요, 좀 있다가 오세요.",
+      "english": "No, (let) some time go by and then come.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "있다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-있다-ko-verb-r2XhoPg9"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:것:hangul-only:592:3:1",
+      "korean": "인생은 원래 헤어지는 거야.",
+      "english": "Life is always about saying goodbye. (literally, “Life is always a thing where you say goodbye.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "것"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-것-ko-noun-56ME300B"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:테크:hangul-only:19733:1:1",
+      "korean": "인생은 테크를 잘 타야 한다.",
+      "english": "You need to go on the right career path in life.",
+      "source": "lexicon-example",
+      "terms": [
+        "테크"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-테크-ko-noun-8f7NLn-o"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-더-:hangul-only:22170:1:3",
+      "korean": "일기예보 보니까 내일은 또 춥겠더라.",
+      "english": "I was looking at the weather forecast, and it looks like it's going to be cold again tomorrow.",
+      "source": "lexicon-example",
+      "terms": [
+        "더"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--더--ko-suffix-0AXMHwwX"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-더-:hangul-only:22170:1:4",
+      "korean": "일어나 보니까 내가 술 열 병을 혼자 먹었더라고.",
+      "english": "When I got up, I realized I had eaten ten bottles of alcohol all by myself.",
+      "source": "lexicon-example",
+      "terms": [
+        "더"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--더--ko-suffix-0AXMHwwX"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:애:hangul-only:2353:4:1",
+      "korean": "일을 마무리하려고 애쓴다.",
+      "english": "He makes an effort to finish the work.",
+      "source": "lexicon-example",
+      "terms": [
+        "애"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-애-ko-noun-uEKR5stg"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:언저리:hangul-only:17959:2:1",
+      "korean": "잃어버린 돈이 천만원 언저리야.",
+      "english": "The money I lost is about ten million Won.",
+      "source": "lexicon-example",
+      "terms": [
+        "언저리"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-언저리-ko-noun-J5ntM9B3"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:하다:hangul-only:98:22:2",
+      "korean": "잠깐 쉬자는 소리에 나는 고개를 돌렸다.",
+      "english": "At her saying we should rest a bit, I turned my head.",
+      "source": "lexicon-example",
+      "terms": [
+        "하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-하다-ko-verb-IiiuBSrW"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:천안문당하다:天安門당하다:24193:1:2",
+      "korean": "저 사람 곧 천안문당하겠네.",
+      "english": "That guy will be vanished soon.",
+      "source": "lexicon-example",
+      "terms": [
+        "천안문당하다",
+        "天安門당하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-천안문당하다-ko-verb-NZCMQgA4"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:저기:hangul-only:5092:3:1",
+      "korean": "저기. 내가 미안해.",
+      "english": "It’s okay, Anna. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "저기"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-저기-ko-intj-ZrIJhzTD"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:당:當:3002:3:1",
+      "korean": "저는 도난을 당했습니다.",
+      "english": "I have been robbed.",
+      "source": "lexicon-example",
+      "terms": [
+        "당",
+        "當",
+        "當하다",
+        "당하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-당하다-ko-verb-7wpXkAW-"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:지지:支持:10621:2:1",
+      "korean": "저는 여러분이 이것을 지지하시기를 바랍니다.",
+      "english": "I hope you will support it. 1999, Bill Clinton's Seventh State of the Union Address (The original sentence in English)",
+      "source": "lexicon-example",
+      "terms": [
+        "지지",
+        "支持",
+        "支持하다",
+        "지지하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-지지하다-ko-verb-pJ2d~lkr"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:위:hangul-only:1251:1:5",
+      "korean": "저는 종이 위에 사자를 그리고 있습니다.",
+      "english": "I am painting a lion on a paper.",
+      "source": "lexicon-example",
+      "terms": [
+        "위"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-위-ko-noun-C1S10KFd"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:종이:hangul-only:4948:1:1",
+      "korean": "저는 종이에 사자를 그리고 있습니다.",
+      "english": "I am painting a lion on a paper.",
+      "source": "lexicon-example",
+      "terms": [
+        "종이"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-종이-ko-noun-OCY1yTJb"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-에:hangul-only:22244:2:2",
+      "korean": "저는 종이에 사자를 그리고 있어요.",
+      "english": "I am painting a lion on a paper.",
+      "source": "lexicon-example",
+      "terms": [
+        "에"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--에-ko-particle-Zj6hv~~l"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:것:hangul-only:592:1:3",
+      "korean": "적군이 서울에 진입한 것으로 판단됩니다.",
+      "english": "We judge that the enemy has entered Seoul. (literally, “We judge it as the thing that the enemy has entered Seoul.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "것"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-것-ko-noun-OA9DDrgj"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:침엽수:針葉樹:27405:1:1",
+      "korean": "전나무와 가문비나무, 소나무는 침엽수이다.",
+      "english": "Firs, spruces, and pines are conifers.",
+      "source": "lexicon-example",
+      "terms": [
+        "침엽수",
+        "針葉樹"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-침엽수-ko-noun-Y4htH8m6"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:전:前:553:1:4",
+      "korean": "전에 보안관 뱃지는 본 적이 없습니다.",
+      "english": "I’ve never seen a Marshal’s badge before.",
+      "source": "lexicon-example",
+      "terms": [
+        "전",
+        "前"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-전-ko-noun-bbfYA-dP"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:불안:不安:4534:1:1",
+      "korean": "정신적 불안은 육체적 질병을 유발할 수 있다.",
+      "english": "Mental unwellness can cause physical unwellness.",
+      "source": "lexicon-example",
+      "terms": [
+        "불안",
+        "不安",
+        "不安하다",
+        "불안하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-불안-ko-noun-SPZauubn"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:종교:宗敎:4317:1:1",
+      "korean": "제1 추가 헌법은 종교·연설·언론·집회 및 청원의 자유를 보장한다.",
+      "english": "The First Amendment guarantees freedom of religion, speech, press, assembly, and petition.",
+      "source": "lexicon-example",
+      "terms": [
+        "종교",
+        "宗敎",
+        "宗教"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-종교-ko-noun-E50Uthyu"
+      ]
+    },
+    {
+      "id": "seed:sentence:겠:2",
+      "korean": "제가 하겠습니다.",
+      "english": "I will do it.",
+      "source": "seed",
+      "license": "project-seed",
+      "terms": [
+        "겠"
+      ],
+      "definitionSourceIds": []
+    },
+    {
+      "id": "lexicon:wiktionary:하다:hangul-only:98:21:3",
+      "korean": "제가 할 수 있어요.",
+      "english": "I can do it.",
+      "source": "lexicon-example",
+      "terms": [
+        "하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-하다-ko-verb-k4B609t~"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:사성음:四聲音:21438:1:1",
+      "korean": "鳥(조)의 사성음 'niǎo'는 속음에서 기원한다.",
+      "english": "The Mandarin reading niǎo of [the character] 鳥／鸟 originates in a vernacular reading.",
+      "source": "lexicon-example",
+      "terms": [
+        "사성음",
+        "四聲音"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-사성음-ko-noun-1-E0uC81"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:아마도:hangul-only:493:1:2",
+      "korean": "좋아, 나중에 봐, 아마도.",
+      "english": "Maybe I’ll see you later. Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "아마도"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-아마도-ko-adv-3P~160BC"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:모르다:hangul-only:724:4:1",
+      "korean": "죽어도 난 몰라.",
+      "english": "I don't care if you die.",
+      "source": "lexicon-example",
+      "terms": [
+        "모르다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-모르다-ko-verb-pa2ljv8C"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-더-:hangul-only:22170:1:1",
+      "korean": "중국 분위기는 어떻더냐?",
+      "english": "What was the atmosphere/vibe in China like?",
+      "source": "lexicon-example",
+      "terms": [
+        "더"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--더--ko-suffix-0AXMHwwX"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:귀빈:貴賓:20470:1:2",
+      "korean": "중국·말레이시아 양국 귀빈이 이 행사에 참석했다.",
+      "english": "Distinguished visitors from the two countries of China and Malaysia participated in this event.",
+      "source": "lexicon-example",
+      "terms": [
+        "귀빈",
+        "貴賓"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-귀빈-ko-noun-G2pxeQCp"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:적:hangul-only:254:1:2",
+      "korean": "중국에 가 보신 적 있으시나요?",
+      "english": "Have you ever been to China?",
+      "source": "lexicon-example",
+      "terms": [
+        "적"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-적-ko-noun-9DiKdbUs"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:수:手:352:1:3",
+      "korean": "중국을 갔을 수도 있어요.",
+      "english": "He might have gone to China as well.",
+      "source": "lexicon-example",
+      "terms": [
+        "수",
+        "手"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-수-ko-noun-eatSHHnQ"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:남녀:男女:4429:1:1",
+      "korean": "지금 남녀가 무엇을 하고 있습니까?",
+      "english": "What are a man and a woman doing now?",
+      "source": "lexicon-example",
+      "terms": [
+        "남녀",
+        "男女"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-남녀-ko-noun-ap9JoCGU"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:울다:hangul-only:3362:1:1",
+      "korean": "지금 누가 울어요?",
+      "english": "Who is crying now?",
+      "source": "lexicon-example",
+      "terms": [
+        "울다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-울다-ko-verb--KQRjPkE"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:지금:只今:1729:1:3",
+      "korean": "지금 누가 웁니까?",
+      "english": "Who is crying now?",
+      "source": "lexicon-example",
+      "terms": [
+        "지금",
+        "只今"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-지금-ko-adv-7V65o34t"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:질문:質問:4625:1:1",
+      "korean": "질문이 있으시면, 저에게 말씀해 주십시오.",
+      "english": "If you have any questions, please let me know. Audio: (file)",
+      "source": "lexicon-example",
+      "terms": [
+        "질문",
+        "質問",
+        "質問하다",
+        "질문하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-질문-ko-noun-MjA3FriP"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-겠-:hangul-only:22061:7:1",
+      "korean": "집에 들어가기는 싫고 날씨도 좋겠다, 카페나 가볼까?",
+      "english": "I don't want to go back home, and the weather is really nice; should I just go to a café?",
+      "source": "lexicon-example",
+      "terms": [
+        "겠"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--겠--ko-suffix-WOP0-E39"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:멀다:hangul-only:4101:1:1",
+      "korean": "집에서 학교까지 멀어요?",
+      "english": "Is it far from (your) home to school? Audio (South Korea): (file)",
+      "source": "lexicon-example",
+      "terms": [
+        "멀다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-멀다-ko-adj-hsUYe-Of"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:인터네트:hangul-only:17116:1:1",
+      "korean": "찬혁은 인터네트에서 련재된 소설을 읽었다.",
+      "english": "Chanhyeok read a novel on the internet.",
+      "source": "lexicon-example",
+      "terms": [
+        "인터네트"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-인터네트-ko-noun-V-ikMd7s"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:-겠-:hangul-only:22061:1:2",
+      "korean": "철수가 오늘 김밥을 먹겠대요.",
+      "english": "Cheolsu said he would eat kimbap today.",
+      "source": "lexicon-example",
+      "terms": [
+        "겠"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en--겠--ko-suffix-D9lpMZSl"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:인소:因素:29154:1:1",
+      "korean": "最近 硏究에서는 遺傳子가 肥滿의 主要 因素임이 밝혀졌다. 최근 연구에서는 유전자가 비만의 주요 인소임이 밝혀졌다.",
+      "english": "Recent studies have revealed that genes are a major factor in obesity.",
+      "source": "lexicon-example",
+      "terms": [
+        "인소",
+        "因素"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-인소-ko-noun-NGVRrqnC"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:취미:趣味:8256:1:1",
+      "korean": "취미는 뭐에요? 으음, 사진이려나.",
+      "english": "Hmm, I suppose photography.",
+      "source": "lexicon-example",
+      "terms": [
+        "취미",
+        "趣味"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-취미-ko-noun-CDSgRPUt"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:하다:hangul-only:98:34:1",
+      "korean": "친구하고 등산하기로 했어요.",
+      "english": "I decided to go hiking with my friend. Audio (South Korea): (file)",
+      "source": "lexicon-example",
+      "terms": [
+        "하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-하다-ko-verb-ko:decide"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:들다:hangul-only:3432:27:2",
+      "korean": "코트를 들어 드릴까요?",
+      "english": "Shall I hold your coat?",
+      "source": "lexicon-example",
+      "terms": [
+        "들다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-들다-ko-verb-wddo9PTy"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:후계자:後繼者:14170:1:1",
+      "korean": "크리스티안 공이 아직 어린이일 때, 그는 덴마크와 노르웨이에 있어서 부친의 후계자로 선택되었다.",
+      "english": "While Duke Christian was still a child, he had been chosen as his father's successor in both Denmark and Norway. 1998, Lars Hamre, Norsk politisk historie 1513-1537: (The original sentence in Norwegian)",
+      "source": "lexicon-example",
+      "terms": [
+        "후계자",
+        "後繼者"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-후계자-ko-noun-VI5W~Otr"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:통:桶:1657:1:1",
+      "korean": "통을 물로 채웠다.",
+      "english": "[He] filled the vat with water.",
+      "source": "lexicon-example",
+      "terms": [
+        "통",
+        "桶"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-통-ko-noun-h-L5V5TY"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:뜨다:hangul-only:3294:3:3",
+      "korean": "하늘에 무지개가 떴다.",
+      "english": "There is a rainbow in the sky.",
+      "source": "lexicon-example",
+      "terms": [
+        "뜨다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-뜨다-ko-verb-s7F73DLb"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:약자:略字:11400:2:1",
+      "korean": "學(학)의 약자는 学(학)이다.",
+      "english": "The simplified form of \"學\" is \"学\".",
+      "source": "lexicon-example",
+      "terms": [
+        "약자",
+        "略字",
+        "략자"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-약자-ko-noun-pjpHcjON"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:보다:hangul-only:1026:4:1",
+      "korean": "한국에 가 본 적이 있어요?",
+      "english": "Have you ever been to Korea? (literally, “Have you experienced going to Korea?”)",
+      "source": "lexicon-example",
+      "terms": [
+        "보다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-보다-ko-verb-WLsH4BKp"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:보다:hangul-only:1026:5:1",
+      "korean": "한번 생각해 볼게요.",
+      "english": "I'll consider it. (literally, “I'll try thinking about it.”)",
+      "source": "lexicon-example",
+      "terms": [
+        "보다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-보다-ko-verb-VZZEenM3"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:구개음화:口蓋音化:23490:1:1",
+      "korean": "한자 的의 한국어 독음은 구개음화로 인해 ‘뎍’에서 ‘적’으로 변했다.",
+      "english": "The Korean reading for the hanja 的 changed from dyeok to jeok due to palatalization.",
+      "source": "lexicon-example",
+      "terms": [
+        "구개음화",
+        "口蓋音化"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-구개음화-ko-noun-2-aEEjJV"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:만하다:hangul-only:3674:1:1",
+      "korean": "해 볼 만한데?",
+      "english": "It is doable.",
+      "source": "lexicon-example",
+      "terms": [
+        "만하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-만하다-ko-adj-L4XZB-vr"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:기둥:hangul-only:10787:1:1",
+      "korean": "헤라클레스의 기둥은 지중해 입구에 놓여진 것으로 추정된다.",
+      "english": "The Pillars of Hercules, … (are) … supposed to have been placed at the mouth of the Mediterranean.",
+      "source": "lexicon-example",
+      "terms": [
+        "기둥"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-기둥-ko-noun-Tb51ToHb"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:그쪽:hangul-only:10814:1:1",
+      "korean": "헬스클럽은 라운지 건너편에 있어. 우편실 옆이야. 저쪽으로 가렴. 고마워 피트. 아냐, 안나, 그쪽이 아냐. 저쪽으로 가렴. Helseukeulleob-eun raunji geonneopyeon-e isseo. Upyeonsil yeop-i-ya. Jeojjog-euro garyeom. Gomawo Piteu. Anya, Anna, geujjog-i anya. Jeojjog-euro garyeom. The gym is across from the lounge. It’s next to the mailroom. Go that way.",
+      "english": "No, Anna! Not that way! Go that way! Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "그쪽"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-그쪽-ko-pron-jnVKhY2C"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:어디:hangul-only:3499:1:2",
+      "korean": "헬스클럽이 어디 맞은편이라고?",
+      "english": "Across from the lounge. Right. Thanks! Original English texts from 2016, VOA Learning English (public domain)",
+      "source": "lexicon-example",
+      "terms": [
+        "어디"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-어디-ko-pron-tIERwQxl"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:호:號:1778:3:1",
+      "korean": "호는 도산(島山).",
+      "english": "[His (Ahn Changho)] art name was Dosan.",
+      "source": "lexicon-example",
+      "terms": [
+        "호",
+        "號"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-호-ko-noun-PMVee-4G"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:농사:農事:5006:2:1",
+      "korean": "호래이 잡는 거를 제일 큰 농사로 아는데.",
+      "english": "So, he thinks hunting tigers is the most important business there is. (Gyeongsang dialect, Geochang)",
+      "source": "lexicon-example",
+      "terms": [
+        "농사",
+        "農事",
+        "農事하다",
+        "농사하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-농사-ko-noun-JE29bFnG"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:글자:hangul-only:4693:1:1",
+      "korean": "확대된 글자들 사진에 '大(대)' '息(식)' '食(식)' 세 글자의 윤곽이 뚜렷이 보인다.",
+      "english": "The outline of the three characters 大, 息, and 食 are clearly visible in the zoomed-in photograph of the characters.",
+      "source": "lexicon-example",
+      "terms": [
+        "글자"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-글자-ko-noun-gpqHGp7p"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:거문고:hangul-only:14463:1:1",
+      "korean": "황진이는 시조와 거문고 작품으로도 유명하다.",
+      "english": "Hwang Jini is renowned for her sijo and geomungo works.",
+      "source": "lexicon-example",
+      "terms": [
+        "거문고"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-거문고-ko-noun-kfE0QO8A"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:명:命:3438:1:1",
+      "korean": "훈민정음 해례본 세종 임금의 명으로 정인지 등이 한글의 창제 원리와 사용법을 설명하고 예를 든 책.",
+      "english": "A book where Jeong Inji and others explain the principles of creation and method of usage of hangul and give examples, under the command of King Sejong.",
+      "source": "lexicon-example",
+      "terms": [
+        "명",
+        "命",
+        "命하다",
+        "명하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-명-ko-noun--6kdv26S"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:바르다:hangul-only:1626:13:3",
+      "korean": "A: 야, 너랑 쟤랑 싸우면 누가 이겨?",
+      "english": "B: Yeah, for sure.",
+      "source": "lexicon-example",
+      "terms": [
+        "바르다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-바르다-ko-verb-X7t8w~LB"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:모습:hangul-only:3471:1:1",
+      "korean": "File:Yonhap News Agency Journalist plaque, 2014.jpg 본 작품은 빠르고 정확한 뉴스를 전달하기 위해 발 빠르게 뛰어다니는 기자 모습을 생동감 있게 표현한 작품이다.",
+      "english": "This work is a work expressing with liveliness the appearance of a reporter who rushes about quickly in order to deliver quick and accurate news.",
+      "source": "lexicon-example",
+      "terms": [
+        "모습"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-모습-ko-noun-wDd2v4D4"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:고백:告白:6862:2:1",
+      "korean": "Lyrics of 넌 내게 반했어 sung by Jung Yong Hwa 나도 널 사랑해 사랑해 이제 널 사랑한다 고백할거야.",
+      "english": "I also love you; now I will confess that I love you.",
+      "source": "lexicon-example",
+      "terms": [
+        "고백",
+        "告白",
+        "告白하다",
+        "고백하다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-고백하다-ko-verb-Y2NH8ewG"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:하나님:hangul-only:95:2:1",
+      "korean": "Shahada 하나님 외에 다른 신은 없습니다. 무함마드는 그분의 사도입니다.",
+      "english": "Muhammad is the messenger of God.",
+      "source": "lexicon-example",
+      "terms": [
+        "하나님"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-하나님-ko-name-0XIheL9n1"
+      ]
+    },
+    {
+      "id": "lexicon:wiktionary:내리다:hangul-only:3224:2:1",
+      "korean": "Subway announcements 내리실 문은 왼쪽입니다.",
+      "english": "The door is on the left.",
+      "source": "lexicon-example",
+      "terms": [
+        "내리다"
+      ],
+      "definitionSourceIds": [
+        "wiktionary:en-내리다-ko-verb-kBdZ90J2"
+      ]
+    }
+  ]
+}

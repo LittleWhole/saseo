@@ -2,18 +2,211 @@
 
 ## [PLANS]
 - 2026-05-16T04:45:14-0400 [USER] Add a Jisho-like Hanja side panel on search results that lists relevant Hanja, Unihan meanings, and Korean hun/eum readings.
+- 2026-05-16T05:01:46-0400 [USER] Add Jisho-like TOPIK level badges when applicable.
+- 2026-05-16T05:09:34-0400 [USER] Systematically prevent wrong Hanja assignment caused by phonological identity, exemplified by grammar suffix `-고` being shown as `古`.
+- 2026-05-16T05:19:40-0400 [USER] Fix structured entries whose affix markers, Arabic numerals, or spaces were stripped from Hanja headwords, causing bad ruby and matching.
+- 2026-05-16T05:30:18-0400 [USER] Expand popup conjugation tables so they include all Korean speech registers.
+- 2026-05-16T05:40:14-0400 [USER] Display synonym entries with the target term's definition plus a Jisho-like `See also` reference instead of raw `Synonym of ...` prose.
+- 2026-05-16T05:43:30-0400 [USER] In `Other forms`, display the reading whenever it is present, even if it is identical to the alternate form text.
+- 2026-05-16T05:50:24-0400 [USER] Diagnose why Hanja glyphs in `咯血` appear to have mismatched size/weight.
+- 2026-05-16T05:57:10-0400 [USER] Generalize the lexicon system so future Korean and English sources can integrate with the same public entry phenotype instead of being Wiktionary-specific.
+- 2026-05-16T06:04:01-0400 [USER] Fix Hanja side-panel scrolling so long result pages do not trap lower Hanja content until the main page reaches the bottom.
+- 2026-05-16T06:07:55-0400 [USER] Add more cross-search hyperlinks, including Hanja sidebar readings and Korean text mentioned inside definitions.
+- 2026-05-16T06:15:40-0400 [USER] Use Naver Dict or another authoritative source for Hanja sidebar hun/eum readings.
+- 2026-05-16T06:20:46-0400 [USER] Treat hyphens that mark infixes/affixes as search formatting sugar so hyphenless queries still find hyphenated grammatical entries.
+- 2026-05-16T11:30:24-0400 [USER] Use Noto Sans KR for all Korean text.
+- 2026-05-16T11:38:04-0400 [USER] Do not use Noto Sans KR for English; use it only for Korean/Hanja text and restore a normal, less-thin Korean weight.
+- 2026-05-16T11:56:35-0400 [USER] Add Jisho-like search-time detection for Korean inflected forms and route them back to dictionary lemmas.
+- 2026-05-16T12:00:01-0400 [USER] Korean font weight is still too thin; restore the heavier weight from before the font adjustments.
+- 2026-05-16T12:06:39-0400 [USER] Fix Hanja sidebar Hun/Eum parsing where Hun chips included trailing Eum syllables, e.g. `理` showing `다스릴 리`.
+- 2026-05-16T12:22:29-0400 [USER] Rework conjugation popups to follow Wiktionary Korean conjugation template layout as a local four-column register table, without runtime template scraping except future irregular handling.
+- 2026-05-16T12:38:40-0400 [USER] Add Jisho-like example sentences for senses whenever applicable, backed by a sentence bank.
+- 2026-05-16T12:42:40-0400 [USER] For long terms, avoid wrapping the headword in the left column; move senses underneath automatically so the term stays on one line where possible.
+- 2026-05-16T12:47:55-0400 [USER] Add a top-bar GitHub link labeled `Report a Bug` with a GitHub icon.
+- 2026-05-16T13:00:04-0400 [USER] Systematically generate canonical ㄹ/ㄴ 두음법칙 forms as `North Korea or archaic` alternates even when no separate Wiktionary entry exists.
+- 2026-05-16T13:07:21-0400 [USER] Add visible spacing between `as` and the Korean term in productive-form definition chips.
+- 2026-05-16T13:13:42-0400 [USER] Merge North Korean and Yanbian 두음법칙 spellings under the South Korean lemma, keeping the North/Yanbian spelling as an alternative form.
+- 2026-05-17T17:48:34-0400 [USER] Fix wrong sense examples, hide example source labels, and restore the local font scheme to match the current Vercel deployment at `saseo.davyl.com`.
+- 2026-05-17T17:54:08-0400 [USER] Example sentence Korean should be linked by individual parts, not as one full-sentence link, and examples should include English translations.
+- 2026-05-17T18:02:12-0400 [USER] Remove all source/citation display everywhere in the app.
+- 2026-05-17T18:14:24-0400 [USER] North Korean 두음법칙 forms must not appear as separate result cards; confirm and harden the dueum checker/generator.
+- 2026-05-17T18:19:59-0400 [USER] Long headwords should behave like Jisho: do not wrap inside the left column; automatically move senses underneath only when the rendered headword is too wide.
+- 2026-05-17T22:16:22-0400 [USER] Support wildcard search with `*` in any query position.
+- 2026-05-17T22:02:01-0400 [USER] Reduce ALL-CAPS UI elements across the app by converting them to Title Case or sentence case.
+- 2026-05-17T22:16:40-0400 [USER] Improve search loading animation and prevent premature zero-result reporting before the search request completes.
+- 2026-05-17T22:30:28-0400 [USER] Add exact-one `?` wildcard search, hash filters for POS/labels/TOPIK, multi-term definition queries, and Korean rebracketing for spaced and particle-attached forms such as `부인을`.
+- 2026-05-17T22:22:41-0400 [USER] Convert applicable terms in example sentences to mixed-script Hanja efficiently and accurately, using English translations to disambiguate homophones.
+- 2026-05-17T22:37:05-0400 [USER] Add ruby readings to mixed-script sentence examples and fix wrong/duplicated `hada` entry display.
+- 2026-05-17T22:40:14-0400 [USER] Update Next.js.
+- 2026-05-18T04:35:24-0400 [USER] Fix the webpack/Turbopack dev-server issue after the Next.js upgrade.
 
 ## [DECISIONS]
 - 2026-05-16T04:45:14-0400 [CODE] Search API now owns Hanja-side-panel derivation via `hanjaCharacters`, using query text plus returned entries' Hanja lemmas, alternate forms, search forms, and `formOf` annotations.
 - 2026-05-16T04:45:14-0400 [CODE] Unihan data is stored as compact `app/data/generated/unihan-readings.json` containing `kDefinition`; hun/eum readings continue to come from `app/data/hanja.txt`.
+- 2026-05-16T05:01:46-0400 [CODE] TOPIK badges are attached at search API time from `app/data/generated/topik-levels.json`, matching normalized Hangul and compatible Hanja, and displaying the easiest applicable level.
+- 2026-05-16T05:09:34-0400 [CODE] Wiktionary Hanja extraction now trusts explicit modern Hanja evidence and `ko-etym-sino`; loose etymology mining is blocked for grammar morphemes, hyphenated forms, particles/determiners, and one-syllable entries.
+- 2026-05-16T05:19:40-0400 [CODE] Structured headword markers are lexical structure: generated Hanja now preserves affix hyphens, Arabic numerals, and word spaces; build fails if any generated Hanja strips them.
+- 2026-05-16T05:30:18-0400 [CODE] Hada conjugation tables now use explicit high-confidence register rows; non-hada entries expose expanded regular fallback rows and label them as fallbacks.
+- 2026-05-16T05:40:14-0400 [CODE] Public search responses normalize Wiktionary synonym redirects by resolving the target entry, replacing redirect prose with the target definition, and attaching structured `seeAlso` metadata.
+- 2026-05-16T05:50:24-0400 [CODE] Hanja ruby base glyphs now use a dedicated `--font-hanja` stack so uncommon Hanja do not mix Apple SD Gothic Neo with fallback CJK fonts inside one headword.
+- 2026-05-16T05:57:10-0400 [CODE] Source ingestion now uses `saseo-source-v1` contracts for Korean sense spine records, English gloss candidates, and direct aligned lexicon entries before the shared merge/alignment/display pipeline.
+- 2026-05-16T06:04:01-0400 [CODE] The Hanja side panel remains sticky on desktop, but its card is viewport-capped and the Hanja list owns scrolling with overscroll containment.
+- 2026-05-16T06:07:55-0400 [CODE] Korean/Hanja terms rendered inside definition prose now link to `/search?q=...`; Hanja side-panel characters/readings, other forms, and form annotations are also search links.
+- 2026-05-16T06:15:40-0400 [CODE] Hanja sidebar eum readings now prefer Unicode Unihan `kHangul`; the older local Hanja table remains as hun-gloss source and eum fallback.
+- 2026-05-16T06:20:46-0400 [CODE] Search indexing stores structural-hyphenless key variants while preserving hyphens in rendered lemmas.
+- 2026-05-16T11:30:24-0400 [CODE] The app-level CJK font stack now prefers `Noto Sans KR`; home/search pages inherit `--font-cjk` instead of forcing Geist.
+- 2026-05-16T11:38:04-0400 [CODE] Base UI text uses a Geist-first mixed stack; Korean/Hanja-only classes use Noto Sans KR directly at weight 400.
+- 2026-05-16T11:56:35-0400 [CODE] Inflected-form search is deterministic query-time analysis; candidates are accepted only when they resolve to real verb/adjective entries or folded `formOf` annotations, preserving grammar entries like `-겠-` as direct hits.
+- 2026-05-16T12:00:01-0400 [CODE] Korean/Hanja font rules now use a default `--font-korean-weight: 500` and low-specificity selectors so Tailwind `font-medium`/`font-semibold` can apply again.
+- 2026-05-16T12:06:39-0400 [CODE] Local Hanja-table Hun parsing now strips any trailing Korean Eum token from gloss parts, so duplicate 두음법칙 rows do not leak readings into Hun labels.
+- 2026-05-16T12:22:29-0400 [CODE] Conjugation popups now generate a local Wiktionary-style four-register matrix with ordinary and honorific sentence-final sections; connective/noun/determiner forms render below the matrix.
+- 2026-05-16T12:38:40-0400 [CODE] Sense examples now come from an optional generated sentence-bank sidecar; the search API ranks examples by definition source id, term match, and gloss overlap, then returns up to two examples per sense.
+- 2026-05-16T12:42:40-0400 [CODE] Entry cards now switch long/spaced headwords to a one-column layout with a nowrap, horizontally scroll-safe headword line; short entries retain the two-column layout.
+- 2026-05-16T12:47:55-0400 [CODE] Bug reporting uses a reusable `ReportBugLink` component targeting `https://github.com/LittleWhole/saseo/issues/new`.
+- 2026-05-16T13:00:04-0400 [CODE] Lexicon builds now derive Hanja-backed 두음 canonical alternates from the first Hanja reading, merge explicit canonical spelling entries into the South Korean lemma, and label the alternate `North Korea or archaic`.
+- 2026-05-16T13:07:21-0400 [CODE] Productive-form chips in `components/ui/entry.tsx` now render `as&nbsp;` before the Korean form so the text visibly and textually separates.
+- 2026-05-16T13:13:42-0400 [CODE] Dueum canonical merging now scans the whole aligned Hanja/readings sequence, not only the first syllable, and labels alternates `North Korea, Yanbian, or archaic`.
+- 2026-05-17T17:48:34-0400 [CODE] Sense examples from harvested lexicon data only attach by exact definition source id; broader term matching is reserved for explicit sentence-bank sources.
+- 2026-05-17T17:48:34-0400 [CODE] The local font scheme now matches the Vercel deployment shape: Geist for general UI text and Apple SD Gothic Neo-first CJK stacks for Korean/Hanja-specific rendering.
+- 2026-05-17T17:54:08-0400 [CODE] Sense examples now require a translation-shaped English field at build and API time; romanization-looking strings are filtered out.
+- 2026-05-17T18:02:12-0400 [CODE] Public search responses strip citation/provenance fields before returning JSON; UI no longer renders Hanja-reading source notes or TOPIK source tooltips.
+- 2026-05-17T18:14:24-0400 [CODE] North-Korean/Yanbian spelling redirects now parse both `standard form of` and `standard spelling of`; build folds them into South Korean lemmas, creates missing canonical lemmas from redirect glosses when needed, and the search API defensively collapses redirect results before rendering.
+- 2026-05-17T18:19:59-0400 [CODE] Entry cards now measure the rendered headword against the 17rem two-column headword width with `ResizeObserver`; headwords stay `nowrap`, and cards switch to one-column layout only when the rendered width would overflow.
+- 2026-05-17T21:57:18-0400 [CODE] Conjugation popup connective, noun, and determiner sections now render as bordered tables matching the sentence-final matrix style; determiner forms are rows named `past determiner`, `present determiner`, and `future determiner`.
+- 2026-05-17T22:16:22-0400 [CODE] Search scoring now treats `*` as a wildcard over indexed terms, alternate forms, structural-hyphenless keys, and romaja keys; wildcard queries skip inflection analysis and do not match against full definition haystacks.
+- 2026-05-17T22:03:27-0400 [CODE] Conjugation matrix cells are now singular by type (`ConjugationCell.form`); present/past indicative and interrogative forms are split into separate rows across ordinary, honorific, and regular fallback tables.
+- 2026-05-17T22:16:40-0400 [CODE] Search UI now tracks `idle`/`loading`/`success`/`error` states with a request-id guard and only shows zero/no-result copy after the active query has completed.
+- 2026-05-17T22:30:28-0400 [CODE] Search API now parses query terms and `#` filters separately; `?` means exactly one character, `*` means zero-or-more, English terms may match definition haystacks, and Korean/Hanja terms match indexed lexical forms to avoid example-text false positives.
+- 2026-05-17T22:22:41-0400 [CODE] Sense examples now get an optional API-time `mixedScript` field. The converter scans only Hangul chunk starts, chooses lexicon-backed Hanja candidates using sense/source-id context plus English gloss overlap, enforces Hanja-term compatibility for sentence-bank records, and handles contextual `하다` stems from `formOf`.
+- 2026-05-17T22:37:05-0400 [CODE] Mixed-script example rendering now aligns linked Hanja/Hangul chunks to the original Hangul sentence and adds per-Hanja ruby readings. Public search output promotes entries whose every sense shares one `...하다` productive form, so `加` displays as `加하다` without repeated `as 加하다` chips.
+- 2026-05-17T22:40:14-0400 [CODE] Next.js is upgraded to `16.2.6` with React/React DOM `19.2.6`, React type packages on the 19.x line, `eslint-config-next@16.2.6`, and ESLint `9.39.4`.
+- 2026-05-18T04:35:24-0400 [CODE] `npm run dev` now uses `next dev --webpack`, matching the already-webpacked build path so local development avoids Next 16 Turbopack worker-port failures.
 
 ## [PROGRESS]
 - 2026-05-16T04:45:14-0400 [CODE] Added `scripts/lexicon/import-unihan-readings.mjs`, `lexicon:import:unihan`, search API Hanja metadata loading, and a responsive search-page Hanja side rail.
+- 2026-05-16T05:01:46-0400 [CODE] Added `scripts/lexicon/import-topik-levels.mjs`, `lexicon:import:topik`, generated `topik-levels.json`, API proficiency badges, entry badge rendering, and pipeline docs.
+- 2026-05-16T05:09:34-0400 [CODE] Rebuilt the lexicon after importer tightening; `-고` is now Hangul-only while explicit Sino-Korean suffixes such as `-류/流` and `-장/長` remain.
+- 2026-05-16T05:19:40-0400 [CODE] Rebuilt the lexicon so examples include `-탕/-湯`, `4차원/4次元`, `2월/2月`, and `파급 효과/波及 效果`; renderer now rubies only Hanja while leaving markers/digits/spaces plain.
+- 2026-05-16T05:30:18-0400 [CODE] Updated `components/ui/entry.tsx` so conjugation modals include 해라체, 해체, 해요체, 하십시오체, 하게체, 하오체, 하소서체, plus past declaratives by register.
+- 2026-05-16T05:40:14-0400 [CODE] Added `Definition.seeAlso`, rendered `See also` chips in entry definitions, and documented synonym redirect normalization in `docs/lexicon-pipeline.md`.
+- 2026-05-16T05:43:30-0400 [CODE] Updated the `Other forms` renderer to show `alternate.reading` unconditionally when present.
+- 2026-05-16T05:50:24-0400 [CODE] Added `--font-hanja` in `app/globals.css` and applied it to `.ruby-headword > span`, while keeping `--font-cjk` for Korean readings/UI text.
+- 2026-05-16T05:57:10-0400 [CODE] Added `scripts/lexicon/source-contracts.mjs`, `scripts/lexicon/validate-sources.mjs`, `npm run lexicon:validate:sources`, source manifest metadata in generated lexicon output, and expanded source docs.
+- 2026-05-16T06:04:01-0400 [CODE] Updated `app/search/page.tsx` so the Hanja panel is a flex column, its header does not shrink, and the list uses `min-h-0`, `overflow-y-auto`, and `overscroll-contain` at desktop widths.
+- 2026-05-16T06:07:55-0400 [CODE] Added definition-text linkification in `components/ui/entry.tsx` and reused the same search URL shape for Hanja panel reading chips in `app/search/page.tsx`.
+- 2026-05-16T06:15:40-0400 [CODE] `scripts/lexicon/import-unihan-readings.mjs` now keeps `kHangul`; `app/api/search/route.ts` parses it, tags records as `unihan-khangul`, and overrides fallback eum readings when present.
+- 2026-05-16T06:20:46-0400 [CODE] Added structural hyphen normalization in `app/api/search/route.ts` for exact keys, prefix keys, synonym lookup keys, and haystack text; documented the behavior in `docs/lexicon-pipeline.md`.
+- 2026-05-16T11:30:24-0400 [CODE] Updated `app/globals.css`, `app/page.tsx`, and `app/search/page.tsx` so body text, ruby text, headwords, and page text compute to a Noto-first Korean stack.
+- 2026-05-16T11:38:04-0400 [CODE] Added `--font-ui`, `--font-mixed`, and `.korean-text`; moved page roots to `--font-mixed`; set `.headword-script`, `.ruby-headword`, `.ruby-headword > span`, and `.korean-text` to weight 400.
+- 2026-05-16T11:56:35-0400 [CODE] Added Korean inflection candidate generation, lemma boosting, an `/api/search` `inflections` payload, and a search-page notice for accepted inflected-form analyses.
+- 2026-05-16T12:00:01-0400 [CODE] Updated `app/globals.css` to remove the hard `400` overrides from Korean headword/ruby classes, make ruby text and inline Korean default to weight 500, and let search-button Hanja inherit weight 600.
+- 2026-05-16T12:06:39-0400 [CODE] Updated `app/api/search/route.ts` with `stripTrailingEumToken` and routed `parseHunGloss` through it for every comma-separated Hun gloss.
+- 2026-05-16T12:22:29-0400 [CODE] Replaced `components/ui/entry.tsx` conjugation rows with structured matrix/list sections, widened the modal, and documented the no-runtime-scraping rule in `docs/lexicon-pipeline.md`.
+- 2026-05-16T12:38:40-0400 [CODE] Added `scripts/lexicon/build-sentence-bank.mjs`, `npm run lexicon:build:sentences`, `app/data/sources/sentences.seed.jsonl`, `app/data/generated/sentence-bank.json`, typed `SenseExample`, API attachment logic, and frontend rendering under definitions.
+- 2026-05-16T12:42:40-0400 [CODE] Added `shouldStackHeadword` and conditional article/headword class generation in `components/ui/entry.tsx`.
+- 2026-05-16T12:47:55-0400 [CODE] Added `components/report-bug-link.tsx`, mounted it in the search header, and placed the same control in the home page top-right corner.
+- 2026-05-16T13:00:04-0400 [CODE] Added dueum Hangul composition/decomposition helpers, `mergeCanonicalDueumEntries`, `addCanonicalDueumAlternates`, docs for the rule, and regenerated generated lexicon artifacts.
+- 2026-05-16T13:07:21-0400 [CODE] Replaced the brittle trailing-space/empty-span productive-form chip markup with a non-breaking space after `as`.
+- 2026-05-16T13:13:42-0400 [CODE] Updated dueum generation to replace every eligible ㄹ/ㄴ Hanja-aligned reading position, regenerated `lexicon.json`/review/coverage outputs, and documented Yanbian coverage.
+- 2026-05-17T17:48:34-0400 [CODE] Filtered sentence-bank generation to reject derivational formulas, numbered lists, and fragments; regenerated `sentence-bank.json`, reducing records from 8,235 to 4,572.
+- 2026-05-17T17:48:34-0400 [CODE] Removed example source/license labels from entry rendering and documented the stricter sentence-example contract.
+- 2026-05-17T17:54:08-0400 [CODE] Narrowed definition/example linkification so Korean chunks are linked individually instead of allowing whitespace-spanning sentence links.
+- 2026-05-17T17:54:08-0400 [CODE] Fixed two-part Korean/English example parsing, added a translated seed sentence for the `속도를 가하다` increase sense, and regenerated `sentence-bank.json`; it now contains 296 translated records with no missing-English examples.
+- 2026-05-17T17:54:08-0400 [CODE] Sentence records with explicit `definitionSourceIds` are no longer reused through loose term matching for other senses.
+- 2026-05-17T18:02:12-0400 [CODE] Removed public example `source`/`license`, TOPIK badge `source`, Hanja-character `sources`, entry `provenance`, `reviewStatus`, and definition `sourceIds` from `/api/search` output.
+- 2026-05-17T18:14:24-0400 [CODE] Rebuilt generated lexicon to remove all public `North Korea standard ...` redirect definitions; representative alternates now include `내일/來日` -> `래일`, `연락/連絡` -> `련락`, `연령/年齡` -> `년령`, and generated canonical `이치/理致` -> `리치`.
+- 2026-05-17T18:11:17-0400 [CODE] Conjugation list forms now keep tense labels as metadata instead of embedding English words into Korean determiner forms; `하다` verb contrast now uses `하는데` while adjectives keep `한데`.
+- 2026-05-17T21:57:18-0400 [CODE] Replaced the conjugation modal's lower card-grid renderer with a `Form`/`Conjugation` table renderer derived from `listTableRows`.
+- 2026-05-17T22:03:27-0400 [CODE] Connective, nominal, and determiner sections now produce one table row per independent form, with discriminators such as `cause/reason -서 connective`, `-는데 contrast`, `-ㅁ verbal noun`, and `present determiner`.
+- 2026-05-17T22:02:01-0400 [CODE] Removed forced uppercase styling from app/component UI labels, chips, and conjugation tables; TOPIK badges now render as `Topik ...` in the UI without changing generated TOPIK data.
+- 2026-05-17T22:16:40-0400 [CODE] Search page now renders an animated loading panel, loading Hanja skeletons, and a searching button state; a 240ms minimum loading duration keeps the state perceptible on fast local responses.
+- 2026-05-17T22:30:28-0400 [CODE] Added POS/tag/TOPIK filter matching, TOPIK numeric aliases (`#topik1`/`#topik2` -> `A`, etc.), multi-token require-all behavior for mixed English queries, and dense Hangul expansion that keeps known exact words whole while splitting non-entry particle forms.
+- 2026-05-17T22:37:05-0400 [CODE] Added exact public-definition deduplication that merges examples/source ids/see-also metadata before sentence examples are attached, reducing duplicated public rows such as repeated `하다` senses without rewriting generated source data.
+- 2026-05-17T22:40:14-0400 [CODE] Next 16 migration replaced `next lint` with `eslint .`, added flat `eslint.config.mjs`, removed the legacy webpack `fs: false` config, fixed newly surfaced lint issues, and pins `npm run build` to `next build --webpack` because Turbopack cannot bind its worker port inside this sandbox.
+- 2026-05-18T04:35:24-0400 [CODE] Freed disk by clearing generated `.next` and npm cache, stopped the old Node listener on port 3000 with approval, and restarted the upgraded dev server on port 3000 in webpack mode.
 
 ## [DISCOVERIES]
 - 2026-05-16T04:45:14-0400 [TOOL] `npm run lint` initially failed on an unrelated home-page unescaped apostrophe; fixed by changing `Korean's` to `Korean&apos;s`.
 - 2026-05-16T04:45:14-0400 [TOOL] `npm run build` initially failed because the repo target rejects the regex `u` flag; removed that flag from the Hanja range regex.
 - 2026-05-16T04:45:14-0400 [TOOL] Unicode current Unihan zip was available at `https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip`; generated 23,285 compact Unihan records.
+- 2026-05-16T05:01:46-0400 [TOOL] Build target also rejects direct `Map.values()` iteration; fixed TOPIK index sorting with `Array.from(byWord.values())`.
+- 2026-05-16T05:09:34-0400 [CODE] Root cause of `-고/古` was broad etymology/cognate extraction from historical Old Korean/Idu characters; readability matched the sound but not modern lexical identity.
+- 2026-05-16T05:19:40-0400 [CODE] Root cause of stripped `4次元`/`-湯`/spaced phrases was `compactScript`/`normalizeScriptForms` retaining only Hangul+Hanja and discarding digits, spaces, and affix markers before matching.
+- 2026-05-16T05:30:18-0400 [TOOL] macOS `date -Is` is unsupported here; use `date +%Y-%m-%dT%H:%M:%S%z` for continuity timestamps.
+- 2026-05-16T05:40:14-0400 [TOOL] Browser verification for `/search?q=가주` confirmed `加州` shows `California (a state of the United States)` with `See also 캘리포니아` and hides raw `Synonym of 캘리포니아`.
+- 2026-05-16T05:50:24-0400 [CODE] The `咯血` mismatch was caused by browser font fallback: uncommon Hanja could fall out of the primary Korean UI font and render beside another Hanja from a different CJK font.
+- 2026-05-16T05:57:10-0400 [TOOL] Full rebuild after source-contract refactor wrote 28,869 lexicon entries and preserved representative entries `방수/防水`, `방수/放水`, and `각혈/咯血`.
+- 2026-05-16T06:04:01-0400 [TOOL] Browser verification at 1440x900 showed `/search?q=bh` with a sticky Hanja rail, card max-height around 756px, and an independently scrollable Hanja list.
+- 2026-05-16T06:07:55-0400 [TOOL] Browser verification found Hanja panel links such as `拒`, `막을`, and `거`, plus definition links such as `도`, `이다`, and `아이다` on `/-고` search results.
+- 2026-05-16T06:15:40-0400 [TOOL] Unicode `Unihan_Readings.txt` dated 2025-07-24 for Unicode 17.0.0 includes `kHangul` values such as `簡 간:0E`, `單 단:0E`, `拒 거:0E`, and `否 부:0E`; Naver Developers OpenAPI list does not expose a public Hanja dictionary endpoint.
+- 2026-05-16T06:20:46-0400 [TOOL] API and Browser verification showed `/search?q=겠` returns displayed `-겠-` as the first result; `/search?q=-겠-` still works.
+- 2026-05-16T11:30:24-0400 [TOOL] Browser computed styles on `/search?q=겠` showed body, main, headword, ruby, and ruby text using `"Noto Sans KR", "Noto Sans CJK KR", ...`.
+- 2026-05-16T11:38:04-0400 [TOOL] Browser computed styles on `/search?q=겠` showed English containers using Geist-first `--font-mixed`, while headword/ruby/inline Korean use Noto Sans KR at weight 400.
+- 2026-05-16T11:56:35-0400 [TOOL] Local API verification showed `먹어요`, `먹었습니다`, `갔습니다`, `먹겠습니다`, `가세요`, `가셨습니다`, `먹지 않아요`, `먹고 있어요`, `간단했습니다`, `간단하시겠습니다`, and `봐요` resolve to expected lemmas; `겠` remains `-겠-` with no inflection notice.
+- 2026-05-16T12:00:01-0400 [TOOL] Browser initially showed stale compiled CSS still forcing weight 400; after clearing `.next` and restarting dev, `/search?q=겠` computed first-entry headword, ruby text, and inline Korean at 500, while search-button Hanja computed at 600.
+- 2026-05-16T12:06:39-0400 [TOOL] API verification for `理` now returns Hun `다스릴`, `이치`, `바를`, `누늬낼`, `성품`, `고칠`, `나무결` and Eum `리`, `이`.
+- 2026-05-16T12:22:29-0400 [TOOL] Wiktionary `Template:ko-conj-verb` and `Template:ko-conj-adj` were checked as one-time layout references; Saseo encodes the four register columns locally instead of scraping templates during search.
+- 2026-05-16T12:38:40-0400 [TOOL] Sentence-bank build harvested 8,235 records; example parser now splits Korean, romanization, and English when Wiktionary-style examples are stored in one text string.
+- 2026-05-16T12:42:40-0400 [TOOL] Browser layout check on `/search?q=kantan` showed short `簡單` entries still use `272px 364px` columns while long `大陸 間 彈道 미사일` uses a single `664px` column and `white-space: nowrap`.
+- 2026-05-16T13:00:04-0400 [TOOL] Rebuilt lexicon merged 84 explicit canonical dueum entries and generated 719 dueum alternate records; local checks confirmed `로동`, `력사`, and `녀성` resolve to `노동/勞動`, `역사/歷史`, and `여성/女性`.
+- 2026-05-16T13:13:42-0400 [TOOL] Rebuilt lexicon merged 87 explicit canonical dueum entries and generated 845 alternate records; local checks confirmed `계렬` resolves to `계열/系列` with a `North Korea, Yanbian, or archaic` alternate.
+- 2026-05-17T17:48:34-0400 [TOOL] Browser inspection of `https://saseo.davyl.com/search?q=g` found main text computed to Geist and Korean/Hanja selectors computed to `"Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", ...`.
+- 2026-05-17T17:48:34-0400 [TOOL] API verification for `/api/search?q=g` confirmed the `家` entry now has no examples and no `건축(建築)`/arrow formula remains in the response.
+- 2026-05-17T17:54:08-0400 [TOOL] API verification for `/api/search?q=속도를 가하다` showed the seed sentence only under `to add; to increase` with zero missing-English examples; Browser verification showed individual links on `운전자는`, `속도를`, and `가했다`, with no full-sentence link.
+- 2026-05-17T18:02:12-0400 [TOOL] API verification for `/api/search?q=속도를 가하다` found no `source`, `sources`, `sourceIds`, `provenance`, `reviewStatus`, `license`, `trusted-source`, `Unicode`, or `Unihan` public payload fields/strings.
+- 2026-05-17T18:14:24-0400 [TOOL] Generated-data check found zero `North Korea standard ...` redirect definitions after rebuild; local API checks for `來日`, `래일`, `련락`, and `리치` returned canonical South-Korean entries with North/Yanbian alternates and no redirect text.
+- 2026-05-17T18:11:17-0400 [TOOL] Component-level conjugation check returned `加하지만/加하는데/加하더니`, determiner objects `past:加한`, `present:加하는`, `future:加할`, and adjective contrast `閑暇하지만/閑暇한데/閑暇하더니`.
+- 2026-05-17T18:19:59-0400 [TOOL] Browser `/search?q=불가결` verified short `不可缺` stays two-column while `不可缺 脂肪酸` and `불가결 아미노산` switch to one-column, remain `white-space: nowrap`, and no duplicate hidden measurement text appears in page text.
+- 2026-05-17T21:57:18-0400 [TOOL] Browser DOM verification for `/search?q=검사하다` confirmed `Connective forms` and `Noun and determiner forms` are tables with headers `Form` and `Conjugation`; determiner rows are `past determiner`, `present determiner`, and `future determiner`.
+- 2026-05-17T22:16:22-0400 [TOOL] API verification on port 3002 showed `*하다`, `불*산`, `*가*`, `간*하다`, `*-겠-*`, and romaja `k*tan` return results; `불*산` returns only the three matching terms after excluding wildcard matches from definition haystacks.
+- 2026-05-17T22:03:27-0400 [TOOL] Browser DOM verification for `/search?q=검사하다` confirmed honorific formal polite interrogatives are split into `interrogative present` -> `檢査하십니까` and `interrogative past` -> `檢査하셨습니까`, each in its own cell.
+- 2026-05-17T22:16:40-0400 [TOOL] Browser verification on `http://localhost:3007/search` confirmed submitted and direct search loading states do not include `0 entries found`; `검사하다` resolves to `1 entry found`, and `zzzxxyqv` shows `No entries found` only after completion.
+- 2026-05-17T22:02:01-0400 [TOOL] `rg` found no remaining `uppercase`/wide-tracking UI classes under `app`/`components` excluding data; Browser `/search?q=가다` reported zero `.uppercase` elements and zero computed `text-transform: uppercase`.
+- 2026-05-17T22:30:28-0400 [TOOL] API matrix on `http://127.0.0.1:3006` confirmed `?가` returns one-character wildcard matches, `#topik1 가게` narrows to `가게`, `#North-Korea 래일` collapses to canonical `來日/내일`, `日 sunlight` returns `日光/일광`, and `부인을` expands to `부인` plus `을`.
+- 2026-05-17T22:22:41-0400 [TOOL] Browser verification showed `/search?q=속도를 가하다` renders `運轉者는 速度를 加했다.`, `/search?q=방수` uses `防水` for the waterproof example instead of `放水`, and `/search?q=간단` renders `說明은 簡單할수록 좋다.` without the bad `收錄` suffix conversion.
+- 2026-05-17T22:37:05-0400 [TOOL] Fresh Browser verification was blocked because the sandbox rejected starting a new dev server after Next 16 required `--webpack`; `npx next build --webpack` and targeted ESLint passed. A local data check confirmed `wiktionary:가:加:80` promotes from `加/가` to `加하다/가하다`, and mixed example chunks align as `運轉者는`->`운전자는`, `速度를`->`속도를`, `加했다`->`가했다`.
+- 2026-05-17T22:40:14-0400 [TOOL] Next 16 default Turbopack build failed in sandbox with `Operation not permitted` while binding a CSS worker port; `next build --webpack` passed. Browser smoke on `localhost:3009` was blocked by browser security policy for that URL.
+- 2026-05-18T04:35:24-0400 [TOOL] Browser smoke on `http://localhost:3000/` and `/search?q=검사하다` passed in the in-app browser with no framework overlay and no console warnings/errors.
 
 ## [OUTCOMES]
 - 2026-05-16T04:45:14-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, local `/api/search?q=bh` returned `hanjaCharacters`, and Browser rendered the panel with no console errors.
+- 2026-05-16T05:01:46-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, local `/api/search?q=가다` returned `TOPIK A`, and Browser rendered the badge with no console errors.
+- 2026-05-16T05:09:34-0400 [TOOL] Verification passed: `npm run lexicon:build:wiktionary`, `npm run lint`, `npm run build`, API `/api/search?q=-고` returns `-고/-고`, and Browser shows no `古` headword for the suffix.
+- 2026-05-16T05:19:40-0400 [TOOL] Verification passed: structural integrity counts are all zero, `npm run lexicon:build:wiktionary`, `npm run lint`, and `npm run build` pass; Browser renders `-湯`, `4次元`, and `波及 效果` with correct ruby.
+- 2026-05-16T05:30:18-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, and Browser `/search?q=kantan` modal showed register rows through 하소서체, past register rows, `簡單해요`, and `簡單합니까` with zero console errors.
+- 2026-05-16T05:40:14-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, local API `/api/search?q=가주`, clean dev-server restart, and Browser `/search?q=가주` with zero console errors.
+- 2026-05-16T05:43:30-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, and Browser `/search?q=가위바위보` showed `가위주먹` twice in the same `Other forms` chip with zero console errors.
+- 2026-05-16T05:50:24-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, and Browser `/search?q=각혈` loaded `咯血` with zero console errors.
+- 2026-05-16T05:57:10-0400 [TOOL] Verification passed: `npm run lexicon:validate:sources`, `node --check` for lexicon scripts, `npm run lexicon:build:wiktionary`, `npm run lint`, `npm run build`, clean dev-server restart, and Browser `/search?q=방수` showed both `防水` and `放水` with zero console errors.
+- 2026-05-16T06:04:01-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, Browser `/search?q=bh` desktop scroll inspection, and console check with only React DevTools info logs.
+- 2026-05-16T06:07:55-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, Browser link inspection on `/search?q=bh` and `/search?q=-고`, and console check with only React DevTools info logs.
+- 2026-05-16T06:15:40-0400 [TOOL] Verification passed: regenerated `unihan-readings.json` with 24,012 records, `node --check`, `npm run lint`, `npm run build`, local API `/api/search?q=kantan` showing `unihan-khangul` for `簡/單`, and Browser sidebar verification.
+- 2026-05-16T06:20:46-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, local API comparisons for `겠` and `-겠-`, and Browser `/search?q=겠` with no new console errors.
+- 2026-05-16T11:30:24-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, and Browser computed-font inspection on `/search?q=겠` with only React DevTools info logs.
+- 2026-05-16T11:38:04-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, and Browser computed-font/weight inspection on `/search?q=겠` with only React DevTools info logs.
+- 2026-05-16T11:56:35-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, API example matrix, and Browser checks for `/search?q=간단하시겠습니다` and `/search?q=겠` with zero console errors.
+- 2026-05-16T12:00:01-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, and Browser computed-style check on `/search?q=겠` with zero console errors.
+- 2026-05-16T12:06:39-0400 [TOOL] Verification passed: parser smoke check, local API checks for `리`/`이`/`겠`, `npm run lint`, `npm run build`, clean dev-server restart, and Browser `/search?q=겠` sidebar check with zero console errors.
+- 2026-05-16T12:22:29-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, local `/api/search?q=kantan`, and Browser `/search?q=kantan` popup showing two 5-column tables with no console errors.
+- 2026-05-16T12:38:40-0400 [TOOL] Verification passed: `node --check scripts/lexicon/build-sentence-bank.mjs`, `npm run lexicon:validate:sources`, `npm run lexicon:build:sentences`, `npm run lint`, `npm run build`, clean dev-server restart, local `/api/search?q=겠`, and Browser `/search?q=겠` with rendered examples and no console errors.
+- 2026-05-16T12:42:40-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, and Browser `/search?q=kantan` long-headword layout check with no console errors.
+- 2026-05-16T12:47:55-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, and Browser checks on `/search?q=게` plus `/` showing `Report a Bug` linking to GitHub issues with zero console errors.
+- 2026-05-16T13:00:04-0400 [TOOL] Verification passed: `node --check scripts/lexicon/build-lexicon.mjs`, `npm run lexicon:build:wiktionary`, `npm run lexicon:validate:sources`, `npm run lint`, `npm run build`, clean dev-server restart, API checks for dueum queries, and Browser `/search?q=력사` with no console errors.
+- 2026-05-16T13:07:21-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, and Browser `/search?q=가감` confirmed chip text `as 加減하다` with no console errors.
+- 2026-05-16T13:13:42-0400 [TOOL] Verification passed: `node --check scripts/lexicon/build-lexicon.mjs`, `npm run lexicon:build:wiktionary`, `npm run lexicon:validate:sources`, `npm run lint`, `npm run build`, clean dev-server restart, API checks for `로동`/`력사`/`계렬`/`녀성`, and Browser `/search?q=계렬` with no console errors.
+- 2026-05-17T17:48:34-0400 [TOOL] Verification passed: `node --check scripts/lexicon/build-sentence-bank.mjs`, `npm run lexicon:build:sentences`, `npm run lint`, `npm run build`, clean dev-server restart, API `/api/search?q=g`, and Browser `/search?q=g` font/example checks.
+- 2026-05-17T17:54:08-0400 [TOOL] Verification passed: `node --check scripts/lexicon/build-sentence-bank.mjs`, `npm run lexicon:build:sentences`, `npm run lint`, `npm run build`, clean dev-server restart, API `/api/search?q=속도를 가하다`, and Browser checks for `/search?q=속도를 가하다` plus `/search?q=간단`.
+- 2026-05-17T18:02:12-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart, API citation-field scan, and Browser `/search?q=속도를 가하다` visible-text/title scan.
+- 2026-05-17T18:14:24-0400 [TOOL] Verification passed: `node --check scripts/lexicon/build-lexicon.mjs`, `npm run lexicon:build:wiktionary`, `npm run lexicon:validate:sources`, generated-data dueum assertions, `npm run lint`, `npm run build` after one transient favicon page-data retry, clean dev-server restart, API checks, and Browser checks for `/search?q=來日` and `/search?q=래일`.
+- 2026-05-17T18:11:17-0400 [TOOL] Verification passed: component-level conjugation output check, `npm run lint`, `npm run build`, clean dev-server restart on `http://localhost:3001`, and local `/search?q=가하다` plus `/api/search?q=가하다` returned HTTP 200.
+- 2026-05-17T18:19:59-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart on `http://localhost:3000`, and Browser layout inspection for `/search?q=불가결`.
+- 2026-05-17T21:57:18-0400 [TOOL] Verification passed: `npm run lint`, `npm run build` (with existing Browserslist freshness warning), clean dev-server restart on `http://localhost:3003`, and Browser DOM inspection of the conjugation modal on `/search?q=검사하다`.
+- 2026-05-17T22:16:22-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart on `http://localhost:3002` after clearing stale `.next`, API wildcard matrix, and Browser `/search?q=불*산` showing three entries.
+- 2026-05-17T22:03:27-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, clean dev-server restart on `http://localhost:3005`, and Browser DOM inspection of the singular-cell conjugation modal on `/search?q=검사하다`.
+- 2026-05-17T22:16:40-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, `git diff --check`, clean dev-server restart on `http://localhost:3007`, and Browser interaction checks for loading, successful, and empty search states with no console warnings/errors after restart.
+- 2026-05-17T22:02:01-0400 [TOOL] Verification passed: `npm run lint`, `npm run build` (with existing Browserslist freshness warning), dev server on `http://localhost:3004`, Browser `/search?q=가다` visible sample showed `Report a bug`, `Search results`, and `Topik A`; Browser modal click was blocked by runtime policy, so modal casing was verified by source scan.
+- 2026-05-17T22:30:28-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, `git diff --check`, localhost API search matrix, and dev server restarted on `http://localhost:3006`.
+- 2026-05-17T22:22:41-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, dev server on `http://localhost:3008`, and Browser checks for mixed-script examples on `속도를 가하다`, `방수`, and `간단` with no console errors.
+- 2026-05-17T22:37:05-0400 [TOOL] Verification passed: `npx eslint app/api/search/route.ts components/ui/entry.tsx`, `npx next build --webpack`, `git diff --check`, and local Node checks for `加하다` promotion plus ruby chunk alignment. Full `npm run lint` is blocked by pre-existing lint errors in `app/review/page.tsx`, `app/search/page.tsx`, `components/ui/input.tsx`, and `tailwind.config.ts`; fresh Browser verification was blocked by sandbox port binding limits.
+- 2026-05-17T22:40:14-0400 [TOOL] Verification passed: `npm run lint`, `npm run build` using webpack mode, `npm ls react react-dom next eslint eslint-config-next @radix-ui/react-icons --depth=0`, and `git diff --check`; dev server started on `http://localhost:3009`.
+- 2026-05-18T04:35:24-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, `git diff --check`, and in-app Browser smoke checks; dev server is running on `http://localhost:3000` with `Next.js 16.2.6 (webpack)`.

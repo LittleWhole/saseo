@@ -5,9 +5,8 @@ export type SearchResult = {
   alternateHanja?: string[];
   alternateForms?: AlternateForm[];
   definitions: Definition[];
-  provenance?: string[];
   confidence?: number;
-  reviewStatus?: string;
+  proficiency?: ProficiencyBadge[];
 };
 
 export type AlternateForm = {
@@ -16,14 +15,26 @@ export type AlternateForm = {
   label?: string;
 };
 
+export type SenseExample = {
+  korean: string;
+  english?: string;
+  mixedScript?: string;
+};
+
 export type Definition = {
   pos: string[];
   text: string;
-  examples: string[];
+  examples: SenseExample[];
   tags: string[];
+  seeAlso?: AlternateForm[];
   formOf?: AlternateForm;
-  sourceIds?: string[];
   confidence?: number;
+};
+
+export type ProficiencyBadge = {
+  system: "TOPIK";
+  level: string;
+  label: string;
 };
 
 export type HanjaCharacter = {
@@ -31,18 +42,28 @@ export type HanjaCharacter = {
   meanings: string[];
   hun: string[];
   eum: string[];
-  sources: string[];
+};
+
+export type InflectionAnalysis = {
+  surface: string;
+  lemma: string;
+  forms: Array<{
+    label: string;
+    description: string;
+  }>;
 };
 
 type SearchResponse = {
   entries: SearchResult[];
   hanjaCharacters?: HanjaCharacter[];
+  inflections?: InflectionAnalysis[];
   error?: string;
 };
 
 export type SearchPayload = {
   entries: SearchResult[];
   hanjaCharacters: HanjaCharacter[];
+  inflections: InflectionAnalysis[];
 };
 
 function delay(ms: number) {
@@ -67,6 +88,7 @@ async function fetchSearch(searchTerm: string): Promise<SearchPayload> {
   return {
     entries: data.entries,
     hanjaCharacters: data.hanjaCharacters ?? [],
+    inflections: data.inflections ?? [],
   };
 }
 

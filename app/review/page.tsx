@@ -47,8 +47,11 @@ export default function ReviewPage() {
   const reviewedCount = useMemo(() => Math.min(activeIndex, items.length), [activeIndex, items.length]);
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("saseo-review-token");
-    if (saved) setToken(saved);
+    const timeoutId = window.setTimeout(() => {
+      const saved = window.localStorage.getItem("saseo-review-token");
+      if (saved) setToken(saved);
+    }, 0);
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   async function loadQueue(nextToken = token) {
@@ -167,7 +170,7 @@ export default function ReviewPage() {
         {active ? (
           <div className="rounded-lg border border-neutral-800 bg-neutral-900">
             <div className="border-b border-neutral-800 p-5">
-              <div className="text-sm uppercase tracking-wide text-neutral-500">English gloss</div>
+              <div className="text-sm text-neutral-500">English gloss</div>
               <div className="mt-2 flex flex-wrap items-baseline gap-4">
                 <div className="text-3xl font-semibold">{active.englishGloss}</div>
                 <div className="text-lg text-neutral-400">{active.hangul}</div>

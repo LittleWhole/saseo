@@ -1,0 +1,5 @@
+{"sourceId":"seed:sentence:겠:1","sourceName":"seed","license":"project-seed","korean":"내일 비가 오겠습니다.","english":"It will rain tomorrow.","terms":["-겠-","겠"]}
+{"sourceId":"seed:sentence:겠:2","sourceName":"seed","license":"project-seed","korean":"제가 하겠습니다.","english":"I will do it.","terms":["-겠-","겠"]}
+{"sourceId":"seed:sentence:간단:1","sourceName":"seed","license":"project-seed","korean":"설명은 간단할수록 좋다.","english":"The simpler the explanation, the better.","terms":["간단","簡單","간단하다","簡單하다"]}
+{"sourceId":"seed:sentence:방수:1","sourceName":"seed","license":"project-seed","korean":"이 가방은 방수가 된다.","english":"This bag is waterproof.","terms":["방수","防水"]}
+{"sourceId":"seed:sentence:가하다:1","sourceName":"seed","license":"project-seed","korean":"운전자는 속도를 가했다.","english":"The driver increased speed.","terms":["가하다","加하다","속도","速度"],"definitionSourceIds":["wiktionary:en-가하다-ko-verb-Le5cEK-q"]}

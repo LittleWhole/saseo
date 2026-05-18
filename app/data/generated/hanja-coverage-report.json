@@ -1,26 +1,71 @@
 {
   "metadata": {
-    "builtAt": "2026-05-16T08:19:50.417Z",
+    "builtAt": "2026-05-17T22:08:43.901Z",
+    "sourceContractVersion": "saseo-source-v1",
     "sources": {
+      "files": [
+        {
+          "kind": "koSense",
+          "file": "ko-senses.seed.jsonl",
+          "description": "Korean/Hanja sense spine records",
+          "records": 7,
+          "sources": {
+            "seed": 7
+          }
+        },
+        {
+          "kind": "englishGloss",
+          "file": "english-glosses.seed.jsonl",
+          "description": "Korean-English gloss candidates before Hanja alignment",
+          "records": 3,
+          "sources": {
+            "seed": 3
+          }
+        },
+        {
+          "kind": "sentenceBank",
+          "file": "sentences.seed.jsonl",
+          "description": "Example sentences aligned to terms or source definition ids",
+          "records": 5,
+          "sources": {
+            "seed": 5
+          }
+        }
+      ],
       "koSenseCount": 7,
       "englishEntryCount": 3,
+      "lexiconEntryCount": 0,
       "hanjaReadingCount": 292457,
       "reviewedDecisionCount": 0,
       "wiktionaryIncluded": true,
       "wiktionaryEntryLimit": "all"
     },
     "derivedHanja": {
-      "hangulOnlyBefore": 13579,
+      "hangulOnlyBefore": 13584,
       "derivableEntries": 42,
       "inferredDefinitions": 36,
       "ambiguousDefinitions": 15,
       "unresolvedDerivableEntries": 14,
-      "hangulOnlyAfter": 13551,
+      "hangulOnlyAfter": 13556,
       "hangulOnlyReducedBy": 28
     },
+    "dueumCanonicalAlternates": {
+      "mergedEntries": 35,
+      "generatedAlternates": 846
+    },
     "productiveForms": {
-      "foldedEntries": 1238,
-      "foldedDefinitions": 1384
+      "foldedEntries": 1235,
+      "foldedDefinitions": 1380
+    },
+    "structuralIntegrity": {
+      "affixMarkerMissing": 0,
+      "digitMissing": 0,
+      "spaceMissing": 0,
+      "samples": {
+        "affixMarkerMissing": [],
+        "digitMissing": [],
+        "spaceMissing": []
+      }
     }
   },
   "unresolvedHangulOnlySamples": [
@@ -111,7 +156,7 @@
     },
     {
       "hangul": "-고",
-      "definition": "that; quotative particle marking indirect quotes. Attaches to mood-marking verb-final suffixes of the \"plain style\".",
+      "definition": "and then, after...; marks successive action.",
       "reviewStatus": "hangul-only"
     },
     {
@@ -122,6 +167,11 @@
     {
       "hangul": "-고요",
       "definition": "See 고 (-go, intimate style suffix/particle) and 요 (-yo, politeness-adding particle attaching to the intimate style).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-과",
+      "definition": "and",
       "reviewStatus": "hangul-only"
     },
     {
@@ -142,11 +192,6 @@
     {
       "hangul": "-구요",
       "definition": "See 구 (-gu, colloquial form of 고 (-go)) and 요 (-yo, politeness-adding particle attaching to the intimate style).",
-      "reviewStatus": "hangul-only"
-    },
-    {
-      "hangul": "-군",
-      "definition": "I see; in the intimate style or in monologues, used to emphasize a new fact that the speaker has learned.",
       "reviewStatus": "hangul-only"
     },
     {
@@ -487,6 +532,11 @@
     {
       "hangul": "-데",
       "definition": "Intimate-style equivalent form of 더라 (-deora).",
+      "reviewStatus": "hangul-only"
+    },
+    {
+      "hangul": "-도",
+      "definition": "as well, too, also",
       "reviewStatus": "hangul-only"
     },
     {
@@ -901,7 +951,7 @@
     },
     {
       "hangul": "-사",
-      "definition": "Post-vocalic and liquid allomorphic form of 으사 (-eusa).",
+      "definition": "Gyeongsang, Hamgyong, Yukjin, and Jeolla dialect form of 야 (-ya, idiomatic emphatic particle).",
       "reviewStatus": "hangul-only"
     },
     {
@@ -1017,11 +1067,6 @@
     {
       "hangul": "-습네다",
       "definition": "Alternative form of 습니다 (-seumnida, formal polite declarative suffix)",
-      "reviewStatus": "hangul-only"
-    },
-    {
-      "hangul": "-습니까",
-      "definition": "Interrogative suffix for sentence-final verbs in the 하십시오체 (hasipsioche, “formal polite”) speech level.",
       "reviewStatus": "hangul-only"
     }
   ]

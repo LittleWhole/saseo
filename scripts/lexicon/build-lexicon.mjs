@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import { createReadStream, existsSync } from "node:fs";
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { loadNormalizedSources, normalizePos, SOURCE_CONTRACT_VERSION } from "./source-contracts.mjs";
 
 const root = process.cwd();
 const generatedDir = path.join(root, "app", "data", "generated");
@@ -11,19 +12,6 @@ const lexiconPath = path.join(generatedDir, "lexicon.json");
 const reviewQueuePath = path.join(generatedDir, "review-queue.json");
 const coverageReportPath = path.join(generatedDir, "hanja-coverage-report.json");
 const decisionsPath = path.join(root, "app", "data", "review-decisions.jsonl");
-
-const POS_NORMALIZATION = new Map([
-  ["adj", "Adjective"],
-  ["noun", "Noun"],
-  ["verb", "Verb"],
-  ["adjective", "Adjective"],
-  ["adv", "Adverb"],
-  ["adverb", "Adverb"],
-  ["proper noun", "Proper noun"],
-  ["name", "Proper noun"],
-  ["suffix", "Suffix"],
-  ["prefix", "Prefix"],
-]);
 
 const DERIVED_SUFFIX_RULES = [
   { suffix: "적이다", hanjaSuffix: "的이다", label: "derived suffix -적이다" },
@@ -49,6 +37,9 @@ const PRODUCTIVE_FORM_FOLDING_RULES = [
   { suffix: "히", hanjaSuffix: "히", alternateLabel: "hi form" },
 ];
 
+const DUEUM_CANONICAL_LABEL = "North Korea, Yanbian, or archaic";
+const DUEUM_IOTIZED_JUNG_INDEXES = new Set([2, 3, 6, 7, 12, 17, 20]);
+
 const HANJA_SEMANTICS = new Map([
   ["防", ["prevent", "block", "protect", "proof", "waterproof", "waterproofing", "resistance", "resistant", "guard"]],
   ["水", ["water", "liquid", "river"]],
@@ -62,13 +53,6 @@ const HANJA_SEMANTICS = new Map([
   ["技", ["skill", "technique", "craft"]],
   ["士", ["specialist", "officer", "scholar"]],
 ]);
-
-function normalizePos(pos) {
-  if (Array.isArray(pos)) return pos.flatMap(normalizePos).filter(Boolean);
-  if (!pos) return ["Word"];
-  const normalized = POS_NORMALIZATION.get(String(pos).toLowerCase());
-  return [normalized ?? String(pos)];
-}
 
 function tokenize(text) {
   return String(text ?? "")
@@ -164,26 +148,6 @@ function groupBy(items, keyFn) {
   return groups;
 }
 
-async function readJsonl(filePath) {
-  if (!existsSync(filePath)) return [];
-  const content = await readFile(filePath, "utf8");
-  return content
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .filter((line) => !line.startsWith("#"))
-    .map((line) => JSON.parse(line));
-}
-
-async function readSourceJsonlByPrefix(prefix) {
-  if (!existsSync(sourceDir)) return [];
-  const files = (await readdir(sourceDir))
-    .filter((file) => file.startsWith(prefix) && file.endsWith(".jsonl"))
-    .sort((left, right) => left.localeCompare(right));
-  const records = await Promise.all(files.map((file) => readJsonl(path.join(sourceDir, file))));
-  return records.flat();
-}
-
 async function loadHanjaReadings() {
   const filePath = path.join(root, "app", "data", "hanja.txt");
   if (!existsSync(filePath)) return new Map();
@@ -201,27 +165,6 @@ async function loadHanjaReadings() {
   return readings;
 }
 
-async function loadSeedSources() {
-  const [koSenses, englishEntries, reviewed] = await Promise.all([
-    readSourceJsonlByPrefix("ko-senses"),
-    readSourceJsonlByPrefix("english-glosses"),
-    readJsonl(decisionsPath),
-  ]);
-
-  return {
-    koSenses: koSenses.map((sense) => ({
-      ...sense,
-      pos: normalizePos(sense.pos),
-      sourceRank: sense.sourceRank ?? 0.95,
-    })),
-    englishEntries: englishEntries.map((entry) => ({
-      ...entry,
-      pos: normalizePos(entry.pos),
-    })),
-    reviewed,
-  };
-}
-
 function isKoreanScript(char) {
   return /[\uAC00-\uD7AF\u4E00-\u9FFF]/u.test(char);
 }
@@ -230,15 +173,19 @@ function isHanja(char) {
   return /[\u4E00-\u9FFF]/u.test(char);
 }
 
+function isStructuralScriptUnit(char) {
+  return /[\uAC00-\uD7AF\u4E00-\u9FFF0-9]/u.test(char);
+}
+
 function compactScript(value) {
   return Array.from(String(value ?? ""))
-    .filter((char) => /[\uAC00-\uD7AF\u4E00-\u9FFF]/u.test(char))
+    .filter(isStructuralScriptUnit)
     .join("");
 }
 
 function compactHangul(value) {
   return Array.from(String(value ?? ""))
-    .filter((char) => /[\uAC00-\uD7AF]/u.test(char))
+    .filter((char) => /[\uAC00-\uD7AF0-9]/u.test(char))
     .join("");
 }
 
@@ -249,7 +196,9 @@ function scriptFormMatchesReading(form, hangul, hanjaReadings) {
   if (!scriptChars.some(isHanja)) return false;
 
   return scriptChars.every((char, index) => {
+    if (/[0-9]/u.test(char)) return char === hangulChars[index];
     if (/[\uAC00-\uD7AF]/u.test(char)) return char === hangulChars[index];
+    if (!/[\uAC00-\uD7AF]/u.test(hangulChars[index])) return false;
     const readings = hanjaReadings.get(char);
     return !readings || readings.size === 0 || readings.has(hangulChars[index]);
   });
@@ -257,6 +206,20 @@ function scriptFormMatchesReading(form, hangul, hanjaReadings) {
 
 function filterReadableScriptForms(forms, hangul, hanjaReadings) {
   return uniqueValues(forms).filter((form) => scriptFormMatchesReading(form, hangul, hanjaReadings));
+}
+
+function isGrammarMorphemeEntry(entry) {
+  const pos = String(entry?.pos ?? "").toLowerCase();
+  const word = String(entry?.word ?? "");
+  return (
+    word.includes("-") ||
+    ["suffix", "prefix", "particle", "postposition", "ending", "det", "determiner"].includes(pos)
+  );
+}
+
+function allowsLooseEtymologyMining(entry, hangul) {
+  if (isGrammarMorphemeEntry(entry)) return false;
+  return Array.from(compactHangul(hangul)).length > 1;
 }
 
 function expandDashPlaceholders(form, hangul) {
@@ -286,6 +249,58 @@ function expandDashPlaceholders(form, hangul) {
   return output;
 }
 
+function normalizeFormCharacters(value) {
+  return Array.from(String(value ?? ""))
+    .filter((char) => /[\uAC00-\uD7AF\u4E00-\u9FFF0-9\s-]/u.test(char))
+    .join("")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function projectReadingStructure(form, hangul) {
+  const normalized = normalizeFormCharacters(form);
+  if (!normalized) return "";
+
+  const readingChars = Array.from(String(hangul ?? ""));
+  const markersByUnit = new Map();
+  let readingUnitIndex = 0;
+  for (const char of readingChars) {
+    if (isStructuralScriptUnit(char)) {
+      readingUnitIndex += 1;
+      continue;
+    }
+    if (!/[\s-]/u.test(char)) continue;
+    markersByUnit.set(readingUnitIndex, `${markersByUnit.get(readingUnitIndex) ?? ""}${char}`);
+  }
+
+  const formHasMarkers = /[\s-]/u.test(normalized);
+  let output = formHasMarkers ? "" : markersByUnit.get(0) ?? "";
+  let formUnitIndex = 0;
+  for (const char of Array.from(normalized)) {
+    output += char;
+    if (!isStructuralScriptUnit(char)) continue;
+    formUnitIndex += 1;
+    if (!formHasMarkers) output += markersByUnit.get(formUnitIndex) ?? "";
+  }
+
+  return output.trim();
+}
+
+function readingSuffixAfterUnits(reading, consumedUnits) {
+  let units = 0;
+  let index = 0;
+  const chars = Array.from(String(reading ?? ""));
+  for (; index < chars.length; index += 1) {
+    if (!isStructuralScriptUnit(chars[index])) continue;
+    units += 1;
+    if (units === consumedUnits) {
+      index += 1;
+      break;
+    }
+  }
+  return chars.slice(index).join("");
+}
+
 function normalizeScriptForms(raw, hangul) {
   const pairedForms = extractParentheticalHanjaForms(raw, hangul);
   if (pairedForms.length > 0) return pairedForms;
@@ -306,9 +321,7 @@ function normalizeScriptForms(raw, hangul) {
     .map((part) => {
       const parenthetical = part.match(/\(([\u4E00-\u9FFF]+)\)/u);
       const source = parenthetical?.[1] ?? expandDashPlaceholders(part, hangul);
-      return Array.from(source)
-        .filter((char) => /[\uAC00-\uD7AF\u4E00-\u9FFF]/u.test(char))
-        .join("");
+      return projectReadingStructure(source, hangul);
     })
     .filter((form) => /[\u4E00-\u9FFF]/u.test(form))
     .filter(Boolean);
@@ -320,14 +333,14 @@ function uniqueValues(values) {
 
 function extractParentheticalHanjaForms(raw, targetHangul) {
   const value = String(raw ?? "");
-  const target = String(targetHangul ?? "").replace(/\s+/g, "");
+  const target = compactHangul(targetHangul);
   if (!target || !/[\u4E00-\u9FFF]/u.test(value)) return [];
 
   const forms = [];
-  const pairPattern = /([\uAC00-\uD7AF][\uAC00-\uD7AF\s^·-]*?)\(([\u4E00-\u9FFF\s^·-]+)\)/gu;
+  const pairPattern = /([\uAC00-\uD7AF0-9][\uAC00-\uD7AF0-9\s^·-]*?)\(([\u4E00-\u9FFF0-9\s^·-]+)\)/gu;
   for (const match of value.matchAll(pairPattern)) {
-    const hangulBase = match[1].replace(/[^\uAC00-\uD7AF]/gu, "");
-    const hanjaBase = match[2].replace(/[^\u4E00-\u9FFF]/gu, "");
+    const hangulBase = compactHangul(match[1]);
+    const hanjaBase = projectReadingStructure(match[2], match[1]);
     if (!hangulBase || !hanjaBase) continue;
 
     if (target === hangulBase) {
@@ -336,7 +349,7 @@ function extractParentheticalHanjaForms(raw, targetHangul) {
     }
 
     if (target.startsWith(hangulBase)) {
-      forms.push(`${hanjaBase}${target.slice(hangulBase.length)}`);
+      forms.push(`${hanjaBase}${readingSuffixAfterUnits(targetHangul, Array.from(hangulBase).length)}`);
     }
   }
 
@@ -383,9 +396,10 @@ function extractHanjaFormsFromWiktionaryEntry(entry, hangul, hanjaReadings) {
       }
     }
   }
-  etymologyForms.push(...collectEtymologyHanjaForms(entry, hangul));
+  if (etymologyForms.length > 0) return filterReadableScriptForms(etymologyForms, hangul, hanjaReadings);
 
-  return filterReadableScriptForms(etymologyForms, hangul, hanjaReadings);
+  if (!allowsLooseEtymologyMining(entry, hangul)) return [];
+  return filterReadableScriptForms(collectEtymologyHanjaForms(entry, hangul), hangul, hanjaReadings);
 }
 
 function hangulFromWiktionaryEntry(entry) {
@@ -580,21 +594,32 @@ function mergeAlternateForms(left, right) {
   return Array.from(byKey.values());
 }
 
+const NORTH_KOREA_REDIRECT_PATTERN = /^North Korea standard (?:form|spelling) of\s+(.+?)(?:[.。]|$)/;
+
+function parseNorthKoreanRedirectTarget(text) {
+  const match = String(text ?? "").match(NORTH_KOREA_REDIRECT_PATTERN);
+  if (!match) return null;
+
+  const body = match[1].trim();
+  const targetSegment = body.replace(/\s+\(.+$/, "").trim();
+  const hanjaAnnotated = targetSegment.match(/^(.+?)\s*\(([\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]+)\)$/u);
+  return {
+    hangul: (hanjaAnnotated?.[1] ?? targetSegment).trim(),
+    hanja: hanjaAnnotated?.[2]?.trim() ?? "",
+    fallbackGloss: body.match(/[“"]([^”"]+)[”"]/)?.[1]?.trim() ?? "",
+  };
+}
+
 function getNorthKoreanTarget(definitions) {
   for (const definition of definitions ?? []) {
-    if (!(definition.tags ?? []).includes("North-Korea")) continue;
-    const match = definition.text.match(/^North Korea standard form of\s+([^\s(（]+)(?:\(([\u4E00-\u9FFF]+)\))?/);
-    if (!match) continue;
-    return {
-      hangul: match[1],
-      hanja: match[2] ?? "",
-    };
+    const target = parseNorthKoreanRedirectTarget(definition.text);
+    if (target?.hangul) return target;
   }
   return null;
 }
 
 function isRedirectDefinition(definition) {
-  return /^North Korea standard form of\s+/.test(definition.text);
+  return NORTH_KOREA_REDIRECT_PATTERN.test(definition.text);
 }
 
 function getAlternativeHanjaTarget(definitions) {
@@ -613,6 +638,7 @@ function isAlternativeHanjaRedirect(definition) {
 function mergeNorthKoreanSpellingVariants(entries) {
   const byHangul = groupBy(entries, (entry) => entry.hangul);
   const removed = new Set();
+  const additions = [];
 
   for (const entry of entries) {
     const target = getNorthKoreanTarget(entry.definitions);
@@ -625,26 +651,57 @@ function mergeNorthKoreanSpellingVariants(entries) {
       candidates.find((candidate) => target.hanja && candidate.alternateHanja?.includes(target.hanja)) ??
       candidates[0];
 
-    if (!targetEntry) continue;
-
     const alternate = {
       form: entry.hanja && entry.hanja !== entry.hangul ? entry.hanja : entry.hangul,
       reading: entry.hangul,
-      label: "North Korean",
+      label: DUEUM_CANONICAL_LABEL,
     };
 
-    targetEntry.alternateForms = mergeAlternateForms(targetEntry.alternateForms ?? [], [alternate]);
-    targetEntry.provenance = [...new Set([...(targetEntry.provenance ?? []), ...(entry.provenance ?? [])])];
+    if (targetEntry) {
+      targetEntry.alternateForms = mergeAlternateForms(targetEntry.alternateForms ?? [], [alternate]);
+      targetEntry.provenance = [...new Set([...(targetEntry.provenance ?? []), ...(entry.provenance ?? [])])];
 
-    const transferableDefinitions = entry.definitions.filter((definition) => !isRedirectDefinition(definition));
-    if (transferableDefinitions.length > 0) {
-      targetEntry.definitions.push(...transferableDefinitions);
+      const transferableDefinitions = entry.definitions.filter((definition) => !isRedirectDefinition(definition));
+      if (transferableDefinitions.length > 0) {
+        targetEntry.definitions.push(...transferableDefinitions);
+      }
+
+      removed.add(entry.id);
+      continue;
     }
 
-    removed.add(entry.id);
+    const redirectDefinitions = entry.definitions.filter(isRedirectDefinition);
+    const convertedDefinitions = redirectDefinitions
+      .map((definition) => {
+        const redirectTarget = parseNorthKoreanRedirectTarget(definition.text);
+        if (!redirectTarget?.fallbackGloss) return null;
+        return {
+          ...definition,
+          text: redirectTarget.fallbackGloss,
+          tags: (definition.tags ?? []).filter((tag) => tag !== "North-Korea"),
+        };
+      })
+      .filter(Boolean);
+    if (!convertedDefinitions.length) continue;
+
+    additions.push({
+      ...entry,
+      id: `${entry.id}:north-korean-target:${target.hangul}:${target.hanja || entry.hanja}`,
+      hangul: target.hangul,
+      hanja: target.hanja || (entry.hanja === entry.hangul ? target.hangul : entry.hanja),
+      definitions: convertedDefinitions,
+      alternateForms: mergeAlternateForms(entry.alternateForms ?? [], [alternate]),
+    });
+
+    const remainingDefinitions = entry.definitions.filter((definition) => !isRedirectDefinition(definition));
+    if (remainingDefinitions.length) {
+      entry.definitions = remainingDefinitions;
+    } else {
+      removed.add(entry.id);
+    }
   }
 
-  return entries.filter((entry) => !removed.has(entry.id));
+  return [...entries.filter((entry) => !removed.has(entry.id)), ...additions];
 }
 
 function mergeAlternativeHanjaForms(entries) {
@@ -675,6 +732,177 @@ function mergeAlternativeHanjaForms(entries) {
   }
 
   return entries.filter((entry) => !removed.has(entry.id));
+}
+
+function hangulParts(syllable) {
+  const code = String(syllable ?? "").codePointAt(0);
+  if (!code || code < 0xac00 || code > 0xd7a3) return null;
+  const offset = code - 0xac00;
+  return {
+    choseong: Math.floor(offset / 588),
+    jungseong: Math.floor((offset % 588) / 28),
+    jongseong: offset % 28,
+  };
+}
+
+function composeHangul({ choseong, jungseong, jongseong }) {
+  return String.fromCodePoint(0xac00 + choseong * 588 + jungseong * 28 + jongseong);
+}
+
+function southKoreanDueumSyllable(canonicalSyllable) {
+  const parts = hangulParts(canonicalSyllable);
+  if (!parts) return "";
+
+  if (parts.choseong === 5) {
+    return composeHangul({
+      ...parts,
+      choseong: DUEUM_IOTIZED_JUNG_INDEXES.has(parts.jungseong) ? 11 : 2,
+    });
+  }
+
+  if (parts.choseong === 2 && DUEUM_IOTIZED_JUNG_INDEXES.has(parts.jungseong)) {
+    return composeHangul({
+      ...parts,
+      choseong: 11,
+    });
+  }
+
+  return "";
+}
+
+function structuralUnits(value) {
+  return Array.from(String(value ?? ""))
+    .map((char, index) => ({ char, index }))
+    .filter((unit) => isStructuralScriptUnit(unit.char));
+}
+
+function replaceStructuralUnit(value, structuralIndex, replacement) {
+  const chars = Array.from(String(value ?? ""));
+  let seen = -1;
+  for (let index = 0; index < chars.length; index += 1) {
+    if (!isStructuralScriptUnit(chars[index])) continue;
+    seen += 1;
+    if (seen !== structuralIndex) continue;
+    chars[index] = replacement;
+    break;
+  }
+  return chars.join("");
+}
+
+function dueumReadingsForEntry(entry, hanjaReadings, mode) {
+  if (!entry?.hangul || !entry?.hanja || entry.hanja === entry.hangul) return "";
+  if (entry.hangul.includes("-")) return "";
+  if (!scriptFormMatchesReading(entry.hanja, entry.hangul, hanjaReadings)) return "";
+
+  const scriptUnits = structuralUnits(entry.hanja);
+  const readingUnits = structuralUnits(entry.hangul);
+  if (scriptUnits.length !== readingUnits.length) return "";
+
+  let output = entry.hangul;
+  for (let index = 0; index < scriptUnits.length; index += 1) {
+    const scriptUnit = scriptUnits[index].char;
+    const readingUnit = structuralUnits(output)[index]?.char ?? readingUnits[index].char;
+    if (!isHanja(scriptUnit) || !/[\uAC00-\uD7AF]/u.test(readingUnit)) continue;
+
+    const canonicalReadings = Array.from(hanjaReadings.get(scriptUnit) ?? [])
+      .filter((reading) => Array.from(reading).length === 1)
+      .filter((reading) => {
+        const parts = hangulParts(reading);
+        return parts && (parts.choseong === 5 || parts.choseong === 2);
+      })
+      .sort((left, right) => {
+        const leftParts = hangulParts(left);
+        const rightParts = hangulParts(right);
+        return (rightParts?.choseong ?? 0) - (leftParts?.choseong ?? 0);
+      });
+
+    if (mode === "canonical") {
+      const canonical = canonicalReadings.find((reading) => southKoreanDueumSyllable(reading) === readingUnit);
+      if (canonical && canonical !== readingUnit) output = replaceStructuralUnit(output, index, canonical);
+      continue;
+    }
+
+    const south = canonicalReadings
+      .filter((reading) => reading === readingUnit)
+      .map(southKoreanDueumSyllable)
+      .find((reading) => reading && reading !== readingUnit);
+    if (south) output = replaceStructuralUnit(output, index, south);
+  }
+
+  return output === entry.hangul ? "" : output;
+}
+
+function canonicalDueumReadingForEntry(entry, hanjaReadings) {
+  return dueumReadingsForEntry(entry, hanjaReadings, "canonical");
+}
+
+function mergeDueumAlternateForm(existingForms, generated) {
+  const filtered = (existingForms ?? []).filter(
+    (form) => !(form.form === generated.form && form.reading === generated.reading),
+  );
+  return mergeAlternateForms(filtered, [generated]);
+}
+
+function southDueumReadingForCanonicalEntry(entry, hanjaReadings) {
+  return dueumReadingsForEntry(entry, hanjaReadings, "south");
+}
+
+function mergeCanonicalDueumEntries(entries, hanjaReadings) {
+  const byHangul = groupBy(entries, (entry) => entry.hangul);
+  const removed = new Set();
+  let mergedEntries = 0;
+
+  for (const entry of entries) {
+    const southReading = southDueumReadingForCanonicalEntry(entry, hanjaReadings);
+    if (!southReading || southReading === entry.hangul) continue;
+
+    const targetEntry =
+      (byHangul.get(southReading) ?? []).find((candidate) => candidate.hanja === entry.hanja) ??
+      (byHangul.get(southReading) ?? []).find((candidate) => candidate.alternateHanja?.includes(entry.hanja));
+    if (!targetEntry || targetEntry.id === entry.id) continue;
+
+    targetEntry.alternateForms = mergeDueumAlternateForm(targetEntry.alternateForms, {
+      form: entry.hanja,
+      reading: entry.hangul,
+      label: DUEUM_CANONICAL_LABEL,
+    });
+    targetEntry.provenance = uniqueValues([...(targetEntry.provenance ?? []), ...(entry.provenance ?? [])]);
+    targetEntry.confidence = Math.max(targetEntry.confidence ?? 0, entry.confidence ?? 0);
+    removed.add(entry.id);
+    mergedEntries += 1;
+  }
+
+  return {
+    entries: entries.filter((entry) => !removed.has(entry.id)),
+    stats: {
+      mergedEntries,
+    },
+  };
+}
+
+function addCanonicalDueumAlternates(entries, hanjaReadings) {
+  let generated = 0;
+  const output = entries.map((entry) => {
+    const reading = canonicalDueumReadingForEntry(entry, hanjaReadings);
+    if (!reading || reading === entry.hangul) return entry;
+
+    generated += 1;
+    return {
+      ...entry,
+      alternateForms: mergeDueumAlternateForm(entry.alternateForms, {
+        form: entry.hanja,
+        reading,
+        label: DUEUM_CANONICAL_LABEL,
+      }),
+    };
+  });
+
+  return {
+    entries: output,
+    stats: {
+      generatedAlternates: generated,
+    },
+  };
 }
 
 function entryText(entry) {
@@ -953,6 +1181,48 @@ function foldProductiveFormsIntoRoots(entries, hanjaReadings) {
   };
 }
 
+function structuralIntegrityReport(entries) {
+  const issues = {
+    affixMarkerMissing: [],
+    digitMissing: [],
+    spaceMissing: [],
+  };
+
+  for (const entry of entries) {
+    if (!entry.hanja || entry.hanja === entry.hangul || !/[\u4E00-\u9FFF]/u.test(entry.hanja)) continue;
+
+    if ((entry.hangul.startsWith("-") && !entry.hanja.startsWith("-")) || (entry.hangul.endsWith("-") && !entry.hanja.endsWith("-"))) {
+      issues.affixMarkerMissing.push({ hangul: entry.hangul, hanja: entry.hanja, id: entry.id });
+    }
+    if (/[0-9]/u.test(entry.hangul) && !/[0-9]/u.test(entry.hanja)) {
+      issues.digitMissing.push({ hangul: entry.hangul, hanja: entry.hanja, id: entry.id });
+    }
+    if (/\s/u.test(entry.hangul) && !/\s/u.test(entry.hanja)) {
+      issues.spaceMissing.push({ hangul: entry.hangul, hanja: entry.hanja, id: entry.id });
+    }
+  }
+
+  return {
+    affixMarkerMissing: issues.affixMarkerMissing.length,
+    digitMissing: issues.digitMissing.length,
+    spaceMissing: issues.spaceMissing.length,
+    samples: {
+      affixMarkerMissing: issues.affixMarkerMissing.slice(0, 10),
+      digitMissing: issues.digitMissing.slice(0, 10),
+      spaceMissing: issues.spaceMissing.slice(0, 10),
+    },
+  };
+}
+
+function assertStructuralIntegrity(report) {
+  const issueCount = report.affixMarkerMissing + report.digitMissing + report.spaceMissing;
+  if (issueCount === 0) return;
+
+  throw new Error(
+    `Structured Hanja integrity failed: ${JSON.stringify(report.samples, null, 2)}`,
+  );
+}
+
 async function main() {
   const args = new Set(process.argv.slice(2));
   const includeWiktionary = args.has("--include-wiktionary");
@@ -965,25 +1235,38 @@ async function main() {
 
   await mkdir(generatedDir, { recursive: true });
   const hanjaReadings = await loadHanjaReadings();
-  const { koSenses, englishEntries, reviewed } = await loadSeedSources();
+  const {
+    koSenses,
+    englishEntries,
+    lexiconEntries,
+    reviewed,
+    manifest: sourceManifest,
+  } = await loadNormalizedSources({ root, sourceDir, decisionsPath });
   const aligned = alignSeedSources(koSenses, englishEntries);
   const wiktionary = includeWiktionary ? await loadWiktionaryAlignedEntries(wiktionaryLimit, hanjaReadings) : [];
   const derived = inferDerivedHanja(
-    mergeAlternativeHanjaForms(mergeNorthKoreanSpellingVariants(mergeDuplicateEntries([...aligned.lexicon, ...wiktionary]))),
+    mergeAlternativeHanjaForms(mergeNorthKoreanSpellingVariants(mergeDuplicateEntries([...aligned.lexicon, ...lexiconEntries, ...wiktionary]))),
     hanjaReadings,
   );
   const folded = foldProductiveFormsIntoRoots(mergeDuplicateEntries(derived.entries), hanjaReadings);
-  const lexicon = applyReviewedDecisions(
-    mergeDuplicateEntries(folded.entries),
-    reviewed,
+  const dueumMerged = mergeCanonicalDueumEntries(
+    applyReviewedDecisions(mergeDuplicateEntries(folded.entries), reviewed),
+    hanjaReadings,
   );
+  const dueum = addCanonicalDueumAlternates(dueumMerged.entries, hanjaReadings);
+  const lexicon = dueum.entries;
+  const structuralIntegrity = structuralIntegrityReport(lexicon);
+  assertStructuralIntegrity(structuralIntegrity);
   const reviewItems = [...aligned.reviewQueue, ...derived.reviewQueue];
 
   const metadata = {
     builtAt: new Date().toISOString(),
+    sourceContractVersion: SOURCE_CONTRACT_VERSION,
     sources: {
+      files: sourceManifest.files,
       koSenseCount: koSenses.length,
       englishEntryCount: englishEntries.length,
+      lexiconEntryCount: lexiconEntries.length,
       hanjaReadingCount: hanjaReadings.size,
       reviewedDecisionCount: reviewed.length,
       wiktionaryIncluded: includeWiktionary,
@@ -994,7 +1277,12 @@ async function main() {
         : 0,
     },
     derivedHanja: derived.stats,
+    dueumCanonicalAlternates: {
+      ...dueumMerged.stats,
+      ...dueum.stats,
+    },
     productiveForms: folded.stats,
+    structuralIntegrity,
   };
 
   await writeFile(lexiconPath, `${JSON.stringify({ metadata, entries: lexicon }, null, 2)}\n`);

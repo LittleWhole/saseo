@@ -5,7 +5,11 @@
 :root {
   --background: #0d0b09;
   --foreground: #f5f0e8;
+  --font-ui: Arial, Helvetica, sans-serif;
   --font-cjk: "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+  --font-hanja: "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+  --font-mixed: var(--font-ui);
+  --font-korean-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,9 +20,11 @@
 }
 
 body {
+  --font-ui: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  --font-mixed: var(--font-ui);
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-mixed);
 }
 
 ::selection {
@@ -26,20 +32,31 @@ body {
   background: #a7f3d0;
 }
 
-.ruby-headword {
+:where(.ruby-headword) {
   font-family: var(--font-cjk);
   ruby-align: center;
 }
 
-.headword-script {
+:where(.ruby-headword > span) {
+  font-family: var(--font-hanja);
+  font-weight: inherit;
+}
+
+:where(.headword-script) {
   font-family: var(--font-cjk);
   font-synthesis-weight: none;
 }
 
-.ruby-headword rt {
+:where(.korean-text) {
+  font-family: var(--font-cjk);
+  font-weight: var(--font-korean-weight);
+  font-synthesis-weight: none;
+}
+
+:where(.ruby-headword rt) {
   color: #a8a29e;
   font-size: 0.46em;
-  font-weight: 500;
+  font-weight: var(--font-korean-weight);
   letter-spacing: 0;
   transform: translateY(-0.03em);
 }
@@ -47,6 +64,18 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@keyframes search-progress {
+  0% {
+    transform: translateX(-130%);
+  }
+  50% {
+    transform: translateX(140%);
+  }
+  100% {
+    transform: translateX(340%);
   }
 }
 

@@ -31,7 +31,7 @@ function parseUnihanReadings(raw) {
   const records = {};
   for (const line of raw.split(/\r?\n/)) {
     if (!line || line.startsWith("#")) continue;
-    const match = line.match(/^U\+([0-9A-F]+)\t(kDefinition)\t(.+)$/u);
+    const match = line.match(/^U\+([0-9A-F]+)\t(kDefinition|kHangul)\t(.+)$/u);
     if (!match) continue;
 
     const [, codePoint, field, value] = match;
