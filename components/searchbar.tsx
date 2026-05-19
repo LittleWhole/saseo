@@ -80,11 +80,7 @@ export function SearchBar({ searchPage, initialQuery = "", isSearching = false, 
             </>
           ) : (
             <>
-              <span>Search&nbsp;</span>
-              <span className="headword-script text-base leading-none">
-                <Ruby text="檢" ruby="검" rtStyle={{ color: "#0c0a09" }} />
-                <Ruby text="索" ruby="색" rtStyle={{ color: "#0c0a09" }} />
-              </span>
+              <span>Search</span>
               <ArrowRight className="ml-2 h-4 w-4" />
             </>
           )}

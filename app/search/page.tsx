@@ -153,9 +153,6 @@ function SearchLoadingState({ query }: Readonly<{ query: string }>) {
       <div className="relative border-b border-stone-800/80 px-5 py-4">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent opacity-80" />
         <div className="flex items-center gap-4">
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-emerald-300/35 bg-emerald-300/10 headword-script text-xl text-emerald-100">
-            檢
-          </div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-emerald-200">Searching dictionary</p>
             <p className="korean-text truncate text-lg text-stone-100">{query}</p>

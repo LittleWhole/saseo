@@ -18,7 +18,7 @@ export default function Home() {
             <Ruby text="書" ruby="서"/> Saseo
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-stone-400 md:text-lg">
-            Korean&apos;s answer to jisho.org
+            Korean&apos;s answer to <a href="https://jisho.org" target="_blank" rel="noreferrer" className="text-emerald-300 hover:underline">jisho.org</a>
           </p>
         </div>
         <div className="w-full max-w-3xl">
