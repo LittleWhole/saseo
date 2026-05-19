@@ -250,6 +250,25 @@ query. When a candidate is accepted, `/api/search` returns an `inflections`
 payload and boosts the lemma results; the frontend renders a Jisho-like notice
 above the result list.
 
+## Example Mixed Script
+
+Sense examples are converted to mixed script at `/api/search` response time, not
+in the generated sentence bank. The converter scans Hangul spans against the
+lexicon and accepts only Hanja-backed candidates that are exact lexical forms for
+that reading. Longer exact compounds are ranked above their internal subterms so
+known compounds do not leave smaller straggler conversions behind.
+
+When a Hangul reading is ambiguous, the converter compares tokens from the
+example's English translation and the current sense gloss against candidate
+definition text for that exact reading. A candidate wins only when context,
+shared source ids, Hanja compatibility, or English clue overlap separates it
+from the next different mixed form. Short English clues such as `war`, `law`, or
+`tax` are retained because they often distinguish homophonous Sino-Korean terms.
+
+Source examples that already include `漢字(한글)` notation are first normalized
+into Hangul plus high-priority replacements, so they can share the same ruby and
+overlap handling as generated conversions.
+
 ## Search Result Pagination
 
 `/api/search` returns at most 100 entries per response. It accepts a one-based

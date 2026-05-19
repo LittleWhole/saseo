@@ -8,11 +8,12 @@ import { Settings } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { HanjaCharacter, InflectionAnalysis, SearchPagination, SearchResult } from "./helpers";
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { searchDictData } from "./helpers";
 
 type SearchStatus = "idle" | "loading" | "success" | "error";
 const MIN_SEARCH_LOADING_MS = 240;
+const LOCATION_CHANGE_EVENT = "saseo-location-change";
 
 function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -41,6 +42,53 @@ function defaultPagination(): SearchPagination {
     totalPages: 0,
     hasNextPage: false,
     hasPreviousPage: false,
+  };
+}
+
+function locationSearchSnapshot() {
+  if (typeof window === "undefined") return "";
+  return window.location.search.replace(/^\?/u, "");
+}
+
+function ensureHistoryLocationEvents() {
+  const historyWithMarker = window.history as History & {
+    __saseoLocationDispatchTimer?: number;
+    __saseoLocationPatched?: boolean;
+  };
+  if (historyWithMarker.__saseoLocationPatched) return;
+
+  const dispatchLocationChange = () => {
+    if (historyWithMarker.__saseoLocationDispatchTimer) return;
+    historyWithMarker.__saseoLocationDispatchTimer = window.setTimeout(() => {
+      historyWithMarker.__saseoLocationDispatchTimer = undefined;
+      window.dispatchEvent(new Event(LOCATION_CHANGE_EVENT));
+    }, 0);
+  };
+  const originalPushState = window.history.pushState;
+  const originalReplaceState = window.history.replaceState;
+  window.history.pushState = function pushState(...args) {
+    const result = originalPushState.apply(this, args);
+    dispatchLocationChange();
+    return result;
+  };
+  window.history.replaceState = function replaceState(...args) {
+    const result = originalReplaceState.apply(this, args);
+    dispatchLocationChange();
+    return result;
+  };
+  historyWithMarker.__saseoLocationPatched = true;
+}
+
+function subscribeToLocationSearch(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  ensureHistoryLocationEvents();
+  window.addEventListener(LOCATION_CHANGE_EVENT, onStoreChange);
+  window.addEventListener("popstate", onStoreChange);
+  window.addEventListener("pageshow", onStoreChange);
+  return () => {
+    window.removeEventListener(LOCATION_CHANGE_EVENT, onStoreChange);
+    window.removeEventListener("popstate", onStoreChange);
+    window.removeEventListener("pageshow", onStoreChange);
   };
 }
 
@@ -411,10 +459,16 @@ function SearchDisplayOptions({
 }
 
 function SearchPageContent() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("q");
+  useSearchParams();
+  const locationSearch = useSyncExternalStore(
+    subscribeToLocationSearch,
+    locationSearchSnapshot,
+    () => "",
+  );
+  const currentSearchParams = new URLSearchParams(locationSearch);
+  const query = currentSearchParams.get("q");
   const normalizedQuery = query?.trim() ?? "";
-  const requestedPage = parsePageParam(searchParams.get("page"));
+  const requestedPage = parsePageParam(currentSearchParams.get("page"));
   const latestSearchId = useRef(0);
   const latestRequestedKey = useRef("");
   const [entries, setEntries] = useState<SearchResult[]>([]);

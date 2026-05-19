@@ -3,7 +3,12 @@
 import { Ruby } from "./ruby";
 import { AlternateForm, Definition, MiddleKoreanForm, ProficiencyBadge, SenseExample } from "@/app/search/helpers";
 import { Table2, X } from "lucide-react";
-import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+
+const TERM_WRAP_STYLE = {
+    overflowWrap: "anywhere",
+    wordBreak: "break-word",
+} satisfies CSSProperties;
 
 function isHanja(text: string) {
     return /[\u4E00-\u9FFF]/.test(text);
@@ -89,10 +94,6 @@ function readingUnitCountForDisplay(text: string) {
     return Array.from(text).filter((char) => isReadingUnit(char) || isHanja(char)).length;
 }
 
-function hasEmbeddedHanjaReading(text: string) {
-    return /[\u4E00-\u9FFF]\([\uAC00-\uD7AF]+\)/.test(text);
-}
-
 function renderSearchLinkedText(text: string, reading?: string) {
     const nodes: ReactNode[] = [];
     const readingChars = reading ? Array.from(reading).filter(isReadingUnit) : [];
@@ -138,12 +139,11 @@ function formatProficiencyLabel(label: string) {
 
 function renderExample(example: SenseExample, index: number) {
     const korean = example.mixedScript ?? example.korean;
-    const reading = example.mixedScript && !hasEmbeddedHanjaReading(korean) ? example.korean : undefined;
 
     return (
         <div key={`${example.korean}-${example.english ?? ""}-${index}`} className="border-l border-emerald-300/35 pl-4">
             <div className="korean-text text-lg leading-8 text-stone-200">
-                {renderSearchLinkedText(korean, reading)}
+                {renderSearchLinkedText(korean, example.mixedScript ? example.korean : undefined)}
             </div>
             {example.english && (
                 <div className="mt-0.5 text-base leading-7 text-stone-400">
@@ -848,6 +848,32 @@ function alternateLabelParts(label: string | undefined) {
         .filter(Boolean);
 }
 
+function mergeAlternatesForDisplay(alternateForms: AlternateForm[], alternateHanja: string[], hanja: string) {
+    const byForm = new Map<string, AlternateForm>();
+    const alternates: AlternateForm[] = [
+        ...alternateForms,
+        ...alternateHanja
+            .filter((alternate) => alternate !== hanja)
+            .map((alternate) => ({ form: alternate })),
+    ];
+
+    for (const alternate of alternates) {
+        const existing = byForm.get(alternate.form);
+        if (!existing) {
+            byForm.set(alternate.form, alternate);
+            continue;
+        }
+
+        byForm.set(alternate.form, {
+            form: existing.form,
+            reading: existing.reading ?? alternate.reading,
+            label: existing.label ?? alternate.label,
+        });
+    }
+
+    return Array.from(byForm.values());
+}
+
 export function Entry({
     hanja,
     hangul,
@@ -877,12 +903,7 @@ export function Entry({
         [conjugationTarget],
     );
     const definitionBlocks = useMemo(() => groupedDefinitionBlocks(definitions), [definitions]);
-    const cleanedAlternates: AlternateForm[] = [
-        ...alternateForms,
-        ...alternateHanja
-            .filter((alternate) => alternate !== hanja)
-            .map((alternate) => ({ form: alternate })),
-    ];
+    const cleanedAlternates = mergeAlternatesForDisplay(alternateForms, alternateHanja, hanja);
     const heuristicStackHeadword = shouldStackHeadword(hanja, hangul);
     const stackHeadword = heuristicStackHeadword || measuredStackHeadword;
     const articleClassName = [
@@ -891,7 +912,7 @@ export function Entry({
     ].join(" ");
     const headwordClassName = [
         "headword-script text-4xl font-medium leading-tight text-stone-50 md:text-5xl",
-        "max-w-full overflow-x-auto whitespace-nowrap pb-2 [scrollbar-width:thin]",
+        "term-wrap max-w-full min-w-0 whitespace-normal",
     ].join(" ");
 
     useEffect(() => {
@@ -989,7 +1010,7 @@ export function Entry({
     return (
         <article className={articleClassName}>
             <div className="min-w-0">
-                <div ref={headwordRef} className={headwordClassName}>
+                <div ref={headwordRef} className={headwordClassName} style={TERM_WRAP_STYLE}>
                     {renderHeadword(hanja, hangul)}
                 </div>
                 {showMiddleKorean && middleKorean.length > 0 && (
@@ -1030,11 +1051,19 @@ export function Entry({
                                 <a
                                     key={`${alternate.form}-${alternate.reading ?? ""}-${alternate.label ?? ""}`}
                                     href={searchHref(alternate)}
-                                    className="rounded-lg border border-emerald-300/20 bg-emerald-950/20 px-3.5 py-2.5 text-stone-100 shadow-sm ring-1 ring-white/[0.03]"
+                                    className="min-w-0 rounded-lg border border-emerald-300/20 bg-emerald-950/20 px-3.5 py-2.5 text-stone-100 shadow-sm ring-1 ring-white/[0.03]"
                                 >
-                                    <span className={hasKoreanScript(alternate.form) ? "korean-text text-2xl leading-none" : "text-2xl font-medium leading-none"}>{alternate.form}</span>
+                                    <span
+                                        className={hasKoreanScript(alternate.form) ? "korean-text term-wrap text-2xl leading-snug" : "term-wrap text-2xl font-medium leading-snug"}
+                                        style={TERM_WRAP_STYLE}
+                                    >
+                                        {alternate.form}
+                                    </span>
                                     {alternate.reading && (
-                                        <span className="korean-text ml-2 align-baseline text-lg text-stone-300">
+                                        <span
+                                            className="korean-text term-wrap ml-2 align-baseline text-lg text-stone-300"
+                                            style={TERM_WRAP_STYLE}
+                                        >
                                             {alternate.reading}
                                         </span>
                                     )}

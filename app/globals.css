@@ -78,6 +78,11 @@ body {
   transform: translateY(-0.03em);
 }
 
+.term-wrap {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

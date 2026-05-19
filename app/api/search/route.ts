@@ -168,13 +168,15 @@ type HanjaReplacement = {
   end: number;
   text: string;
   score: number;
-  source: "exact" | "contextual-hada";
+  source: "exact" | "contextual-hada" | "embedded-reading";
 };
 
 type HanjaMatchCandidate = {
   entry: IndexedEntry;
   mixed: string;
   score: number;
+  clueOverlap: number;
+  isContextual: boolean;
 };
 
 type SearchPagination = {
@@ -1092,7 +1094,7 @@ function englishClueTokens(...values: Array<string | undefined>) {
       .join(" ")
       .toLowerCase()
       .split(/[^a-z0-9]+/)
-      .filter((token) => token.length > 3 && !stopWords.has(token)),
+      .filter((token) => token.length > 2 && !stopWords.has(token)),
   );
 }
 
@@ -1104,9 +1106,25 @@ function overlapCount(left: Set<string>, right: Set<string>) {
   return count;
 }
 
-function definitionClueText(entry: LexiconEntry) {
-  return (entry.definitions ?? [])
-    .flatMap((definition) => [definition.text, ...(definition.pos ?? []), ...(definition.tags ?? [])])
+function definitionMatchesReading(definition: LexiconDefinition, reading: string) {
+  const normalizedReading = normalizeStructuralSearchText(reading);
+  return normalizeStructuralSearchText(definition.formOf?.reading) === normalizedReading
+    || normalizeStructuralSearchText(definition.formOf?.form) === normalizedReading;
+}
+
+function definitionClueTextForReading(entry: LexiconEntry, reading: string) {
+  const exactDefinitions = (entry.definitions ?? []).filter((definition) => definitionMatchesReading(definition, reading));
+  const definitions = exactDefinitions.length ? exactDefinitions : entry.definitions ?? [];
+  return definitions
+    .flatMap((definition) => [
+      definition.text,
+      definition.discriminator,
+      definition.senseGroup?.label,
+      definition.formOf?.label,
+      ...(definition.pos ?? []),
+      ...(definition.tags ?? []),
+      ...(definition.seeAlso ?? []).flatMap((item) => [item.form, item.reading, item.label]),
+    ])
     .join(" ");
 }
 
@@ -1139,6 +1157,7 @@ function isContextEntry(entry: LexiconEntry, contextEntry: LexiconEntry) {
 function scoreHanjaCandidate(
   entry: IndexedEntry,
   mixed: string,
+  reading: string,
   example: SenseExample,
   contextEntry: LexiconEntry,
   contextDefinition: LexiconDefinition,
@@ -1156,10 +1175,17 @@ function scoreHanjaCandidate(
   if (contextHanja && mixedHanja && (contextHanja.includes(mixedHanja) || mixedHanja.includes(contextHanja))) score += 120;
 
   const exampleTokens = englishClueTokens(example.english, contextDefinition.text);
-  const candidateTokens = englishClueTokens(definitionClueText(entry));
-  score += Math.min(160, overlapCount(exampleTokens, candidateTokens) * 32);
+  const candidateTokens = englishClueTokens(definitionClueTextForReading(entry, reading));
+  const clueOverlap = overlapCount(exampleTokens, candidateTokens);
+  score += Math.min(220, clueOverlap * 44);
+
+  const readingLength = Array.from(normalizeStructuralSearchText(reading)).length;
+  if (readingLength >= 2 && entry.exactKeys?.has(normalizeStructuralSearchText(reading))) {
+    score += 40 + Math.min(160, readingLength * 16);
+  }
+
   score += Math.min(40, Math.floor((entry.confidence ?? 0) / 5));
-  return score;
+  return { score, clueOverlap };
 }
 
 function bestHanjaCandidateForReading(
@@ -1177,21 +1203,31 @@ function bestHanjaCandidateForReading(
       const key = `${entry.id}\u0000${mixed}`;
       if (seen.has(key)) continue;
       seen.add(key);
+      const score = scoreHanjaCandidate(entry, mixed, reading, example, contextEntry, contextDefinition);
       candidates.push({
         entry,
         mixed,
-        score: scoreHanjaCandidate(entry, mixed, example, contextEntry, contextDefinition),
+        score: score.score,
+        clueOverlap: score.clueOverlap,
+        isContextual: isContextEntry(entry, contextEntry),
       });
     }
   }
-  candidates.sort((left, right) => right.score - left.score || (right.entry.confidence ?? 0) - (left.entry.confidence ?? 0));
+  candidates.sort((left, right) =>
+    right.score - left.score
+    || right.clueOverlap - left.clueOverlap
+    || (right.entry.confidence ?? 0) - (left.entry.confidence ?? 0)
+    || hanjaOnly(right.mixed).length - hanjaOnly(left.mixed).length,
+  );
 
   const best = candidates[0];
   if (!best) return null;
-  const runnerUp = candidates[1];
-  const isContextual = isContextEntry(best.entry, contextEntry);
+  const runnerUp = candidates.find((candidate) => candidate !== best && candidate.mixed !== best.mixed);
+  const readingLength = Array.from(normalizeStructuralSearchText(reading)).length;
   if (!runnerUp) return best;
-  if (isContextual && best.score >= runnerUp.score) return best;
+  if (best.isContextual && best.score >= runnerUp.score) return best;
+  if (best.clueOverlap > runnerUp.clueOverlap && best.score >= runnerUp.score) return best;
+  if (readingLength >= 3 && best.score >= runnerUp.score + 32) return best;
   if (best.score >= runnerUp.score + 64) return best;
   return null;
 }
@@ -1227,7 +1263,7 @@ function exactHanjaReplacements(
         start: index,
         end: spanEnd,
         text: best.mixed,
-        score: best.score + reading.length,
+        score: best.score + Array.from(reading).length * 120,
         source: "exact",
       });
     }
@@ -1260,7 +1296,14 @@ function contextualHadaReplacementFromForm(
     start,
     end: start + readingStem.length,
     text: mixedStem,
-    score: 900 + scoreHanjaCandidate(contextEntry as IndexedEntry, normalizedMixed, example, contextEntry, contextDefinition),
+    score: 900 + scoreHanjaCandidate(
+      contextEntry as IndexedEntry,
+      normalizedMixed,
+      normalizedReading,
+      example,
+      contextEntry,
+      contextDefinition,
+    ).score,
     source: "contextual-hada",
   };
 }
@@ -1298,21 +1341,51 @@ function applyHanjaReplacements(text: string, replacements: HanjaReplacement[]) 
   return output;
 }
 
+function embeddedHanjaReadingBase(example: SenseExample) {
+  const pattern = /([\u4E00-\u9FFF]+)\(([\uAC00-\uD7AF]+)\)/gu;
+  const replacements: HanjaReplacement[] = [];
+  let korean = "";
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(example.korean)) !== null) {
+    const [source, hanja, reading] = match;
+    korean += example.korean.slice(cursor, match.index);
+    const start = korean.length;
+    korean += reading;
+    replacements.push({
+      start,
+      end: start + reading.length,
+      text: hanja,
+      score: 2000 + hanja.length,
+      source: "embedded-reading",
+    });
+    cursor = match.index + source.length;
+  }
+
+  if (!replacements.length) return null;
+  korean += example.korean.slice(cursor);
+  return { korean, replacements };
+}
+
 function mixedScriptExample(
   example: SenseExample,
   contextEntry: LexiconEntry,
   contextDefinition: LexiconDefinition,
   searchIndex: SearchIndex,
 ): SenseExample {
-  if (hasHanja(example.korean)) return example;
+  const embedded = embeddedHanjaReadingBase(example);
+  if (hasHanja(example.korean) && !embedded) return example;
 
-  const replacements = exactHanjaReplacements(example, contextEntry, contextDefinition, searchIndex);
-  replacements.push(...contextualHadaReplacements(example, contextEntry, contextDefinition));
+  const baseExample = embedded ? { ...example, korean: embedded.korean } : example;
+  const replacements = exactHanjaReplacements(baseExample, contextEntry, contextDefinition, searchIndex);
+  replacements.push(...contextualHadaReplacements(baseExample, contextEntry, contextDefinition));
+  replacements.push(...(embedded?.replacements ?? []));
 
-  const mixedScript = applyHanjaReplacements(example.korean, replacements);
-  if (mixedScript === example.korean || !hasHanja(mixedScript)) return example;
+  const mixedScript = applyHanjaReplacements(baseExample.korean, replacements);
+  if (mixedScript === baseExample.korean || !hasHanja(mixedScript)) return baseExample;
   return {
-    ...example,
+    ...baseExample,
     mixedScript,
   };
 }

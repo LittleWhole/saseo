@@ -57,6 +57,12 @@
 - 2026-05-18T23:11:20-0400 [USER] Make the Middle Korean popover switch look like a normal slider switch.
 - 2026-05-18T23:17:03-0400 [USER] Diagnose and fix malformed Middle Korean display on `민족/民族`, where a stray leading `ᇰ〯` fragment appeared.
 - 2026-05-18T23:29:52-0400 [USER] Fix misaligned ruby in examples whose Wiktionary/source text already contains Hanja with parenthetical readings, e.g. `舊(구)`.
+- 2026-05-19T05:07:32-0400 [USER] Correct the embedded-Hanja example ruby fix so it works around source `漢(한)` notation instead of suppressing mixed-script/ruby behavior.
+- 2026-05-19T05:23:21-0400 [USER] Improve example-sentence Hanja auto-conversion so unambiguous lexicon compounds win over straggler subterms and ambiguous homophones use English translation clues.
+- 2026-05-19T05:18:43-0400 [USER] Explain and fix duplicated `Other forms` display where an alternate appears once from `alternateHanja` and once from structured `alternateForms`.
+- 2026-05-19T05:15:15-0400 [USER] Back/forward navigation still gets search pages stuck or out of sync.
+- 2026-05-19T05:30:39-0400 [USER] Long terms should wrap within result cards instead of forcing horizontal scrolling or clipping.
+- 2026-05-19T05:29:20-0400 [USER] Fix React console error `useInsertionEffect must not schedule updates` thrown from the search-page custom history event dispatch.
 
 ## [DECISIONS]
 - 2026-05-16T04:45:14-0400 [CODE] Search API now owns Hanja-side-panel derivation via `hanjaCharacters`, using query text plus returned entries' Hanja lemmas, alternate forms, search forms, and `formOf` annotations.
@@ -117,6 +123,11 @@
 - 2026-05-18T23:14:17-0400 [CODE] Vercel Analytics is installed via `@vercel/analytics@2.0.1` and rendered in the App Router root layout. Dense Hangul query expansion now adds bounded exact-match substrings from the search index and gives longer matched query values a small ranking boost.
 - 2026-05-18T23:11:20-0400 [CODE] The Middle Korean switch now uses normal slider proportions: a 48x28 rounded track with a 20x20 circular thumb and 20px travel.
 - 2026-05-18T23:29:52-0400 [CODE] Source examples that already contain Hanja now bypass API mixed-script conversion, and the example renderer suppresses synthetic ruby when mixed text includes embedded `漢(한)` readings.
+- 2026-05-19T05:07:32-0400 [CODE] Supersedes the prior embedded-Hanja suppression: source `漢(한)` examples are now normalized into clean Hangul reading text plus high-priority Hanja replacements, so existing and generated Hanja can share the normal ruby alignment path.
+- 2026-05-19T05:23:21-0400 [CODE] Example mixed-script conversion now scores Hanja candidates against definitions relevant to the exact reading, retains short English disambiguation clues, de-duplicates same mixed-form competitors, and gives longer exact compounds a strong overlap-winning bonus.
+- 2026-05-19T05:15:15-0400 [CODE] Search page state now subscribes to the browser URL as an external store and patches `history.pushState`/`replaceState` to emit location-change events, so URL-derived query/page state updates for push, replace, popstate, and pageshow.
+- 2026-05-19T05:30:39-0400 [CODE] Entry headwords and alternate-form terms now use normal whitespace plus explicit `overflow-wrap:anywhere`/`word-break:break-word` styling so long Korean/Hanja/Latin terms can wrap inside their containers.
+- 2026-05-19T05:29:20-0400 [CODE] Search-page custom history events are now coalesced through `window.setTimeout(..., 0)` so URL-store subscriber updates do not fire synchronously inside React/Next insertion-effect work.
 
 ## [PROGRESS]
 - 2026-05-16T04:45:14-0400 [CODE] Added `scripts/lexicon/import-unihan-readings.mjs`, `lexicon:import:unihan`, search API Hanja metadata loading, and a responsive search-page Hanja side rail.
@@ -176,6 +187,12 @@
 - 2026-05-18T23:14:17-0400 [CODE] Added `knownHangulSubstrings` in `app/api/search/route.ts`, capped at 120 known substrings of length 2-12 per dense Hangul token, so searches like `반민족행위특별조사위원회` return component entries such as `민족`, `행위`, `특별`, `조사`, and `위원회`.
 - 2026-05-18T23:11:20-0400 [CODE] Enlarged the production-safe `app/search/page.tsx` switch track/thumb and moved slider dimensions into inline layout styles so compiled CSS cannot collapse the inline spans.
 - 2026-05-18T23:29:52-0400 [CODE] Added an early `hasHanja(example.korean)` return in `mixedScriptExample` and `hasEmbeddedHanjaReading` in `components/ui/entry.tsx` to avoid double-rubying source-mixed examples.
+- 2026-05-19T05:07:32-0400 [CODE] Replaced the early Hanja return with `embeddedHanjaReadingBase` in `app/api/search/route.ts` and removed the renderer-side ruby suppression in `components/ui/entry.tsx`.
+- 2026-05-19T05:23:21-0400 [CODE] Updated `scoreHanjaCandidate`, `bestHanjaCandidateForReading`, and `exactHanjaReplacements` in `app/api/search/route.ts`; documented example mixed-script ranking/disambiguation in `docs/lexicon-pipeline.md`.
+- 2026-05-19T05:18:43-0400 [CODE] `components/ui/entry.tsx` now merges alternate display rows by written form, preserving the first available reading and label so `宗教` renders once with `종교` and `Alternative form`.
+- 2026-05-19T05:15:15-0400 [CODE] In `app/search/page.tsx`, replaced direct `useSearchParams`-derived query/page with `useSyncExternalStore` over `window.location.search` plus location-change listeners.
+- 2026-05-19T05:30:39-0400 [CODE] Removed headword `whitespace-nowrap`/horizontal scrollbar behavior in `components/ui/entry.tsx`; added a local `.term-wrap` utility in `app/globals.css` and inline critical wrapping styles for production consistency.
+- 2026-05-19T05:29:20-0400 [CODE] In `app/search/page.tsx`, added a `__saseoLocationDispatchTimer` guard to the patched history object and deferred `saseo-location-change` dispatches after `pushState`/`replaceState`.
 
 ## [DISCOVERIES]
 - 2026-05-16T04:45:14-0400 [TOOL] `npm run lint` initially failed on an unrelated home-page unescaped apostrophe; fixed by changing `Korean's` to `Korean&apos;s`.
@@ -237,6 +254,12 @@
 - 2026-05-18T23:11:20-0400 [TOOL] Browser verification on `http://localhost:3000/search?q=한국` measured the Middle Korean switch at 48x28 with a 20x20 thumb, zero checkbox inputs, and a 20px checked-state thumb transform.
 - 2026-05-18T23:17:03-0400 [TOOL] Generated-data check showed `민족/民族` now has Middle Korean `민족〮`/`min-cwok`, and public lexicon entries contain zero MK forms starting with standalone final jamo or tone marks.
 - 2026-05-18T23:29:52-0400 [TOOL] Sentence-bank assertion confirmed the `민족/民族` example contains embedded Hanja readings like `舊(구)`, so it now bypasses synthetic ruby alignment instead of using the sentence as a plain-Hangul reading string.
+- 2026-05-19T05:07:32-0400 [TOOL] Temporary production API verification for `민족` returned clean reading text `구소련권`/`친러` and mixed text `舊소련권 ... 親러 ... 領土 ...`, with no `舊(구)` parenthetical left in the mixed string.
+- 2026-05-19T05:23:21-0400 [TOOL] Local API checks after the candidate-ranking change returned `運轉者는 速度를 加했다.` for `속도를 가하다` and preserved clean embedded-Hanja normalization for the `민족` example.
+- 2026-05-19T05:18:43-0400 [TOOL] `종교/宗敎` generated data has both `alternateHanja: [宗教]` and structured `alternateForms: [{ form: 宗教, reading: 종교, label: Alternative form }]`; display merge reduces these to one row.
+- 2026-05-19T05:29:20-0400 [TOOL] Attempted Playwright console verification through `node_repl`, but the session has no `playwright` module installed; source/build verification covered the React scheduling fix.
+- 2026-05-19T05:15:15-0400 [TOOL] Browser history verification on temporary production server passed: `hada -> 민족 -> back -> forward` restored heading, result count, and settled content for each URL without a stuck searching state.
+- 2026-05-19T05:30:39-0400 [TOOL] Browser verification on `/search?q=United%20Kingdom%20of%20Great%20Britain` showed the long headword wrapping into multiple lines, no viewport horizontal overflow, computed `overflow-wrap:anywhere`, and no console warnings/errors.
 
 ## [OUTCOMES]
 - 2026-05-18T23:04:17-0400 [TOOL] Verification passed for the Vercel popover-control fix: `git diff --check`, `npm run lint`, `npm run build`, and Browser DOM/computed-style checks.
@@ -244,6 +267,12 @@
 - 2026-05-18T23:11:20-0400 [TOOL] Verification passed for the normal slider switch styling: `git diff --check`, `npm run lint`, `npm run build`, and Browser computed-dimension checks.
 - 2026-05-18T23:17:03-0400 [TOOL] Verification passed for the malformed MK fix: `node --check scripts/lexicon/build-lexicon.mjs`, `npm run lexicon:build:wiktionary`, malformed-form data assertions, `git diff --check`, `npm run lint`, and `npm run build`.
 - 2026-05-18T23:29:52-0400 [TOOL] Verification passed for the embedded-Hanja example ruby fix: targeted sentence-bank assertion, `git diff --check`, `npm run lint`, and `npm run build`.
+- 2026-05-19T05:07:32-0400 [TOOL] Verification passed for the embedded-Hanja ruby workaround: `git diff --check`, `npm run lint`, `npm run build`, temporary production API assertion on `민족`, and temporary server shutdown.
+- 2026-05-19T05:23:21-0400 [TOOL] Verification passed for example Hanja auto-conversion ranking: `npm run lint`, `npm run build`, `git diff --check`, and local API checks for `속도를 가하다`, `민족`, and short ambiguous `가`.
+- 2026-05-19T05:18:43-0400 [TOOL] Verification passed for alternate display dedupe: `npm run lint`, `npm run build`, `git diff --check`, generated-data inspection for `종교`, and a merge-helper smoke check reducing duplicate `宗教` rows to one.
+- 2026-05-19T05:15:15-0400 [TOOL] Verification passed for the back/forward search-state fix: `git diff --check`, `npm run lint`, `npm run build`, browser history test on temporary production server, and temporary server shutdown.
+- 2026-05-19T05:29:20-0400 [TOOL] Verification passed for the insertion-effect console-error fix: `npm run lint`, `npm run build`, and `git diff --check`.
+- 2026-05-19T05:30:39-0400 [TOOL] Verification passed for long-term wrapping: `git diff --check`, `npm run lint`, `npm run build`, and in-app Browser visual/computed-style checks.
 - 2026-05-16T04:45:14-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, local `/api/search?q=bh` returned `hanjaCharacters`, and Browser rendered the panel with no console errors.
 - 2026-05-16T05:01:46-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, local `/api/search?q=가다` returned `TOPIK A`, and Browser rendered the badge with no console errors.
 - 2026-05-16T05:09:34-0400 [TOOL] Verification passed: `npm run lexicon:build:wiktionary`, `npm run lint`, `npm run build`, API `/api/search?q=-고` returns `-고/-고`, and Browser shows no `古` headword for the suffix.
