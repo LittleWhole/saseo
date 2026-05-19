@@ -316,19 +316,37 @@ function MiddleKoreanToggle({
   onChange: (checked: boolean) => void;
 }>) {
   return (
-    <label className="flex w-full cursor-pointer items-center justify-between gap-4 rounded-md px-2 py-1.5 text-sm font-medium text-stone-300 transition-colors hover:bg-emerald-300/10">
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      onClick={() => onChange(!checked)}
+      className="flex w-full cursor-pointer items-center justify-between gap-4 rounded-md px-2 py-1.5 text-sm font-medium text-stone-300 transition-colors hover:bg-emerald-300/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#15110f]"
+    >
       <span>Middle Korean</span>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={(event) => onChange(event.target.checked)}
-        className="peer sr-only appearance-none focus:outline-none focus:ring-0"
-      />
       <span
         aria-hidden="true"
-        className="relative h-4 w-7 rounded-full bg-stone-800 transition-colors after:absolute after:left-0.5 after:top-0.5 after:h-3 after:w-3 after:rounded-full after:bg-stone-500 after:transition-transform peer-checked:bg-emerald-300/55 peer-checked:after:translate-x-3 peer-checked:after:bg-emerald-100 peer-focus-visible:ring-2 peer-focus-visible:ring-emerald-300/45 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-[#15110f]"
-      />
-    </label>
+        className="relative shrink-0 rounded-full shadow-inner transition-colors"
+        style={{
+          backgroundColor: checked ? "rgba(110, 231, 183, 0.62)" : "#292524",
+          display: "inline-block",
+          height: "1.75rem",
+          width: "3rem",
+        }}
+      >
+        <span
+          className="absolute rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.28)] transition-transform"
+          style={{
+            backgroundColor: checked ? "#ecfdf5" : "#d6d3d1",
+            height: "1.25rem",
+            left: "0.25rem",
+            top: "0.25rem",
+            transform: checked ? "translateX(1.25rem)" : "translateX(0)",
+            width: "1.25rem",
+          }}
+        />
+      </span>
+    </button>
   );
 }
 

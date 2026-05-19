@@ -838,6 +838,22 @@ function segmentHangulTerm(term: string, searchIndex: SearchIndex) {
   return output;
 }
 
+function knownHangulSubstrings(term: string, searchIndex: SearchIndex) {
+  const output: string[] = [];
+  const chars = Array.from(term);
+  const maxLength = Math.min(chars.length, 12);
+
+  for (let length = maxLength; length >= 2 && output.length < 120; length -= 1) {
+    for (let start = 0; start + length <= chars.length && output.length < 120; start += 1) {
+      const candidate = chars.slice(start, start + length).join("");
+      if (candidate === term || !indexHasLookup(searchIndex, candidate)) continue;
+      addSearchExpansion(output, candidate);
+    }
+  }
+
+  return output;
+}
+
 function searchTermExpansions(term: string, searchIndex: SearchIndex) {
   const expansions: string[] = [];
   addSearchExpansion(expansions, term);
@@ -855,6 +871,7 @@ function searchTermExpansions(term: string, searchIndex: SearchIndex) {
       }
     }
     for (const segment of segmentHangulTerm(normalized, searchIndex)) addSearchExpansion(expansions, segment);
+    for (const substring of knownHangulSubstrings(normalized, searchIndex)) addSearchExpansion(expansions, substring);
   }
 
   return expansions;
@@ -1287,6 +1304,8 @@ function mixedScriptExample(
   contextDefinition: LexiconDefinition,
   searchIndex: SearchIndex,
 ): SenseExample {
+  if (hasHanja(example.korean)) return example;
+
   const replacements = exactHanjaReplacements(example, contextEntry, contextDefinition, searchIndex);
   replacements.push(...contextualHadaReplacements(example, contextEntry, contextDefinition));
 
@@ -2071,7 +2090,7 @@ function scoreEntry(entry: IndexedEntry, query: string, structuralQuery: string,
 function scoreEntryForQueryValue(entry: IndexedEntry, value: string) {
   const normalizedQuery = normalizeSearchText(value);
   const structuralQuery = normalizeStructuralSearchText(value);
-  return scoreEntry(
+  const score = scoreEntry(
     entry,
     normalizedQuery,
     structuralQuery,
@@ -2080,6 +2099,7 @@ function scoreEntryForQueryValue(entry: IndexedEntry, value: string) {
     compactLatin(value),
     loosenRomaja(value),
   );
+  return score > 0 ? score + Math.min(120, Array.from(structuralQuery || normalizedQuery).length * 8) : 0;
 }
 
 function scoreEntryForParsedQuery(entry: IndexedEntry, parsedQuery: ParsedSearchQuery, topikIndex: TopikIndex | null) {
@@ -2117,13 +2137,19 @@ function toPublicEntry(entry: IndexedEntry): LexiconEntry {
   return publicEntry;
 }
 
+function hasMalformedMiddleKoreanBoundary(value: string) {
+  return /(^|[\s/])[\u11A8-\u11FF〮〯]/u.test(value);
+}
+
 function stripPublicCitations(entry: LexiconEntry): LexiconEntry {
   return {
     ...entry,
-    middleKorean: entry.middleKorean?.map((form) => ({
-      form: form.form,
-      yale: form.yale,
-    })),
+    middleKorean: entry.middleKorean
+      ?.filter((form) => !hasMalformedMiddleKoreanBoundary(form.form))
+      .map((form) => ({
+        form: form.form,
+        yale: form.yale,
+      })),
     provenance: undefined,
     reviewStatus: undefined,
     definitions: entry.definitions.map((definition) => ({

@@ -51,6 +51,12 @@
 - 2026-05-18T16:41:01-0400 [USER] Replace the yellow display-option accents with the app's existing green and use a fully featured Middle Korean font that supports combinational jamo/Yethangul.
 - 2026-05-18T17:36:33-0400 [USER] Use Korean Wikisource `訓蒙字會` as the main source for Middle Korean Hanja readings.
 - 2026-05-18T17:18:43-0400 [USER] Make the cogwheel display-options button match the GitHub report button style.
+- 2026-05-18T23:04:17-0400 [USER] Fix the Vercel rendering bug where the display-options popover switch exposed a native checkbox/blue focus styling.
+- 2026-05-18T23:07:02-0400 [USER] Improve alternate-form badge display by splitting compound labels into separate badges and preventing individual badge text from breaking across lines.
+- 2026-05-18T23:14:17-0400 [USER] Implement Vercel Web Analytics and make long dense Korean strings search all known lexical substrings so unindexed compounds still return component terms.
+- 2026-05-18T23:11:20-0400 [USER] Make the Middle Korean popover switch look like a normal slider switch.
+- 2026-05-18T23:17:03-0400 [USER] Diagnose and fix malformed Middle Korean display on `민족/民族`, where a stray leading `ᇰ〯` fragment appeared.
+- 2026-05-18T23:29:52-0400 [USER] Fix misaligned ruby in examples whose Wiktionary/source text already contains Hanja with parenthetical readings, e.g. `舊(구)`.
 
 ## [DECISIONS]
 - 2026-05-16T04:45:14-0400 [CODE] Search API now owns Hanja-side-panel derivation via `hanjaCharacters`, using query text plus returned entries' Hanja lemmas, alternate forms, search forms, and `formOf` annotations.
@@ -105,6 +111,12 @@
 - 2026-05-18T16:41:01-0400 [CODE] The display-options popover now uses the same emerald accents as the rest of the search UI. Middle Korean text uses a dedicated `middle-korean-text` class backed by bundled `NotoSansCJKkr-Regular.otf` plus Old Hangul OpenType feature tags.
 - 2026-05-18T17:36:33-0400 [CODE] Middle Korean Hanja composition now loads `app/data/generated/hunmong-jahoe-readings.json` and merges direct Korean Wikisource `訓蒙字會` readings at higher confidence than Wiktionary character-template fallbacks.
 - 2026-05-18T17:18:43-0400 [CODE] The display-options cog now shares the report button's stone translucent surface, rounded border, drop shadow, text color, and emerald hover/open styling, while remaining icon-only.
+- 2026-05-18T23:04:17-0400 [CODE] The Middle Korean display option is now an accessible `button` switch with explicit inline track/knob colors and transform values, avoiding production CSS pruning of conditional Tailwind switch utilities.
+- 2026-05-18T23:07:02-0400 [CODE] Alternate-form labels now split comma/`or` compounds into separate chips, e.g. `North Korea`, `Yanbian`, and `archaic`, with each chip using `whitespace-nowrap`.
+- 2026-05-18T23:17:03-0400 [CODE] Middle Korean records whose cleaned form begins with a standalone final jamo or tone mark are rejected during lexicon build and defensively filtered from API output.
+- 2026-05-18T23:14:17-0400 [CODE] Vercel Analytics is installed via `@vercel/analytics@2.0.1` and rendered in the App Router root layout. Dense Hangul query expansion now adds bounded exact-match substrings from the search index and gives longer matched query values a small ranking boost.
+- 2026-05-18T23:11:20-0400 [CODE] The Middle Korean switch now uses normal slider proportions: a 48x28 rounded track with a 20x20 circular thumb and 20px travel.
+- 2026-05-18T23:29:52-0400 [CODE] Source examples that already contain Hanja now bypass API mixed-script conversion, and the example renderer suppresses synthetic ruby when mixed text includes embedded `漢(한)` readings.
 
 ## [PROGRESS]
 - 2026-05-16T04:45:14-0400 [CODE] Added `scripts/lexicon/import-unihan-readings.mjs`, `lexicon:import:unihan`, search API Hanja metadata loading, and a responsive search-page Hanja side rail.
@@ -158,6 +170,12 @@
 - 2026-05-18T16:41:01-0400 [CODE] Added a local `@font-face` in `app/globals.css`, narrowed its unicode range to Hangul jamo/tone/Yethangul-related blocks, and changed Middle Korean forms in `components/ui/entry.tsx` from `.korean-text` to `.middle-korean-text`.
 - 2026-05-18T17:36:33-0400 [CODE] Added `scripts/lexicon/import-hunmong-jahoe.mjs`, `npm run lexicon:import:hunmong`, generated 1,424 direct Hunmong readings, regenerated the lexicon, and documented the source priority.
 - 2026-05-18T17:18:43-0400 [CODE] Updated `SearchDisplayOptions` button classes in `app/search/page.tsx`; Browser verification found arbitrary `w-[42px]` and later `w-10` were not in the generated CSS, so the final stable size is `h-11 w-11`.
+- 2026-05-18T23:04:17-0400 [CODE] Replaced the hidden checkbox/peer-styled Middle Korean toggle in `app/search/page.tsx` with a native-button switch and real child knob element; no form input remains in the popover.
+- 2026-05-18T23:07:02-0400 [CODE] Added `alternateLabelParts` in `components/ui/entry.tsx` and rendered alternate-form labels as a wrapping group of no-wrap chips.
+- 2026-05-18T23:17:03-0400 [CODE] Added malformed-MK boundary guards in `scripts/lexicon/build-lexicon.mjs` and `app/api/search/route.ts`, then regenerated `app/data/generated/lexicon.json`.
+- 2026-05-18T23:14:17-0400 [CODE] Added `knownHangulSubstrings` in `app/api/search/route.ts`, capped at 120 known substrings of length 2-12 per dense Hangul token, so searches like `반민족행위특별조사위원회` return component entries such as `민족`, `행위`, `특별`, `조사`, and `위원회`.
+- 2026-05-18T23:11:20-0400 [CODE] Enlarged the production-safe `app/search/page.tsx` switch track/thumb and moved slider dimensions into inline layout styles so compiled CSS cannot collapse the inline spans.
+- 2026-05-18T23:29:52-0400 [CODE] Added an early `hasHanja(example.korean)` return in `mixedScriptExample` and `hasEmbeddedHanjaReading` in `components/ui/entry.tsx` to avoid double-rubying source-mixed examples.
 
 ## [DISCOVERIES]
 - 2026-05-16T04:45:14-0400 [TOOL] `npm run lint` initially failed on an unrelated home-page unescaped apostrophe; fixed by changing `Korean's` to `Korean&apos;s`.
@@ -213,8 +231,19 @@
 - 2026-05-18T16:41:01-0400 [TOOL] Official Noto docs list `Noto Sans CJK KR` support for Hangul Jamo, Hangul Jamo Extended-A, Hangul Jamo Extended-B, Hangul syllables, and CJK Symbols and Punctuation; Browser computed styles confirmed the live popover uses emerald colors and `middle-korean-text` uses the dedicated font stack.
 - 2026-05-18T17:36:33-0400 [TOOL] Korean Wikisource `훈몽자회` index page lists 33 sections, but 12 middle-volume section links are currently redlinks; the importer records skipped sections and Wiktionary structured Hanja etymologies remain fallback for missing pages.
 - 2026-05-18T17:18:43-0400 [TOOL] Browser computed styles on `http://localhost:3003/search?q=한국` showed the cog and GitHub button have matching background, border color, radius, and shadow; cog measured 44x44 and GitHub button 145x42.
+- 2026-05-18T23:04:17-0400 [TOOL] Browser verification on `http://localhost:3000/search?q=한국` showed zero checkbox inputs, opaque `rgb(21, 17, 15)` popover background, `role=switch`, off/on switch paint, moved knob transform, and visible Middle Korean text after toggling.
+- 2026-05-18T23:07:02-0400 [TOOL] Browser verification on `/search?q=노동` showed no combined `North Korea, Yanbian, or archaic` label and separate `North Korea`, `Yanbian`, and `archaic` chips, each with computed `white-space: nowrap`.
+- 2026-05-18T23:14:17-0400 [TOOL] Long-query API verification for `반민족행위특별조사위원회` returned 38 entries and included expected component terms `민족`, `행위`, `특별`, `조사`, and `위원회`.
+- 2026-05-18T23:11:20-0400 [TOOL] Browser verification on `http://localhost:3000/search?q=한국` measured the Middle Korean switch at 48x28 with a 20x20 thumb, zero checkbox inputs, and a 20px checked-state thumb transform.
+- 2026-05-18T23:17:03-0400 [TOOL] Generated-data check showed `민족/民族` now has Middle Korean `민족〮`/`min-cwok`, and public lexicon entries contain zero MK forms starting with standalone final jamo or tone marks.
+- 2026-05-18T23:29:52-0400 [TOOL] Sentence-bank assertion confirmed the `민족/民族` example contains embedded Hanja readings like `舊(구)`, so it now bypasses synthetic ruby alignment instead of using the sentence as a plain-Hangul reading string.
 
 ## [OUTCOMES]
+- 2026-05-18T23:04:17-0400 [TOOL] Verification passed for the Vercel popover-control fix: `git diff --check`, `npm run lint`, `npm run build`, and Browser DOM/computed-style checks.
+- 2026-05-18T23:14:17-0400 [TOOL] Verification passed for analytics + dense-substring search: `npm ls @vercel/analytics --depth=0`, `npm run lint`, `npm run build`, `git diff --check`, and local API long-query check.
+- 2026-05-18T23:11:20-0400 [TOOL] Verification passed for the normal slider switch styling: `git diff --check`, `npm run lint`, `npm run build`, and Browser computed-dimension checks.
+- 2026-05-18T23:17:03-0400 [TOOL] Verification passed for the malformed MK fix: `node --check scripts/lexicon/build-lexicon.mjs`, `npm run lexicon:build:wiktionary`, malformed-form data assertions, `git diff --check`, `npm run lint`, and `npm run build`.
+- 2026-05-18T23:29:52-0400 [TOOL] Verification passed for the embedded-Hanja example ruby fix: targeted sentence-bank assertion, `git diff --check`, `npm run lint`, and `npm run build`.
 - 2026-05-16T04:45:14-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, local `/api/search?q=bh` returned `hanjaCharacters`, and Browser rendered the panel with no console errors.
 - 2026-05-16T05:01:46-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, local `/api/search?q=가다` returned `TOPIK A`, and Browser rendered the badge with no console errors.
 - 2026-05-16T05:09:34-0400 [TOOL] Verification passed: `npm run lexicon:build:wiktionary`, `npm run lint`, `npm run build`, API `/api/search?q=-고` returns `-고/-고`, and Browser shows no `古` headword for the suffix.
@@ -268,3 +297,4 @@
 - 2026-05-18T16:20:53-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, `git diff --check`, cleared `.next`, rebuilt, restarted dev on `http://localhost:3002`, and Browser computed-style checks for the opaque amber popover/switch.
 - 2026-05-18T16:41:01-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, `git diff --check`, source scan for remaining `amber` classes under app/components, font integrity check, and Browser computed-style/font checks on `http://localhost:3003/search?q=한국`.
 - 2026-05-18T17:18:43-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, `git diff --check`, and Browser computed-style checks for closed/open cog button states.
+- 2026-05-18T23:07:02-0400 [TOOL] Verification passed: `npm run lint`, `npm run build`, `git diff --check`, and in-app Browser computed-style checks for split alternate-form badges on `/search?q=노동`.

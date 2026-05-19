@@ -89,6 +89,10 @@ function readingUnitCountForDisplay(text: string) {
     return Array.from(text).filter((char) => isReadingUnit(char) || isHanja(char)).length;
 }
 
+function hasEmbeddedHanjaReading(text: string) {
+    return /[\u4E00-\u9FFF]\([\uAC00-\uD7AF]+\)/.test(text);
+}
+
 function renderSearchLinkedText(text: string, reading?: string) {
     const nodes: ReactNode[] = [];
     const readingChars = reading ? Array.from(reading).filter(isReadingUnit) : [];
@@ -129,16 +133,17 @@ function renderSearchLinkedText(text: string, reading?: string) {
 }
 
 function formatProficiencyLabel(label: string) {
-    return label.replace(/^TOPIK\b/, "Topik");
+    return label; // temporary redundancy for compatibility
 }
 
 function renderExample(example: SenseExample, index: number) {
     const korean = example.mixedScript ?? example.korean;
+    const reading = example.mixedScript && !hasEmbeddedHanjaReading(korean) ? example.korean : undefined;
 
     return (
         <div key={`${example.korean}-${example.english ?? ""}-${index}`} className="border-l border-emerald-300/35 pl-4">
             <div className="korean-text text-lg leading-8 text-stone-200">
-                {renderSearchLinkedText(korean, example.mixedScript ? example.korean : undefined)}
+                {renderSearchLinkedText(korean, reading)}
             </div>
             {example.english && (
                 <div className="mt-0.5 text-base leading-7 text-stone-400">
@@ -836,6 +841,13 @@ function groupedDefinitionBlocks(definitions: Definition[]) {
     return blocks;
 }
 
+function alternateLabelParts(label: string | undefined) {
+    return String(label ?? "")
+        .split(/\s*,\s*|\s+or\s+/)
+        .map((part) => part.trim().replace(/^or\s+/i, ""))
+        .filter(Boolean);
+}
+
 export function Entry({
     hanja,
     hangul,
@@ -1026,9 +1038,16 @@ export function Entry({
                                             {alternate.reading}
                                         </span>
                                     )}
-                                    {alternate.label && (
-                                        <span className="ml-2 rounded-full bg-emerald-300/15 px-2 py-0.5 align-middle text-[0.65rem] font-semibold text-emerald-200">
-                                            {alternate.label}
+                                    {alternateLabelParts(alternate.label).length > 0 && (
+                                        <span className="ml-2 inline-flex flex-wrap items-center gap-1.5 align-middle">
+                                            {alternateLabelParts(alternate.label).map((labelPart) => (
+                                                <span
+                                                    key={labelPart}
+                                                    className="whitespace-nowrap rounded-full bg-emerald-300/15 px-2 py-0.5 text-[0.65rem] font-semibold text-emerald-200"
+                                                >
+                                                    {labelPart}
+                                                </span>
+                                            ))}
                                         </span>
                                     )}
                                 </a>

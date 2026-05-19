@@ -266,9 +266,14 @@ function middleKoreanSourceFromCode(code, fallback = "wiktionary") {
   return MIDDLE_KOREAN_SOURCE_LABELS.get(String(code ?? "")) ?? fallback;
 }
 
+function hasMalformedMiddleKoreanBoundary(value) {
+  return /(^|[\s/])[\u11A8-\u11FF〮〯]/u.test(String(value ?? ""));
+}
+
 function middleKoreanRecord(form, yale, source, confidence = 0.9) {
   const cleanedForm = cleanMiddleKoreanForm(form);
   if (!cleanedForm || !hasKoreanScript(cleanedForm)) return null;
+  if (hasMalformedMiddleKoreanBoundary(cleanedForm)) return null;
   return {
     form: cleanedForm,
     yale: String(yale ?? "").trim() || undefined,
