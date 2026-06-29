@@ -1,7 +1,7 @@
 # saseo
 Saseo (辭書, 사서) is a Jisho.org style Korean-English web dictionary with an emphasis on Hanja.
 
-Currently live at [saseo.davyl.com](saseo.davyl.com).
+Currently live at [saseo.davyl.com](https://saseo.davyl.com).
 
 # Sources
 * [choehwanjin/libhangul](https://github.com/choehwanjin/libhangul) for Hanja-Hangeul data
